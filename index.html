@@ -2,797 +2,1805 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Jadwal Harian dengan Alarm | Luxury Royal</title>
-<link rel="icon" href="logo.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Royal Schedule | Ultimate Edition</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-800-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-700.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <style>
-  :root{
-    --bg:#0a0a0a;
-    --bg-elev:#131313;
-    --text:#f5f5f5;
-    --text-dim:#a8a8a8;
-    --gold:#d4af37;
-    --gold-bright:#ffd700;
-    --gold-soft:rgba(212,175,55,0.35);
-    --danger:#e05a5a;
+  :root {
+    --bg-deep: #030304;
+    --bg-card: rgba(20, 20, 23, 0.65);
+    --text-primary: #ffffff;
+    --text-secondary: #9ca3af;
+    --accent-primary: #d4af37;
+    --accent-bright: #ffd700;
+    --accent-glow: rgba(212, 175, 55, 0.4);
+    --danger: #ef4444;
+    --success: #10b981;
+    --priority-high: #ef4444;
+    --priority-medium: #d4af37;
+    --priority-low: #3b82f6;
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-highlight: rgba(255, 255, 255, 0.03);
+    --aurora-1: rgba(212, 175, 55, 0.08);
+    --aurora-2: rgba(139, 92, 246, 0.05);
+    --aurora-3: rgba(212, 175, 55, 0.05);
   }
 
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-
-  html,body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Poppins','Inter',sans-serif;
-    min-height:100vh;
-    overflow-x:hidden;
+  [data-theme="midnight"] {
+    --accent-primary: #6366f1;
+    --accent-bright: #818cf8;
+    --accent-glow: rgba(99, 102, 241, 0.4);
+    --aurora-1: rgba(99, 102, 241, 0.08);
+    --aurora-2: rgba(168, 85, 247, 0.05);
+    --aurora-3: rgba(59, 130, 246, 0.05);
   }
 
-  body{
-    background:
-      radial-gradient(circle at 50% 0%, rgba(212,175,55,0.08), transparent 55%),
-      radial-gradient(circle at 100% 100%, rgba(212,175,55,0.05), transparent 50%),
-      var(--bg);
-    padding:24px 16px 60px;
-    position:relative;
+  [data-theme="emerald"] {
+    --accent-primary: #10b981;
+    --accent-bright: #34d399;
+    --accent-glow: rgba(16, 185, 129, 0.4);
+    --aurora-1: rgba(16, 185, 129, 0.08);
+    --aurora-2: rgba(6, 182, 212, 0.05);
+    --aurora-3: rgba(132, 204, 22, 0.05);
   }
 
-  .logo-wrap{
-    display:flex;
-    justify-content:center;
-    margin-bottom:6px;
+  [data-theme="rose"] {
+    --accent-primary: #f43f5e;
+    --accent-bright: #fb7185;
+    --accent-glow: rgba(244, 63, 94, 0.4);
+    --aurora-1: rgba(244, 63, 94, 0.08);
+    --aurora-2: rgba(236, 72, 153, 0.05);
+    --aurora-3: rgba(251, 146, 60, 0.05);
   }
 
-  .logo-wrap img{
-    width:70px;
-    height:70px;
-    display:block;
-    object-fit:cover;
-    border:2px solid var(--gold);
-    border-radius:50%;
-    padding:5px;
-    box-shadow:0 0 18px var(--gold-soft), 0 0 4px rgba(212,175,55,0.6) inset;
-    background:var(--bg-elev);
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  
+  html, body {
+    background-color: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
   }
 
-  header{
-    text-align:center;
-    margin-bottom:28px;
+  body::before {
+    content: '';
+    position: fixed;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: 
+      radial-gradient(circle at 50% 50%, var(--aurora-1), transparent 50%),
+      radial-gradient(circle at 80% 20%, var(--aurora-2), transparent 40%),
+      radial-gradient(circle at 20% 80%, var(--aurora-3), transparent 40%);
+    animation: aurora 20s ease-in-out infinite alternate;
+    z-index: -2;
+    pointer-events: none;
   }
 
-  header h1{
-    font-family:'Playfair Display',serif;
-    font-weight:800;
-    font-size:1.9rem;
-    letter-spacing:0.5px;
-    background:linear-gradient(135deg,#fff3c4 0%, var(--gold-bright) 45%, var(--gold) 70%, #fff3c4 100%);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    margin-bottom:6px;
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    z-index: -1;
+    pointer-events: none;
   }
 
-  header p{
-    color:var(--text-dim);
-    font-size:0.85rem;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
+  @keyframes aurora {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-20px, -20px) rotate(3deg); }
   }
 
-  .clock{
-    text-align:center;
-    font-family:'Playfair Display',serif;
-    font-size:2.1rem;
-    font-weight:700;
-    color:var(--text);
-    letter-spacing:2px;
-    margin:14px 0 22px;
-    text-shadow:0 0 14px rgba(212,175,55,0.35);
+  /* Floating Particles */
+  #particles-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
   }
 
-  .clock span{color:var(--gold);}
-
-  .divider{
-    height:1px;
-    background:linear-gradient(90deg, transparent, var(--gold), transparent);
-    opacity:0.6;
-    margin:22px 0;
+  .container {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 24px 20px 80px;
+    position: relative;
+    z-index: 1;
   }
 
-  .card{
-    background:linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-    border:1px solid rgba(212,175,55,0.28);
-    border-radius:18px;
-    padding:20px;
-    box-shadow:0 8px 30px rgba(0,0,0,0.5), 0 0 22px rgba(212,175,55,0.06);
+  /* Top Bar */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
   }
 
-  .form-title{
-    font-family:'Playfair Display',serif;
-    font-size:1.15rem;
-    font-weight:700;
-    color:var(--gold-bright);
-    margin-bottom:16px;
-    display:flex;
-    align-items:center;
-    gap:8px;
+  .icon-btn {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    color: var(--text-secondary);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .icon-btn:hover { color: var(--accent-bright); border-color: var(--accent-primary); }
+  .icon-btn:active { transform: scale(0.95); }
+
+  .header-section {
+    text-align: center;
+    margin-bottom: 24px;
   }
 
-  .field{
-    margin-bottom:14px;
+  .greeting {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--accent-primary);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-style: italic;
   }
 
-  .field label{
-    display:block;
-    font-size:0.78rem;
-    color:var(--text-dim);
-    margin-bottom:6px;
-    letter-spacing:0.5px;
-    text-transform:uppercase;
+  .live-clock {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff 0%, var(--accent-bright) 50%, var(--accent-primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1;
+    margin-bottom: 6px;
+    text-shadow: 0 0 40px var(--accent-glow);
   }
 
-  .field input[type="text"],
-  .field input[type="time"]{
-    width:100%;
-    min-height:50px;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(212,175,55,0.3);
-    border-radius:12px;
-    padding:0 16px;
-    color:var(--text);
-    font-family:'Poppins',sans-serif;
-    font-size:1rem;
-    outline:none;
-    transition:border-color .25s, box-shadow .25s;
-    color-scheme:dark;
+  .live-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
   }
 
-  .field input::placeholder{color:#6f6f6f;}
+  .progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+    padding: 16px;
+    background: var(--bg-card);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .progress-container:hover { border-color: var(--accent-primary); }
 
-  .field input:focus{
-    border-color:var(--gold-bright);
-    box-shadow:0 0 0 3px rgba(212,175,55,0.18);
+  .progress-ring { transform: rotate(-90deg); }
+  .progress-ring-circle { transition: stroke-dashoffset 0.5s ease-in-out; }
+
+  .progress-text { text-align: left; flex: 1; }
+  .progress-text h3 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
+  .progress-text p { font-size: 0.8rem; color: var(--text-secondary); }
+
+  /* Streak Badge */
+  .streak-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
   }
 
-  .btn-gold{
-    width:100%;
-    min-height:52px;
-    border:none;
-    border-radius:14px;
-    background:linear-gradient(135deg, var(--gold-bright), var(--gold) 55%, #b8860b);
-    color:#171208;
-    font-family:'Poppins',sans-serif;
-    font-weight:700;
-    font-size:1rem;
-    letter-spacing:0.4px;
-    cursor:pointer;
-    box-shadow:0 6px 18px rgba(212,175,55,0.35);
-    transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
+  /* Day Selector */
+  .day-selector {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 4px 12px;
+    margin-bottom: 20px;
+    scrollbar-width: none;
+  }
+  .day-selector::-webkit-scrollbar { display: none; }
+
+  .day-chip {
+    flex-shrink: 0;
+    padding: 10px 18px;
+    border-radius: 24px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
   }
 
-  .btn-gold:active{
-    transform:scale(0.97);
-    filter:brightness(0.95);
+  .day-chip.active {
+    background: linear-gradient(135deg, var(--accent-bright), var(--accent-primary));
+    color: #0a0a0a;
+    border-color: transparent;
+    box-shadow: 0 4px 16px var(--accent-glow);
+    transform: translateY(-1px);
   }
 
-  .section-title{
-    font-family:'Playfair Display',serif;
-    font-size:1.25rem;
-    font-weight:700;
-    color:var(--text);
-    margin:30px 0 14px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+  .day-chip.today {
+    border-color: var(--accent-primary);
+    color: var(--accent-bright);
   }
 
-  .section-title .count{
-    font-family:'Poppins',sans-serif;
-    font-size:0.75rem;
-    font-weight:600;
-    color:#171208;
-    background:var(--gold);
-    padding:4px 10px;
-    border-radius:20px;
+  /* Search Bar */
+  .search-wrap {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  .search-wrap svg {
+    position: absolute;
+    left: 16px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+  }
+  .search-input {
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 12px 16px 12px 44px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+  }
+  .search-input:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-glow);
   }
 
-  #taskList{
-    list-style:none;
-    display:flex;
-    flex-direction:column;
-    gap:14px;
+  /* Quick Action Bar */
+  .quick-actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .quick-actions::-webkit-scrollbar { display: none; }
+  
+  .quick-btn {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .quick-btn:hover { border-color: var(--accent-primary); color: var(--accent-bright); }
+  .quick-btn.active {
+    background: var(--accent-primary);
+    color: #000;
+    border-color: transparent;
   }
 
-  .task-card{
-    background:linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-    border:1px solid rgba(212,175,55,0.25);
-    border-radius:16px;
-    padding:16px;
-    display:flex;
-    align-items:center;
-    gap:14px;
-    box-shadow:0 4px 18px rgba(0,0,0,0.45), 0 0 14px rgba(212,175,55,0.05);
-    animation:fadeIn .35s ease;
-    transition:opacity .3s ease, transform .3s ease;
+  /* Card */
+  .card {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-top: 1px solid var(--glass-highlight);
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+    transition: transform 0.3s ease;
   }
 
-  .task-card.removing{
-    opacity:0;
-    transform:translateX(40px) scale(0.95);
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--accent-bright);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
-  @keyframes fadeIn{
-    from{opacity:0; transform:translateY(10px);}
-    to{opacity:1; transform:translateY(0);}
+  .form-group { margin-bottom: 16px; }
+  .form-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-weight: 600;
   }
 
-  .task-check{
-    flex-shrink:0;
-    width:26px;
-    height:26px;
-    border-radius:50%;
-    border:2px solid var(--gold);
-    cursor:pointer;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:transparent;
-    transition:background .2s;
+  .input-royal {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 14px 18px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
   }
 
-  .task-check.checked{
-    background:linear-gradient(135deg, var(--gold-bright), var(--gold));
+  .input-royal:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+    background: rgba(0,0,0,0.5);
   }
 
-  .task-check.checked::after{
-    content:"✓";
-    color:#171208;
-    font-weight:800;
-    font-size:0.85rem;
+  textarea.input-royal {
+    resize: none;
+    min-height: 70px;
+    font-family: inherit;
   }
 
-  .task-info{
-    flex:1;
-    min-width:0;
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  select.input-royal {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+    cursor: pointer;
+  }
+  select.input-royal option { background: #1a1a1a; color: white; }
+
+  /* Category Tags */
+  .category-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .category-tag {
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .category-tag.selected {
+    background: var(--accent-primary);
+    color: #000;
+    border-color: transparent;
   }
 
-  .task-time{
-    font-family:'Playfair Display',serif;
-    font-weight:700;
-    color:var(--gold-bright);
-    font-size:1.05rem;
-    letter-spacing:0.5px;
+  .btn-royal {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent-primary) 100%);
+    color: #0a0a0a;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px var(--accent-glow);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .btn-royal:active { transform: scale(0.97); }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-secondary);
+    border: 1px solid var(--glass-border);
+    box-shadow: none;
+    font-size: 0.85rem;
+    padding: 10px;
+    margin-top: 12px;
+  }
+  .btn-secondary:active { background: rgba(255,255,255,0.1); color: white; }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 32px 0 16px;
   }
 
-  .task-name{
-    font-size:0.98rem;
-    color:var(--text);
-    margin-top:2px;
-    word-break:break-word;
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--text-primary);
   }
 
-  .task-card.done .task-name{
-    text-decoration:line-through;
-    color:rgba(212,175,55,0.5);
+  .task-count-badge {
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--accent-bright);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--accent-glow);
   }
 
-  .task-card.done .task-time{
-    color:rgba(212,175,55,0.4);
+  .task-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+  .task-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
   }
 
-  .task-delete{
-    flex-shrink:0;
-    width:42px;
-    height:42px;
-    border-radius:12px;
-    border:1px solid rgba(224,90,90,0.4);
-    background:rgba(224,90,90,0.08);
-    color:var(--danger);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:background .2s, transform .15s;
+  .task-item:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: var(--accent-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
 
-  .task-delete:active{transform:scale(0.92);}
+  .task-item.dragging { opacity: 0.5; }
+  .task-item.drag-over { border-color: var(--accent-bright); background: rgba(212, 175, 55, 0.1); }
 
-  .empty-state{
-    text-align:center;
-    padding:40px 20px;
-    color:var(--text-dim);
-    font-size:0.9rem;
+  .task-item.completed { opacity: 0.5; background: rgba(0,0,0,0.2); }
+  .task-item.completed .task-name { text-decoration: line-through; color: var(--text-secondary); }
+
+  .priority-dot {
+    width: 4px; height: 100%; position: absolute; left: 0; top: 0;
+  }
+  .priority-high .priority-dot { background: var(--priority-high); box-shadow: 0 0 10px var(--priority-high); }
+  .priority-medium .priority-dot { background: var(--priority-medium); box-shadow: 0 0 10px var(--priority-medium); }
+  .priority-low .priority-dot { background: var(--priority-low); box-shadow: 0 0 10px var(--priority-low); }
+
+  .task-checkbox {
+    width: 24px; height: 24px;
+    border: 2px solid var(--text-secondary);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: all 0.2s; z-index: 2;
   }
 
-  .empty-state .icon{
-    font-size:2.2rem;
-    margin-bottom:10px;
-    opacity:0.5;
+  .task-item.completed .task-checkbox {
+    background: var(--success); border-color: var(--success);
   }
 
-  /* ALARM OVERLAY */
-  .alarm-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.88);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:999;
-    padding:20px;
-    backdrop-filter:blur(4px);
+  .task-checkbox::after {
+    content: '✓'; color: white; font-size: 14px; font-weight: bold;
+    opacity: 0; transform: scale(0); transition: all 0.2s;
+  }
+  .task-item.completed .task-checkbox::after { opacity: 1; transform: scale(1); }
+
+  .task-content { flex: 1; z-index: 2; min-width: 0; }
+  .task-time { font-size: 0.75rem; color: var(--accent-bright); font-weight: 600; letter-spacing: 0.5px; margin-bottom: 2px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .task-name { font-size: 0.95rem; font-weight: 500; color: var(--text-primary); line-height: 1.4; word-break: break-word; }
+  .task-notes { font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px; font-style: italic; }
+  
+  .mini-badge {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .badge-daily { background: rgba(212,175,55,0.2); color: var(--accent-bright); }
+  .badge-category { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; }
+
+  .task-actions { display: flex; gap: 6px; z-index: 2; }
+  .btn-icon {
+    width: 34px; height: 34px; border-radius: 10px; border: none;
+    background: rgba(255,255,255,0.05); color: var(--text-secondary);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-icon.delete:hover { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
+  .btn-icon.edit:hover { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
+
+  .empty-state { text-align: center; padding: 48px 20px; color: var(--text-secondary); }
+  .empty-icon { font-size: 3rem; margin-bottom: 16px; opacity: 0.3; }
+
+  /* Modals */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    z-index: 9998;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .modal-overlay.active { display: flex; opacity: 1; }
+
+  .modal-card {
+    background: linear-gradient(145deg, #1a1a1f, #0d0d10);
+    border: 1px solid var(--accent-primary);
+    border-radius: 28px;
+    padding: 32px 28px;
+    width: 100%;
+    max-width: 420px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 0 60px var(--accent-glow);
   }
 
-  .alarm-overlay.active{
-    display:flex;
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--accent-bright);
+    margin-bottom: 20px;
+    text-align: center;
   }
 
-  .alarm-box{
-    width:100%;
-    max-width:380px;
-    background:linear-gradient(180deg, #161616, #0a0a0a);
-    border-radius:24px;
-    padding:36px 26px;
-    text-align:center;
-    border:2px solid var(--gold-bright);
-    animation:alarmBlink 1s infinite;
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
   }
 
-  @keyframes alarmBlink{
-    0%,100%{
-      box-shadow:0 0 25px 6px rgba(255,215,0,0.75), 0 0 60px rgba(212,175,55,0.4);
-      border-color:var(--gold-bright);
-    }
-    50%{
-      box-shadow:0 0 8px 2px rgba(255,215,0,0.2);
-      border-color:rgba(212,175,55,0.4);
-    }
+  /* Stats Modal */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent-bright);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
-  .alarm-icon{
-    font-size:3rem;
-    margin-bottom:10px;
-    animation:ring 0.5s infinite;
-    display:inline-block;
+  /* Weekly Chart */
+  .weekly-chart {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .chart-title {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .chart-bars {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 120px;
+    gap: 8px;
+  }
+  .chart-bar-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    height: 100%;
+    justify-content: flex-end;
+  }
+  .chart-bar {
+    width: 100%;
+    background: linear-gradient(180deg, var(--accent-bright), var(--accent-primary));
+    border-radius: 6px 6px 0 0;
+    min-height: 4px;
+    transition: height 0.5s ease;
+    box-shadow: 0 0 10px var(--accent-glow);
+  }
+  .chart-bar.empty { background: rgba(255,255,255,0.05); box-shadow: none; }
+  .chart-label {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    font-weight: 600;
   }
 
-  @keyframes ring{
-    0%,100%{transform:rotate(-12deg);}
-    50%{transform:rotate(12deg);}
+  /* Achievements */
+  .achievement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    transition: all 0.3s;
+  }
+  .achievement-item.unlocked {
+    border-color: var(--accent-primary);
+    background: rgba(212, 175, 55, 0.05);
+  }
+  .achievement-item.locked { opacity: 0.4; filter: grayscale(1); }
+  .achievement-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent-bright), var(--accent-primary));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .achievement-info { flex: 1; }
+  .achievement-name { font-weight: 700; font-size: 0.9rem; color: var(--text-primary); }
+  .achievement-desc { font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px; }
+
+  /* Theme Picker */
+  .theme-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .theme-option {
+    aspect-ratio: 1;
+    border-radius: 14px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .theme-option.active { border-color: white; transform: scale(1.05); }
+  .theme-option::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: 6px; left: 0; right: 0;
+    text-align: center;
+    font-size: 0.65rem;
+    color: white;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  }
+  .theme-gold { background: linear-gradient(135deg, #d4af37, #ffd700); }
+  .theme-midnight { background: linear-gradient(135deg, #6366f1, #818cf8); }
+  .theme-emerald { background: linear-gradient(135deg, #10b981, #34d399); }
+  .theme-rose { background: linear-gradient(135deg, #f43f5e, #fb7185); }
+
+  /* Alarm Sound Picker */
+  .sound-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .sound-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .sound-option.active {
+    border-color: var(--accent-primary);
+    background: rgba(212, 175, 55, 0.05);
+  }
+  .sound-option-name { font-weight: 600; font-size: 0.9rem; }
+  .sound-option-preview {
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    font-size: 0.75rem;
+    color: var(--accent-bright);
   }
 
-  .alarm-box h2{
-    font-family:'Playfair Display',serif;
-    font-size:1.4rem;
-    color:var(--gold-bright);
-    margin-bottom:6px;
+  /* Alarm Overlay */
+  .alarm-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .alarm-overlay.active { display: flex; opacity: 1; }
+
+  .alarm-card {
+    background: linear-gradient(145deg, #1a1a1f, #0d0d10);
+    border: 1px solid var(--accent-primary);
+    border-radius: 32px;
+    padding: 40px 32px;
+    text-align: center;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 0 60px var(--accent-glow);
+    animation: alarmPulse 2s infinite ease-in-out;
   }
 
-  .alarm-box .alarm-task-name{
-    font-size:1.15rem;
-    color:var(--text);
-    margin:10px 0 4px;
-    font-weight:600;
+  @keyframes alarmPulse {
+    0%, 100% { box-shadow: 0 0 40px var(--accent-glow); }
+    50% { box-shadow: 0 0 70px var(--accent-glow); }
   }
 
-  .alarm-box .alarm-task-time{
-    font-family:'Playfair Display',serif;
-    font-size:2.4rem;
-    font-weight:800;
-    color:var(--text);
-    margin-bottom:22px;
-    letter-spacing:1px;
+  .alarm-icon { font-size: 4rem; margin-bottom: 16px; display: inline-block; animation: ring 0.8s infinite ease-in-out; }
+  @keyframes ring { 0%, 100% { transform: rotate(-15deg); } 50% { transform: rotate(15deg); } }
+
+  .alarm-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--accent-bright); margin-bottom: 8px; }
+  .alarm-task-name { font-size: 1.2rem; color: white; font-weight: 600; margin-bottom: 4px; }
+  .alarm-time { font-size: 2.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 32px; font-variant-numeric: tabular-nums; }
+
+  .btn-stop {
+    width: 100%; padding: 18px; border: none; border-radius: 16px;
+    background: var(--accent-primary); color: #000; font-weight: 700;
+    font-size: 1.1rem; cursor: pointer; margin-bottom: 12px;
+    box-shadow: 0 8px 24px var(--accent-glow); transition: transform 0.1s;
   }
+  .btn-stop:active { transform: scale(0.96); }
 
-  .btn-stop-alarm{
-    width:100%;
-    min-height:54px;
-    border:none;
-    border-radius:14px;
-    background:linear-gradient(135deg, var(--gold-bright), var(--gold) 55%, #b8860b);
-    color:#171208;
-    font-family:'Poppins',sans-serif;
-    font-weight:700;
-    font-size:1.05rem;
-    cursor:pointer;
-    box-shadow:0 6px 20px rgba(212,175,55,0.5);
+  .btn-snooze {
+    width: 100%; padding: 14px; border: 1px solid var(--glass-border);
+    border-radius: 16px; background: rgba(255,255,255,0.05);
+    color: var(--text-secondary); font-weight: 600; font-size: 0.95rem;
+    cursor: pointer; transition: all 0.2s;
   }
+  .btn-snooze:hover { background: rgba(255,255,255,0.1); color: white; }
 
-  .btn-stop-alarm:active{transform:scale(0.97);}
-
-  footer{
-    text-align:center;
-    margin-top:40px;
-    color:#555;
-    font-size:0.72rem;
-    letter-spacing:0.5px;
+  /* Toast Notifications */
+  .toast-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+    width: calc(100% - 40px);
+    max-width: 400px;
   }
+  .toast {
+    background: linear-gradient(135deg, #1a1a1f, #0d0d10);
+    border: 1px solid var(--accent-primary);
+    border-radius: 14px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px var(--accent-glow);
+    animation: toastIn 0.4s ease, toastOut 0.4s ease 3.6s forwards;
+    pointer-events: auto;
+  }
+  @keyframes toastIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes toastOut {
+    to { transform: translateY(-20px); opacity: 0; }
+  }
+  .toast-icon { font-size: 1.5rem; }
+  .toast-content { flex: 1; }
+  .toast-title { font-weight: 700; font-size: 0.9rem; color: var(--accent-bright); }
+  .toast-desc { font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px; }
 
-  footer span{color:var(--gold);}
+  .footer { text-align: center; margin-top: 48px; color: rgba(255,255,255,0.2); font-size: 0.75rem; letter-spacing: 1px; }
 
-  @media (min-width:480px){
-    body{max-width:480px; margin:0 auto;}
+  @media (max-width: 480px) {
+    .live-clock { font-size: 2.8rem; }
+    .card { padding: 20px; border-radius: 20px; }
   }
 </style>
 </head>
 <body>
 
-  <div class="logo-wrap">
-    <img src="logo.png" alt="Logo">
-  </div>
+<canvas id="particles-canvas"></canvas>
 
-  <header>
-    <h1>✦ Jadwal Harian ✦</h1>
-    <p>Luxury Schedule &amp; Alarm</p>
-  </header>
+<div class="toast-container" id="toastContainer"></div>
 
-  <div class="clock" id="liveClock">--:--:-- <span id="liveDate"></span></div>
-
-  <section class="card">
-    <div class="form-title">🕯️ Tambah Tugas Baru</div>
-    <form id="taskForm">
-      <div class="field">
-        <label for="taskName">Nama Tugas</label>
-        <input type="text" id="taskName" placeholder="Contoh: Rapat dengan klien" required maxlength="60">
-      </div>
-      <div class="field">
-        <label for="taskTime">Waktu Alarm</label>
-        <input type="time" id="taskTime" required>
-      </div>
-      <button type="submit" class="btn-gold">＋ Tambahkan Tugas</button>
-    </form>
-  </section>
-
-  <div class="section-title">
-    Daftar Tugas
-    <span class="count" id="taskCount">0</span>
-  </div>
-
-  <ul id="taskList"></ul>
-
-  <footer>Dirancang dengan <span>&#9829;</span> — Tema Luxury Royal</footer>
-
-  <!-- ALARM POPUP -->
-  <div class="alarm-overlay" id="alarmOverlay">
-    <div class="alarm-box">
-      <div class="alarm-icon">⏰</div>
-      <h2>SAATNYA TIBA!</h2>
-      <div class="alarm-task-name" id="alarmTaskName">Nama Tugas</div>
-      <div class="alarm-task-time" id="alarmTaskTime">00:00</div>
-      <button class="btn-stop-alarm" id="btnStopAlarm">🔕 Matikan Alarm</button>
+<div class="container">
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <button class="icon-btn" id="btnTheme" title="Ganti Tema">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    </button>
+    <div style="display: flex; gap: 8px;">
+      <button class="icon-btn" id="btnStats" title="Statistik">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+      </button>
+      <button class="icon-btn" id="btnAchievements" title="Pencapaian">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+      </button>
+      <button class="icon-btn" id="btnSettings" title="Pengaturan">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      </button>
     </div>
   </div>
 
-<script>
-(function(){
-  "use strict";
+  <div class="header-section">
+    <div class="greeting" id="greetingText">Selamat Datang</div>
+    <div class="live-clock" id="liveClock">00:00</div>
+    <div class="live-date" id="liveDate">Senin, 1 Jan 2026</div>
+    
+    <div class="progress-container" id="btnProgress">
+      <svg class="progress-ring" width="60" height="60">
+        <circle stroke="rgba(255,255,255,0.05)" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
+        <circle class="progress-ring-circle" id="progressCircle" stroke="var(--accent-primary)" stroke-width="4" fill="transparent" r="26" cx="30" cy="30" stroke-dasharray="163.36" stroke-dashoffset="163.36" stroke-linecap="round"/>
+      </svg>
+      <div class="progress-text">
+        <h3 id="progressPercent">0%</h3>
+        <p>Tugas Selesai Hari Ini</p>
+      </div>
+      <div class="streak-badge" id="streakBadge" style="display:none;">🔥 <span id="streakCount">0</span></div>
+    </div>
+  </div>
 
-  const STORAGE_KEY = "luxuryScheduleTasks";
-  const TRIGGERED_KEY = "luxuryScheduleTriggered";
+  <!-- Day Selector -->
+  <div class="day-selector" id="daySelector">
+    <button class="day-chip active" data-day="daily">🔄 Setiap Hari</button>
+    <button class="day-chip" data-day="monday">Sen</button>
+    <button class="day-chip" data-day="tuesday">Sel</button>
+    <button class="day-chip" data-day="wednesday">Rab</button>
+    <button class="day-chip" data-day="thursday">Kam</button>
+    <button class="day-chip" data-day="friday">Jum</button>
+    <button class="day-chip" data-day="saturday">Sab</button>
+    <button class="day-chip" data-day="sunday">Min</button>
+  </div>
 
-  let tasks = loadTasks();
-  let triggeredMap = loadTriggered();
+  <!-- Search -->
+  <div class="search-wrap">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <input type="text" class="search-input" id="searchInput" placeholder="Cari tugas...">
+  </div>
 
-  const taskForm = document.getElementById("taskForm");
-  const taskNameInput = document.getElementById("taskName");
-  const taskTimeInput = document.getElementById("taskTime");
-  const taskList = document.getElementById("taskList");
-  const taskCount = document.getElementById("taskCount");
-  const liveClock = document.getElementById("liveClock");
-  const liveDate = document.getElementById("liveDate");
-  const alarmOverlay = document.getElementById("alarmOverlay");
-  const alarmTaskName = document.getElementById("alarmTaskName");
-  const alarmTaskTime = document.getElementById("alarmTaskTime");
-  const btnStopAlarm = document.getElementById("btnStopAlarm");
+  <!-- Quick Actions -->
+  <div class="quick-actions">
+    <button class="quick-btn" data-filter="all">📋 Semua</button>
+    <button class="quick-btn" data-filter="high">🔴 Prioritas Tinggi</button>
+    <button class="quick-btn" data-filter="pending">⏳ Belum Selesai</button>
+    <button class="quick-btn" data-filter="done">✅ Selesai</button>
+    <button class="quick-btn" data-filter="focus">🎯 Mode Fokus</button>
+  </div>
 
-  // ---------- Storage ----------
-  function loadTasks(){
-    try{
-      const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : [];
-    }catch(e){
-      return [];
-    }
-  }
-
-  function saveTasks(){
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-  }
-
-  function todayKey(){
-    const d = new Date();
-    return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
-  }
-
-  function loadTriggered(){
-    try{
-      const raw = localStorage.getItem(TRIGGERED_KEY);
-      const parsed = raw ? JSON.parse(raw) : {date:todayKey(), ids:[]};
-      if(parsed.date !== todayKey()){
-        return {date:todayKey(), ids:[]};
-      }
-      return parsed;
-    }catch(e){
-      return {date:todayKey(), ids:[]};
-    }
-  }
-
-  function saveTriggered(){
-    localStorage.setItem(TRIGGERED_KEY, JSON.stringify(triggeredMap));
-  }
-
-  function markTriggered(id){
-    if(triggeredMap.date !== todayKey()){
-      triggeredMap = {date:todayKey(), ids:[]};
-    }
-    if(!triggeredMap.ids.includes(id)){
-      triggeredMap.ids.push(id);
-      saveTriggered();
-    }
-  }
-
-  function isTriggeredToday(id){
-    if(triggeredMap.date !== todayKey()){
-      triggeredMap = {date:todayKey(), ids:[]};
-      saveTriggered();
-      return false;
-    }
-    return triggeredMap.ids.includes(id);
-  }
-
-  // ---------- Render ----------
-  function formatTimeLabel(t){
-    return t;
-  }
-
-  function render(){
-    taskList.innerHTML = "";
-    taskCount.textContent = tasks.length;
-
-    if(tasks.length === 0){
-      const empty = document.createElement("li");
-      empty.className = "empty-state";
-      empty.innerHTML = '<div class="icon">🗓️</div>Belum ada tugas.<br>Tambahkan jadwal pertama Anda di atas.';
-      taskList.appendChild(empty);
-      return;
-    }
-
-    const sorted = [...tasks].sort((a,b)=> a.time.localeCompare(b.time));
-
-    sorted.forEach(task=>{
-      const li = document.createElement("li");
-      li.className = "task-card" + (task.done ? " done" : "");
-      li.dataset.id = task.id;
-
-      li.innerHTML = `
-        <div class="task-check ${task.done ? "checked" : ""}" data-action="toggle"></div>
-        <div class="task-info">
-          <div class="task-time">${formatTimeLabel(task.time)}</div>
-          <div class="task-name">${escapeHtml(task.name)}</div>
+  <!-- Add Task Form -->
+  <div class="card" id="formCard">
+    <div class="card-title"><span>✦</span> Tambah Tugas Baru</div>
+    <form id="taskForm">
+      <div class="form-group">
+        <label class="form-label">Nama Tugas</label>
+        <input type="text" id="taskName" class="input-royal" placeholder="Contoh: Meeting dengan Investor" required maxlength="60">
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Catatan (Opsional)</label>
+        <textarea id="taskNotes" class="input-royal" placeholder="Tambahkan detail atau catatan..." maxlength="200"></textarea>
+      </div>
+      
+      <div class="row">
+        <div class="form-group">
+          <label class="form-label">Waktu</label>
+          <input type="time" id="taskTime" class="input-royal" required>
         </div>
-        <div class="task-delete" data-action="delete">🗑️</div>
-      `;
-      taskList.appendChild(li);
-    });
+        <div class="form-group">
+          <label class="form-label">Prioritas</label>
+          <select id="taskPriority" class="input-royal">
+            <option value="high">🔴 Tinggi</option>
+            <option value="medium" selected>🟡 Sedang</option>
+            <option value="low">🔵 Rendah</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label class="form-label">Berlaku Untuk</label>
+          <select id="taskDay" class="input-royal">
+            <option value="daily">🔄 Setiap Hari</option>
+            <option value="monday">📅 Senin</option>
+            <option value="tuesday">📅 Selasa</option>
+            <option value="wednesday">📅 Rabu</option>
+            <option value="thursday">📅 Kamis</option>
+            <option value="friday">📅 Jumat</option>
+            <option value="saturday">📅 Sabtu</option>
+            <option value="sunday">📅 Minggu</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Kategori</label>
+          <select id="taskCategory" class="input-royal">
+            <option value="">Tanpa Kategori</option>
+            <option value="work">💼 Kerja</option>
+            <option value="personal">🏠 Pribadi</option>
+            <option value="health">💪 Kesehatan</option>
+            <option value="study">📚 Belajar</option>
+            <option value="finance">💰 Keuangan</option>
+            <option value="social">👥 Sosial</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-royal">
+        <span>+</span> Tambahkan ke Jadwal
+      </button>
+    </form>
+  </div>
+
+  <div class="section-header">
+    <div class="section-title" id="listTitle">Jadwal Hari Ini</div>
+    <div class="task-count-badge" id="taskCount">0 Tugas</div>
+  </div>
+
+  <ul class="task-list" id="taskList"></ul>
+
+  <div style="display: flex; gap: 10px; margin-top: 24px;">
+    <button class="btn-royal btn-secondary" onclick="exportData()" style="flex:1;">📥 Ekspor</button>
+    <button class="btn-royal btn-secondary" onclick="document.getElementById('importFile').click()" style="flex:1;">📤 Impor</button>
+    <button class="btn-royal btn-secondary" onclick="clearAllData()" style="flex:1;">🗑️ Reset</button>
+    <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importData(this)">
+  </div>
+
+  <div class="footer">✦ ROYAL SCHEDULE • ULTIMATE EDITION ✦</div>
+</div>
+
+<!-- Stats Modal -->
+<div class="modal-overlay" id="statsModal">
+  <div class="modal-card" style="position: relative;">
+    <button class="modal-close" onclick="closeModal('statsModal')">✕</button>
+    <div class="modal-title">📊 Statistik Anda</div>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value" id="statTotal">0</div>
+        <div class="stat-label">Total Tugas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statCompleted">0</div>
+        <div class="stat-label">Selesai</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statStreak">0</div>
+        <div class="stat-label">Hari Streak 🔥</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statBest">0</div>
+        <div class="stat-label">Rekor Terbaik</div>
+      </div>
+    </div>
+
+    <div class="weekly-chart">
+      <div class="chart-title">Aktivitas 7 Hari Terakhir</div>
+      <div class="chart-bars" id="weeklyChart"></div>
+    </div>
+
+    <div class="weekly-chart">
+      <div class="chart-title">Distribusi Kategori</div>
+      <div id="categoryStats" style="display: flex; flex-direction: column; gap: 8px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Achievements Modal -->
+<div class="modal-overlay" id="achievementsModal">
+  <div class="modal-card" style="position: relative;">
+    <button class="modal-close" onclick="closeModal('achievementsModal')">✕</button>
+    <div class="modal-title">🏆 Pencapaian</div>
+    <div class="achievement-list" id="achievementList"></div>
+  </div>
+</div>
+
+<!-- Theme Modal -->
+<div class="modal-overlay" id="themeModal">
+  <div class="modal-card" style="position: relative;">
+    <button class="modal-close" onclick="closeModal('themeModal')">✕</button>
+    <div class="modal-title">🎨 Pilih Tema</div>
+    <div class="theme-grid">
+      <div class="theme-option theme-gold active" data-theme="gold" data-name="Royal Gold"></div>
+      <div class="theme-option theme-midnight" data-theme="midnight" data-name="Midnight"></div>
+      <div class="theme-option theme-emerald" data-theme="emerald" data-name="Emerald"></div>
+      <div class="theme-option theme-rose" data-theme="rose" data-name="Rose Gold"></div>
+    </div>
+    
+    <div class="modal-title" style="font-size: 1.1rem; margin-top: 24px;">🔊 Suara Alarm</div>
+    <div class="sound-list" id="soundList">
+      <div class="sound-option active" data-sound="chime">
+        <span class="sound-option-name">🎵 Royal Chime</span>
+        <span class="sound-option-preview">▶ Preview</span>
+      </div>
+      <div class="sound-option" data-sound="bell">
+        <span class="sound-option-name">🔔 Classic Bell</span>
+        <span class="sound-option-preview">▶ Preview</span>
+      </div>
+      <div class="sound-option" data-sound="gentle">
+        <span class="sound-option-name">🌸 Gentle Wake</span>
+        <span class="sound-option-preview">▶ Preview</span>
+      </div>
+      <div class="sound-option" data-sound="urgent">
+        <span class="sound-option-name">⚡ Urgent Alert</span>
+        <span class="sound-option-preview">▶ Preview</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Alarm Overlay -->
+<div class="alarm-overlay" id="alarmOverlay">
+  <div class="alarm-card">
+    <div class="alarm-icon">🔔</div>
+    <div class="alarm-title">Waktunya Tiba!</div>
+    <div class="alarm-task-name" id="alarmTaskName">Nama Tugas</div>
+    <div class="alarm-time" id="alarmTaskTime">00:00</div>
+    <button class="btn-stop" id="btnStopAlarm">✓ Selesaikan & Matikan</button>
+    <button class="btn-snooze" id="btnSnoozeAlarm">⏰ Tunda 5 Menit</button>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = "royal_tasks_v4";
+const TRIGGERED_KEY = "royal_triggered_v4";
+const SETTINGS_KEY = "royal_settings_v4";
+const ACHIEVEMENTS_KEY = "royal_achievements_v4";
+
+let tasks = [];
+let triggeredMap = { date: getTodayKey(), ids: [] };
+let currentViewDay = getTodayName();
+let currentFilter = 'all';
+let searchQuery = '';
+let audioCtx = null;
+let beepInterval = null;
+let activeAlarmTask = null;
+let alarmQueue = [];
+let settings = { theme: 'gold', sound: 'chime' };
+let achievements = {};
+
+const els = {
+  clock: document.getElementById('liveClock'),
+  date: document.getElementById('liveDate'),
+  greeting: document.getElementById('greetingText'),
+  form: document.getElementById('taskForm'),
+  list: document.getElementById('taskList'),
+  count: document.getElementById('taskCount'),
+  listTitle: document.getElementById('listTitle'),
+  progressCircle: document.getElementById('progressCircle'),
+  progressPercent: document.getElementById('progressPercent'),
+  alarmOverlay: document.getElementById('alarmOverlay'),
+  alarmName: document.getElementById('alarmTaskName'),
+  alarmTime: document.getElementById('alarmTaskTime'),
+  btnStop: document.getElementById('btnStopAlarm'),
+  btnSnooze: document.getElementById('btnSnoozeAlarm'),
+  formCard: document.getElementById('formCard'),
+  daySelector: document.getElementById('daySelector'),
+  searchInput: document.getElementById('searchInput'),
+  toastContainer: document.getElementById('toastContainer'),
+  streakBadge: document.getElementById('streakBadge'),
+  streakCount: document.getElementById('streakCount')
+};
+
+function getTodayKey() { return new Date().toISOString().split('T')[0]; }
+function getTodayName() {
+  const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  return days[new Date().getDay()];
+}
+function getDayLabel(dayKey) {
+  if (dayKey === 'daily') return 'Jadwal Setiap Hari';
+  const labels = { monday: 'Senin', tuesday: 'Selasa', wednesday: 'Rabu', thursday: 'Kamis', friday: 'Jumat', saturday: 'Sabtu', sunday: 'Minggu' };
+  return `Jadwal Hari ${labels[dayKey] || dayKey}`;
+}
+
+// --- Data ---
+function loadData() {
+  try {
+    tasks = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    tasks = tasks.map(t => ({
+      completedDates: [],
+      scheduleType: 'daily',
+      dayOfWeek: null,
+      notes: '',
+      category: '',
+      order: 0,
+      ...t
+    }));
+    
+    const savedTriggered = JSON.parse(localStorage.getItem(TRIGGERED_KEY));
+    triggeredMap = (savedTriggered && savedTriggered.date === getTodayKey()) ? savedTriggered : { date: getTodayKey(), ids: [] };
+    
+    settings = { theme: 'gold', sound: 'chime', ...JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') };
+    achievements = JSON.parse(localStorage.getItem(ACHIEVEMENTS_KEY) || '{}');
+  } catch (e) {
+    tasks = [];
   }
+}
 
-  function escapeHtml(str){
-    const div = document.createElement("div");
-    div.textContent = str;
-    return div.innerHTML;
-  }
+function saveData() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+  localStorage.setItem(TRIGGERED_KEY, JSON.stringify(triggeredMap));
+  localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+  localStorage.setItem(ACHIEVEMENTS_KEY, JSON.stringify(achievements));
+}
 
-  taskList.addEventListener("click", function(e){
-    const target = e.target.closest("[data-action]");
-    if(!target) return;
-    const card = target.closest(".task-card");
-    if(!card) return;
-    const id = card.dataset.id;
-    const action = target.dataset.action;
+function isTaskDone(task) { return task.completedDates && task.completedDates.includes(getTodayKey()); }
+function isTaskForToday(task) { return task.scheduleType === 'daily' || task.dayOfWeek === getTodayName(); }
+function isTaskForView(task) { return currentViewDay === 'daily' || task.dayOfWeek === currentViewDay || task.scheduleType === 'daily'; }
 
-    if(action === "toggle"){
-      const task = tasks.find(t=>t.id === id);
-      if(task){
-        task.done = !task.done;
-        saveTasks();
-        render();
+// --- Streak Calculation ---
+function calculateStreak() {
+  let streak = 0;
+  const today = new Date();
+  
+  for (let i = 0; i < 365; i++) {
+    const d = new Date(today);
+    d.setDate(d.getDate() - i);
+    const key = d.toISOString().split('T')[0];
+    
+    const tasksForDay = tasks.filter(t => {
+      if (t.scheduleType === 'specific' && t.dayOfWeek) {
+        const dayNames = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+        return t.dayOfWeek === dayNames[d.getDay()];
       }
-    }else if(action === "delete"){
-      card.classList.add("removing");
-      setTimeout(()=>{
-        tasks = tasks.filter(t=>t.id !== id);
-        saveTasks();
-        render();
-      }, 280);
-    }
-  });
-
-  // ---------- Add Task ----------
-  taskForm.addEventListener("submit", function(e){
-    e.preventDefault();
-    const name = taskNameInput.value.trim();
-    const time = taskTimeInput.value;
-    if(!name || !time) return;
-
-    tasks.push({
-      id: Date.now().toString(36) + Math.random().toString(36).slice(2,7),
-      name: name,
-      time: time,
-      done: false
+      return true;
     });
+    
+    if (tasksForDay.length === 0) {
+      if (i === 0) continue;
+      break;
+    }
+    
+    const allDone = tasksForDay.every(t => t.completedDates && t.completedDates.includes(key));
+    if (allDone) streak++;
+    else break;
+  }
+  
+  return streak;
+}
 
-    saveTasks();
-    render();
-    taskForm.reset();
-    taskNameInput.focus();
+function getBestStreak() {
+  return achievements.bestStreak || 0;
+}
+
+function updateStreak() {
+  const streak = calculateStreak();
+  if (streak > (achievements.bestStreak || 0)) {
+    achievements.bestStreak = streak;
+    saveData();
+  }
+  if (streak > 0) {
+    els.streakBadge.style.display = 'inline-flex';
+    els.streakCount.textContent = streak;
+  } else {
+    els.streakBadge.style.display = 'none';
+  }
+}
+
+// --- Achievements ---
+const ACHIEVEMENT_DEFS = [
+  { id: 'first_task', name: 'Langkah Pertama', desc: 'Buat tugas pertamamu', icon: '🌟', check: () => tasks.length >= 1 },
+  { id: 'five_tasks', name: 'Perencana', desc: 'Buat 5 tugas', icon: '📝', check: () => tasks.length >= 5 },
+  { id: 'ten_tasks', name: 'Arsitek Waktu', desc: 'Buat 10 tugas', icon: '⏰', check: () => tasks.length >= 10 },
+  { id: 'first_complete', name: 'Penyelesai', desc: 'Selesaikan 1 tugas', icon: '✓', check: () => tasks.some(t => t.completedDates && t.completedDates.length > 0) },
+  { id: 'ten_complete', name: 'Produktif', desc: 'Selesaikan 10 tugas total', icon: '💪', check: () => tasks.reduce((s, t) => s + (t.completedDates?.length || 0), 0) >= 10 },
+  { id: 'fifty_complete', name: 'Master Produktivitas', desc: 'Selesaikan 50 tugas total', icon: '👑', check: () => tasks.reduce((s, t) => s + (t.completedDates?.length || 0), 0) >= 50 },
+  { id: 'streak_3', name: 'Konsisten', desc: 'Streak 3 hari berturut-turut', icon: '🔥', check: () => calculateStreak() >= 3 },
+  { id: 'streak_7', name: 'Disiplin Emas', desc: 'Streak 7 hari berturut-turut', icon: '🏆', check: () => calculateStreak() >= 7 },
+  { id: 'streak_30', name: 'Legendaris', desc: 'Streak 30 hari berturut-turut', icon: '💎', check: () => calculateStreak() >= 30 },
+  { id: 'perfect_day', name: 'Hari Sempurna', desc: 'Selesaikan semua tugas dalam sehari', icon: '⭐', check: () => {
+    const todayTasks = tasks.filter(isTaskForToday);
+    return todayTasks.length > 0 && todayTasks.every(isTaskDone);
+  }},
+  { id: 'early_bird', name: 'Early Bird', desc: 'Selesaikan tugas sebelum jam 9 pagi', icon: '🌅', check: () => tasks.some(t => {
+    const h = parseInt(t.time.split(':')[0]);
+    return h < 9 && t.completedDates && t.completedDates.length > 0;
+  })},
+  { id: 'night_owl', name: 'Night Owl', desc: 'Buat tugas di atas jam 10 malam', icon: '🦉', check: () => {
+    const h = new Date().getHours();
+    return h >= 22 && tasks.length > 0;
+  }}
+];
+
+function checkAchievements() {
+  ACHIEVEMENT_DEFS.forEach(def => {
+    if (!achievements[def.id] && def.check()) {
+      achievements[def.id] = Date.now();
+      saveData();
+      showToast(`🏆 Pencapaian Baru!`, def.name, def.icon);
+      confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 }, colors: ['#d4af37', '#ffd700', '#ffffff'] });
+    }
+  });
+}
+
+function renderAchievements() {
+  const list = document.getElementById('achievementList');
+  list.innerHTML = ACHIEVEMENT_DEFS.map(def => {
+    const unlocked = !!achievements[def.id];
+    return `
+      <div class="achievement-item ${unlocked ? 'unlocked' : 'locked'}">
+        <div class="achievement-icon">${def.icon}</div>
+        <div class="achievement-info">
+          <div class="achievement-name">${def.name}</div>
+          <div class="achievement-desc">${def.desc}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// --- Toast ---
+function showToast(title, desc, icon = '✨') {
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `
+    <div class="toast-icon">${icon}</div>
+    <div class="toast-content">
+      <div class="toast-title">${title}</div>
+      <div class="toast-desc">${desc}</div>
+    </div>
+  `;
+  els.toastContainer.appendChild(toast);
+  setTimeout(() => toast.remove(), 4000);
+}
+
+// --- Theme ---
+function applyTheme(theme) {
+  if (theme === 'gold') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', theme);
+  document.querySelectorAll('.theme-option').forEach(el => {
+    el.classList.toggle('active', el.dataset.theme === theme);
+  });
+}
+
+// --- Modals ---
+function openModal(id) {
+  document.getElementById(id).classList.add('active');
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+}
+
+// --- Stats ---
+function renderStats() {
+  document.getElementById('statTotal').textContent = tasks.length;
+  document.getElementById('statCompleted').textContent = tasks.reduce((s, t) => s + (t.completedDates?.length || 0), 0);
+  document.getElementById('statStreak').textContent = calculateStreak();
+  document.getElementById('statBest').textContent = getBestStreak();
+  
+  // Weekly Chart
+  const chart = document.getElementById('weeklyChart');
+  const days = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
+  const today = new Date();
+  let maxCount = 1;
+  const weekData = [];
+  
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(d.getDate() - i);
+    const key = d.toISOString().split('T')[0];
+    const count = tasks.reduce((s, t) => s + (t.completedDates?.includes(key) ? 1 : 0), 0);
+    weekData.push({ day: days[d.getDay()], count, isToday: i === 0 });
+    if (count > maxCount) maxCount = count;
+  }
+  
+  chart.innerHTML = weekData.map(d => {
+    const height = (d.count / maxCount) * 100;
+    return `
+      <div class="chart-bar-wrap">
+        <div class="chart-bar ${d.count === 0 ? 'empty' : ''}" style="height: ${Math.max(height, 3)}%;" title="${d.count} tugas"></div>
+        <div class="chart-label" style="${d.isToday ? 'color: var(--accent-bright); font-weight: 700;' : ''}">${d.day}</div>
+      </div>
+    `;
+  }).join('');
+  
+  // Category Stats
+  const catStats = document.getElementById('categoryStats');
+  const categories = { '': 'Tanpa Kategori', work: '💼 Kerja', personal: '🏠 Pribadi', health: '💪 Kesehatan', study: '📚 Belajar', finance: '💰 Keuangan', social: '👥 Sosial' };
+  const catCounts = {};
+  tasks.forEach(t => {
+    const cat = t.category || '';
+    catCounts[cat] = (catCounts[cat] || 0) + 1;
+  });
+  
+  catStats.innerHTML = Object.keys(categories).map(key => {
+    const count = catCounts[key] || 0;
+    const percent = tasks.length > 0 ? (count / tasks.length) * 100 : 0;
+    return `
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="flex: 1; font-size: 0.85rem; color: var(--text-secondary);">${categories[key]}</div>
+        <div style="flex: 3; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
+          <div style="width: ${percent}%; height: 100%; background: linear-gradient(90deg, var(--accent-bright), var(--accent-primary)); border-radius: 4px;"></div>
+        </div>
+        <div style="width: 30px; text-align: right; font-size: 0.8rem; color: var(--text-primary); font-weight: 600;">${count}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+// --- Core Logic ---
+function handleAddTask(e) {
+  e.preventDefault();
+  const name = document.getElementById('taskName').value.trim();
+  const notes = document.getElementById('taskNotes').value.trim();
+  const time = document.getElementById('taskTime').value;
+  const priority = document.getElementById('taskPriority').value;
+  const day = document.getElementById('taskDay').value;
+  const category = document.getElementById('taskCategory').value;
+
+  if (!name || !time) return;
+
+  tasks.push({
+    id: crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).substr(2),
+    name, notes, time, priority, category,
+    scheduleType: day === 'daily' ? 'daily' : 'specific',
+    dayOfWeek: day === 'daily' ? null : day,
+    completedDates: [],
+    order: tasks.length
   });
 
-  // ---------- Live Clock ----------
-  function pad(n){ return n.toString().padStart(2,"0"); }
+  tasks.sort((a, b) => a.time.localeCompare(b.time));
+  saveData();
+  render();
+  checkAchievements();
+  els.form.reset();
+  document.getElementById('taskPriority').value = 'medium';
+  document.getElementById('taskDay').value = currentViewDay === 'daily' ? 'daily' : currentViewDay;
+  
+  showToast('Tugas Ditambahkan', name, '✓');
+  if (navigator.vibrate) navigator.vibrate(30);
+}
 
-  function updateClock(){
+function handleListClick(e) {
+  const item = e.target.closest('.task-item');
+  if (!item) return;
+  const id = item.dataset.id;
+  const task = tasks.find(t => t.id === id);
+  if (!task) return;
+
+  if (e.target.closest('.btn-icon.delete')) {
+    item.style.transform = 'translateX(100px)';
+    item.style.opacity = '0';
+    setTimeout(() => {
+      tasks = tasks.filter(t => t.id !== id);
+      saveData();
+      render();
+    }, 300);
+  } else if (e.target.closest('.btn-icon.edit')) {
+    editTask(task);
+  } else {
+    if (!task.completedDates) task.completedDates = [];
+    const today = getTodayKey();
+    if (task.completedDates.includes(today)) {
+      task.completedDates = task.completedDates.filter(d => d !== today);
+    } else {
+      task.completedDates.push(today);
+      triggerConfetti(item);
+      if (navigator.vibrate) navigator.vibrate([40, 40, 40]);
+    }
+    saveData();
+    render();
+    checkAchievements();
+    updateStreak();
+  }
+}
+
+function editTask(task) {
+  const newName = prompt('Nama Tugas:', task.name);
+  if (newName === null) return;
+  const newNotes = prompt('Catatan:', task.notes || '');
+  if (newNotes === null) return;
+  task.name = newName.trim() || task.name;
+  task.notes = newNotes.trim();
+  saveData();
+  render();
+  showToast('Tugas Diperbarui', task.name, '✏️');
+}
+
+function render() {
+  els.list.innerHTML = '';
+  els.listTitle.textContent = getDayLabel(currentViewDay);
+  
+  let viewTasks = tasks.filter(isTaskForView);
+  
+  // Apply filter
+  if (currentFilter === 'high') viewTasks = viewTasks.filter(t => t.priority === 'high');
+  else if (currentFilter === 'pending') viewTasks = viewTasks.filter(t => !isTaskDone(t));
+  else if (currentFilter === 'done') viewTasks = viewTasks.filter(t => isTaskDone(t));
+  else if (currentFilter === 'focus') {
     const now = new Date();
-    const h = pad(now.getHours());
-    const m = pad(now.getMinutes());
-    const s = pad(now.getSeconds());
-    liveClock.innerHTML = `${h}:${m}<span>:${s}</span>`;
+    const currentHM = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+    viewTasks = viewTasks.filter(t => !isTaskDone(t) && t.time >= currentHM).slice(0, 3);
+  }
+  
+  // Apply search
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    viewTasks = viewTasks.filter(t => t.name.toLowerCase().includes(q) || (t.notes && t.notes.toLowerCase().includes(q)));
+  }
+  
+  const activeTasks = viewTasks.filter(t => !isTaskDone(t));
+  const completedTasks = viewTasks.filter(t => isTaskDone(t));
+  const displayTasks = [...activeTasks, ...completedTasks];
 
-    const days = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
-    const months = ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
-    liveDate.textContent = "";
-    document.title = `${h}:${m} — Jadwal Harian`;
-    return {h, m, s, dayLabel: days[now.getDay()], dateLabel: `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`};
+  els.count.textContent = `${activeTasks.length} Aktif`;
+
+  if (viewTasks.length === 0) {
+    els.list.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">👑</div>
+        <p>${searchQuery ? 'Tidak ada hasil pencarian.' : 'Belum ada jadwal untuk hari ini.<br>Rencanakan hari kejayaan Anda.'}</p>
+      </div>
+    `;
+    updateProgress(0, 0);
+    return;
   }
 
-  // ---------- Web Audio Alarm Beep ----------
-  let audioCtx = null;
-  let beepInterval = null;
+  const categoryLabels = { work: '💼', personal: '🏠', health: '💪', study: '📚', finance: '💰', social: '👥' };
 
-  function ensureAudioCtx(){
-    if(!audioCtx){
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      audioCtx = new AudioContextClass();
-    }
-    if(audioCtx.state === "suspended"){
-      audioCtx.resume();
-    }
-    return audioCtx;
-  }
+  displayTasks.forEach(task => {
+    const done = isTaskDone(task);
+    const li = document.createElement('li');
+    li.className = `task-item priority-${task.priority} ${done ? 'completed' : ''}`;
+    li.dataset.id = task.id;
+    li.draggable = true;
+    
+    const [h, m] = task.time.split(':');
+    const hour = parseInt(h);
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+    const displayHour = hour % 12 || 12;
+    const timeStr = `${displayHour}:${m} ${ampm}`;
+    
+    let badges = '';
+    if (task.scheduleType === 'daily') badges += '<span class="mini-badge badge-daily">Harian</span>';
+    if (task.category && categoryLabels[task.category]) badges += `<span class="mini-badge badge-category">${categoryLabels[task.category]}</span>`;
 
-  function playBeepOnce(){
-    try{
-      const ctx = ensureAudioCtx();
-      const now = ctx.currentTime;
+    li.innerHTML = `
+      <div class="priority-dot"></div>
+      <div class="task-checkbox"></div>
+      <div class="task-content">
+        <div class="task-time">${timeStr} ${badges}</div>
+        <div class="task-name">${escapeHtml(task.name)}</div>
+        ${task.notes ? `<div class="task-notes">${escapeHtml(task.notes)}</div>` : ''}
+      </div>
+      <div class="task-actions">
+        <button class="btn-icon edit" aria-label="Edit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+        </button>
+        <button class="btn-icon delete" aria-label="Hapus">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        </button>
+      </div>
+    `;
+    els.list.appendChild(li);
+  });
 
-      [0, 0.22].forEach(offset=>{
+  const todayTasks = tasks.filter(isTaskForToday);
+  const todayDone = todayTasks.filter(isTaskDone).length;
+  updateProgress(todayDone, todayTasks.length);
+  
+  setupDragAndDrop();
+}
+
+function updateProgress(done, total) {
+  const percent = total === 0 ? 0 : Math.round((done / total) * 100);
+  const circumference = 2 * Math.PI * 26;
+  const offset = circumference - (percent / 100) * circumference;
+  
+  els.progressCircle.style.strokeDashoffset = offset;
+  els.progressPercent.textContent = `${percent}%`;
+}
+
+// --- Drag & Drop ---
+let draggedItem = null;
+function setupDragAndDrop() {
+  document.querySelectorAll('.task-item').forEach(item => {
+    item.addEventListener('dragstart', (e) => {
+      draggedItem = item;
+      setTimeout(() => item.classList.add('dragging'), 0);
+    });
+    item.addEventListener('dragend', () => {
+      item.classList.remove('dragging');
+      document.querySelectorAll('.task-item').forEach(i => i.classList.remove('drag-over'));
+      draggedItem = null;
+    });
+    item.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      if (item !== draggedItem) item.classList.add('drag-over');
+    });
+    item.addEventListener('dragleave', () => item.classList.remove('drag-over'));
+    item.addEventListener('drop', (e) => {
+      e.preventDefault();
+      item.classList.remove('drag-over');
+      if (item !== draggedItem && draggedItem) {
+        const fromId = draggedItem.dataset.id;
+        const toId = item.dataset.id;
+        const fromIdx = tasks.findIndex(t => t.id === fromId);
+        const toIdx = tasks.findIndex(t => t.id === toId);
+        if (fromIdx > -1 && toIdx > -1) {
+          const [moved] = tasks.splice(fromIdx, 1);
+          tasks.splice(toIdx, 0, moved);
+          saveData();
+          render();
+        }
+      }
+    });
+  });
+}
+
+// --- Visual ---
+function updateGreeting() {
+  const hour = new Date().getHours();
+  let greet = "Selamat Malam";
+  if (hour >= 4 && hour < 11) greet = "Selamat Pagi";
+  else if (hour >= 11 && hour < 15) greet = "Selamat Siang";
+  else if (hour >= 15 && hour < 18) greet = "Selamat Sore";
+  els.greeting.textContent = `${greet}, Tuan`;
+}
+
+function tick() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2, '0');
+  const m = String(now.getMinutes()).padStart(2, '0');
+  const s = String(now.getSeconds()).padStart(2, '0');
+  
+  els.clock.innerHTML = `${h}:${m}<span style="font-size:1.5rem; color:var(--text-secondary)">:${s}</span>`;
+  els.date.textContent = now.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
+  
+  checkAlarms(h, m);
+}
+
+function triggerConfetti(element) {
+  const rect = element.getBoundingClientRect();
+  confetti({
+    particleCount: 60, spread: 60,
+    origin: { x: (rect.left + rect.width / 2) / window.innerWidth, y: (rect.top + rect.height / 2) / window.innerHeight },
+    colors: ['#d4af37', '#ffd700', '#ffffff'], disableForReducedMotion: true, zIndex: 9999
+  });
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div'); div.textContent = text; return div.innerHTML;
+}
+
+// --- Day Selector ---
+function updateDaySelector() {
+  document.querySelectorAll('.day-chip').forEach(chip => {
+    chip.classList.toggle('today', chip.dataset.day === getTodayName());
+  });
+}
+
+els.daySelector.addEventListener('click', (e) => {
+  const chip = e.target.closest('.day-chip');
+  if (!chip) return;
+  document.querySelectorAll('.day-chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  currentViewDay = chip.dataset.day;
+  document.getElementById('taskDay').value = currentViewDay;
+  render();
+});
+
+// --- Search & Filter ---
+els.searchInput.addEventListener('input', (e) => {
+  searchQuery = e.target.value;
+  render();
+});
+
+document.querySelectorAll('.quick-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    render();
+  });
+});
+
+// --- Alarm ---
+function checkAlarms(h, m) {
+  const currentHM = `${h}:${m}`;
+  const todayKey = getTodayKey();
+  
+  tasks.forEach(task => {
+    if (!isTaskForToday(task)) return;
+    if (isTaskDone(task)) return;
+    if (task.time !== currentHM) return;
+    
+    const triggerId = `${task.id}_${todayKey}`;
+    if (triggeredMap.ids.includes(triggerId)) return;
+    if (alarmQueue.includes(triggerId) || (activeAlarmTask && activeAlarmTask.triggerId === triggerId)) return;
+    
+    triggeredMap.ids.push(triggerId);
+    saveData();
+    triggerAlarm(task, triggerId);
+  });
+}
+
+function triggerAlarm(task, triggerId) {
+  alarmQueue.push(triggerId);
+  if (!activeAlarmTask) showNextAlarm();
+}
+
+function showNextAlarm() {
+  if (alarmQueue.length === 0) { activeAlarmTask = null; return; }
+  
+  const triggerId = alarmQueue.shift();
+  const taskId = triggerId.split('_')[0];
+  activeAlarmTask = { task: tasks.find(t => t.id === taskId), triggerId };
+  
+  if (!activeAlarmTask.task) { showNextAlarm(); return; }
+  
+  els.alarmName.textContent = activeAlarmTask.task.name;
+  els.alarmTime.textContent = activeAlarmTask.task.time;
+  els.alarmOverlay.classList.add('active');
+  
+  playAlarmSound();
+  sendNotification(activeAlarmTask.task);
+  if (navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 1000]);
+}
+
+function stopAlarm() {
+  stopAlarmSound();
+  els.alarmOverlay.classList.remove('active');
+  activeAlarmTask = null;
+  setTimeout(showNextAlarm, 300);
+}
+
+function snoozeAlarm() {
+  if (!activeAlarmTask) return;
+  stopAlarmSound();
+  els.alarmOverlay.classList.remove('active');
+  
+  const now = new Date();
+  now.setMinutes(now.getMinutes() + 5);
+  const newH = String(now.getHours()).padStart(2, '0');
+  const newM = String(now.getMinutes()).padStart(2, '0');
+  
+  activeAlarmTask.task.time = `${newH}:${newM}`;
+  triggeredMap.ids = triggeredMap.ids.filter(id => id !== activeAlarmTask.triggerId);
+  saveData();
+  
+  activeAlarmTask = null;
+  showToast('Alarm Ditunda', `Akan berbunyi pukul ${newH}:${newM}`, '⏰');
+  setTimeout(showNextAlarm, 300);
+}
+
+// --- Audio ---
+function ensureAudio() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+
+function playAlarmSound() {
+  const ctx = ensureAudio();
+  const now = ctx.currentTime;
+  
+  const sounds = {
+    chime: () => {
+      const playChime = (offset, freq = 523.25) => {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
-        osc.type = "square";
-        osc.frequency.setValueAtTime(1046.5, now + offset);
-        gain.gain.setValueAtTime(0.0001, now + offset);
-        gain.gain.exponentialRampToValueAtTime(0.28, now + offset + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + offset + 0.18);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now + offset);
-        osc.stop(now + offset + 0.2);
-      });
-    }catch(err){
-      console.warn("Audio alarm gagal diputar:", err);
-    }
-  }
-
-  function startAlarmSound(){
-    playBeepOnce();
-    if(beepInterval) clearInterval(beepInterval);
-    beepInterval = setInterval(playBeepOnce, 700);
-  }
-
-  function stopAlarmSound(){
-    if(beepInterval){
-      clearInterval(beepInterval);
-      beepInterval = null;
-    }
-  }
-
-  // ---------- Notification API ----------
-  function requestNotifPermission(){
-    if("Notification" in window && Notification.permission === "default"){
-      Notification.requestPermission();
-    }
-  }
-
-  function sendSystemNotification(task){
-    if("Notification" in window && Notification.permission === "granted"){
-      try{
-        new Notification("⏰ Waktunya: " + task.name, {
-          body: "Jadwal pukul " + task.time,
-          tag: "jadwal-" + task.id
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + offset);
+        osc.frequency.exponentialRampToValueAtTime(freq * 2, now + offset + 0.1);
+        gain.gain.setValueAtTime(0, now + offset);
+        gain.gain.linearRampToValueAtTime(0.3, now + offset + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + offset + 1.5);
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.start(now + offset); osc.stop(now + offset + 1.5);
+      };
+      playChime(0); playChime(0.4); playChime(0.8);
+      beepInterval = setInterval(() => { const t = ctx.currentTime; playChime(t); playChime(t + 0.4); }, 2500);
+    },
+    bell: () => {
+      const playBell = (offset) => {
+        [830, 1245, 1660].forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+          gain.gain.setValueAtTime(0, now + offset);
+          gain.gain.linearRampToValueAtTime(0.15 / (i + 1), now + offset + 0.01);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + offset + 2);
+          osc.connect(gain); gain.connect(ctx.destination);
+          osc.start(now + offset); osc.stop(now + offset + 2);
         });
-      }catch(err){
-        console.warn("Notifikasi gagal:", err);
-      }
+      };
+      playBell(0); playBell(0.8);
+      beepInterval = setInterval(() => { const t = ctx.currentTime; playBell(t); }, 2000);
+    },
+    gentle: () => {
+      const playTone = (offset, freq) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0, now + offset);
+        gain.gain.linearRampToValueAtTime(0.2, now + offset + 0.3);
+        gain.gain.linearRampToValueAtTime(0, now + offset + 1.5);
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.start(now + offset); osc.stop(now + offset + 1.5);
+      };
+      playTone(0, 392); playTone(0.5, 523.25); playTone(1, 659.25);
+      beepInterval = setInterval(() => { const t = ctx.currentTime; playTone(t, 392); playTone(t + 0.5, 523.25); }, 3000);
+    },
+    urgent: () => {
+      const playBeep = (offset) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'square';
+        osc.frequency.value = 880;
+        gain.gain.setValueAtTime(0, now + offset);
+        gain.gain.linearRampToValueAtTime(0.2, now + offset + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + offset + 0.3);
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.start(now + offset); osc.stop(now + offset + 0.3);
+      };
+      [0, 0.15, 0.3, 0.6, 0.75, 0.9].forEach(playBeep);
+      beepInterval = setInterval(() => { const t = ctx.currentTime; [0, 0.15, 0.3].forEach(o => playBeep(t + o)); }, 1500);
     }
-  }
+  };
+  
+  (sounds[settings.sound] || sounds.chime)();
+}
 
-  // ---------- Alarm Popup Queue ----------
-  let alarmQueue = [];
-  let activeAlarmTask = null;
-
-  function triggerAlarm(task){
-    alarmQueue.push(task);
-    if(!activeAlarmTask){
-      showNextAlarm();
-    }
-  }
-
-  function showNextAlarm(){
-    if(alarmQueue.length === 0){
-      activeAlarmTask = null;
-      return;
-    }
-    activeAlarmTask = alarmQueue.shift();
-    alarmTaskName.textContent = activeAlarmTask.name;
-    alarmTaskTime.textContent = activeAlarmTask.time;
-    alarmOverlay.classList.add("active");
-    startAlarmSound();
-    sendSystemNotification(activeAlarmTask);
-  }
-
-  btnStopAlarm.addEventListener("click", function(){
-    stopAlarmSound();
-    alarmOverlay.classList.remove("active");
-    if(activeAlarmTask){
-      markTriggered(activeAlarmTask.id);
-    }
-    activeAlarmTask = null;
-    setTimeout(showNextAlarm, 300);
-  });
-
-  // ---------- Alarm Checker (every second) ----------
-  function checkAlarms(){
-    const now = new Date();
-    const currentHM = pad(now.getHours()) + ":" + pad(now.getMinutes());
-
-    tasks.forEach(task=>{
-      if(task.done) return;
-      if(task.time !== currentHM) return;
-      if(isTriggeredToday(task.id)) return;
-      if(alarmQueue.includes(task)) return;
-      if(activeAlarmTask && activeAlarmTask.id === task.id) return;
-
-      triggerAlarm(task);
-    });
-  }
-
-  // ---------- Main Loop ----------
-  function tick(){
-    updateClock();
-    checkAlarms();
-  }
-
-  // Unlock audio context on first user interaction (mobile browser requirement)
-  document.addEventListener("click", function unlockAudio(){
-    ensureAudioCtx();
-    document.removeEventListener("click", unlockAudio);
-  }, {once:true});
-
-  requestNotifPermission();
-  render();
-  tick();
-  setInterval(tick, 1000);
-
-})();
-</script>
-</body>
-  </html>
+function stopAlarmSound() {
+  if (beepInterval) { clearInterval(beep
