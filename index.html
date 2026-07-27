@@ -1,1 +1,798 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Jadwal Harian dengan Alarm | Luxury Royal</title>
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --bg-elev:#131313;
+    --text:#f5f5f5;
+    --text-dim:#a8a8a8;
+    --gold:#d4af37;
+    --gold-bright:#ffd700;
+    --gold-soft:rgba(212,175,55,0.35);
+    --danger:#e05a5a;
+  }
 
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+
+  html,body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Poppins','Inter',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  body{
+    background:
+      radial-gradient(circle at 50% 0%, rgba(212,175,55,0.08), transparent 55%),
+      radial-gradient(circle at 100% 100%, rgba(212,175,55,0.05), transparent 50%),
+      var(--bg);
+    padding:24px 16px 60px;
+    position:relative;
+  }
+
+  .logo-wrap{
+    display:flex;
+    justify-content:center;
+    margin-bottom:6px;
+  }
+
+  .logo-wrap img{
+    width:70px;
+    height:70px;
+    display:block;
+    object-fit:cover;
+    border:2px solid var(--gold);
+    border-radius:50%;
+    padding:5px;
+    box-shadow:0 0 18px var(--gold-soft), 0 0 4px rgba(212,175,55,0.6) inset;
+    background:var(--bg-elev);
+  }
+
+  header{
+    text-align:center;
+    margin-bottom:28px;
+  }
+
+  header h1{
+    font-family:'Playfair Display',serif;
+    font-weight:800;
+    font-size:1.9rem;
+    letter-spacing:0.5px;
+    background:linear-gradient(135deg,#fff3c4 0%, var(--gold-bright) 45%, var(--gold) 70%, #fff3c4 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    margin-bottom:6px;
+  }
+
+  header p{
+    color:var(--text-dim);
+    font-size:0.85rem;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+  }
+
+  .clock{
+    text-align:center;
+    font-family:'Playfair Display',serif;
+    font-size:2.1rem;
+    font-weight:700;
+    color:var(--text);
+    letter-spacing:2px;
+    margin:14px 0 22px;
+    text-shadow:0 0 14px rgba(212,175,55,0.35);
+  }
+
+  .clock span{color:var(--gold);}
+
+  .divider{
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity:0.6;
+    margin:22px 0;
+  }
+
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(212,175,55,0.28);
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.5), 0 0 22px rgba(212,175,55,0.06);
+  }
+
+  .form-title{
+    font-family:'Playfair Display',serif;
+    font-size:1.15rem;
+    font-weight:700;
+    color:var(--gold-bright);
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .field{
+    margin-bottom:14px;
+  }
+
+  .field label{
+    display:block;
+    font-size:0.78rem;
+    color:var(--text-dim);
+    margin-bottom:6px;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+  }
+
+  .field input[type="text"],
+  .field input[type="time"]{
+    width:100%;
+    min-height:50px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(212,175,55,0.3);
+    border-radius:12px;
+    padding:0 16px;
+    color:var(--text);
+    font-family:'Poppins',sans-serif;
+    font-size:1rem;
+    outline:none;
+    transition:border-color .25s, box-shadow .25s;
+    color-scheme:dark;
+  }
+
+  .field input::placeholder{color:#6f6f6f;}
+
+  .field input:focus{
+    border-color:var(--gold-bright);
+    box-shadow:0 0 0 3px rgba(212,175,55,0.18);
+  }
+
+  .btn-gold{
+    width:100%;
+    min-height:52px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg, var(--gold-bright), var(--gold) 55%, #b8860b);
+    color:#171208;
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    letter-spacing:0.4px;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(212,175,55,0.35);
+    transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+
+  .btn-gold:active{
+    transform:scale(0.97);
+    filter:brightness(0.95);
+  }
+
+  .section-title{
+    font-family:'Playfair Display',serif;
+    font-size:1.25rem;
+    font-weight:700;
+    color:var(--text);
+    margin:30px 0 14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .section-title .count{
+    font-family:'Poppins',sans-serif;
+    font-size:0.75rem;
+    font-weight:600;
+    color:#171208;
+    background:var(--gold);
+    padding:4px 10px;
+    border-radius:20px;
+  }
+
+  #taskList{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .task-card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border:1px solid rgba(212,175,55,0.25);
+    border-radius:16px;
+    padding:16px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.45), 0 0 14px rgba(212,175,55,0.05);
+    animation:fadeIn .35s ease;
+    transition:opacity .3s ease, transform .3s ease;
+  }
+
+  .task-card.removing{
+    opacity:0;
+    transform:translateX(40px) scale(0.95);
+  }
+
+  @keyframes fadeIn{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  .task-check{
+    flex-shrink:0;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    border:2px solid var(--gold);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    transition:background .2s;
+  }
+
+  .task-check.checked{
+    background:linear-gradient(135deg, var(--gold-bright), var(--gold));
+  }
+
+  .task-check.checked::after{
+    content:"✓";
+    color:#171208;
+    font-weight:800;
+    font-size:0.85rem;
+  }
+
+  .task-info{
+    flex:1;
+    min-width:0;
+  }
+
+  .task-time{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    color:var(--gold-bright);
+    font-size:1.05rem;
+    letter-spacing:0.5px;
+  }
+
+  .task-name{
+    font-size:0.98rem;
+    color:var(--text);
+    margin-top:2px;
+    word-break:break-word;
+  }
+
+  .task-card.done .task-name{
+    text-decoration:line-through;
+    color:rgba(212,175,55,0.5);
+  }
+
+  .task-card.done .task-time{
+    color:rgba(212,175,55,0.4);
+  }
+
+  .task-delete{
+    flex-shrink:0;
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    border:1px solid rgba(224,90,90,0.4);
+    background:rgba(224,90,90,0.08);
+    color:var(--danger);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:background .2s, transform .15s;
+  }
+
+  .task-delete:active{transform:scale(0.92);}
+
+  .empty-state{
+    text-align:center;
+    padding:40px 20px;
+    color:var(--text-dim);
+    font-size:0.9rem;
+  }
+
+  .empty-state .icon{
+    font-size:2.2rem;
+    margin-bottom:10px;
+    opacity:0.5;
+  }
+
+  /* ALARM OVERLAY */
+  .alarm-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.88);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999;
+    padding:20px;
+    backdrop-filter:blur(4px);
+  }
+
+  .alarm-overlay.active{
+    display:flex;
+  }
+
+  .alarm-box{
+    width:100%;
+    max-width:380px;
+    background:linear-gradient(180deg, #161616, #0a0a0a);
+    border-radius:24px;
+    padding:36px 26px;
+    text-align:center;
+    border:2px solid var(--gold-bright);
+    animation:alarmBlink 1s infinite;
+  }
+
+  @keyframes alarmBlink{
+    0%,100%{
+      box-shadow:0 0 25px 6px rgba(255,215,0,0.75), 0 0 60px rgba(212,175,55,0.4);
+      border-color:var(--gold-bright);
+    }
+    50%{
+      box-shadow:0 0 8px 2px rgba(255,215,0,0.2);
+      border-color:rgba(212,175,55,0.4);
+    }
+  }
+
+  .alarm-icon{
+    font-size:3rem;
+    margin-bottom:10px;
+    animation:ring 0.5s infinite;
+    display:inline-block;
+  }
+
+  @keyframes ring{
+    0%,100%{transform:rotate(-12deg);}
+    50%{transform:rotate(12deg);}
+  }
+
+  .alarm-box h2{
+    font-family:'Playfair Display',serif;
+    font-size:1.4rem;
+    color:var(--gold-bright);
+    margin-bottom:6px;
+  }
+
+  .alarm-box .alarm-task-name{
+    font-size:1.15rem;
+    color:var(--text);
+    margin:10px 0 4px;
+    font-weight:600;
+  }
+
+  .alarm-box .alarm-task-time{
+    font-family:'Playfair Display',serif;
+    font-size:2.4rem;
+    font-weight:800;
+    color:var(--text);
+    margin-bottom:22px;
+    letter-spacing:1px;
+  }
+
+  .btn-stop-alarm{
+    width:100%;
+    min-height:54px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg, var(--gold-bright), var(--gold) 55%, #b8860b);
+    color:#171208;
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:1.05rem;
+    cursor:pointer;
+    box-shadow:0 6px 20px rgba(212,175,55,0.5);
+  }
+
+  .btn-stop-alarm:active{transform:scale(0.97);}
+
+  footer{
+    text-align:center;
+    margin-top:40px;
+    color:#555;
+    font-size:0.72rem;
+    letter-spacing:0.5px;
+  }
+
+  footer span{color:var(--gold);}
+
+  @media (min-width:480px){
+    body{max-width:480px; margin:0 auto;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="logo-wrap">
+    <img src="logo.png" alt="Logo">
+  </div>
+
+  <header>
+    <h1>✦ Jadwal Harian ✦</h1>
+    <p>Luxury Schedule &amp; Alarm</p>
+  </header>
+
+  <div class="clock" id="liveClock">--:--:-- <span id="liveDate"></span></div>
+
+  <section class="card">
+    <div class="form-title">🕯️ Tambah Tugas Baru</div>
+    <form id="taskForm">
+      <div class="field">
+        <label for="taskName">Nama Tugas</label>
+        <input type="text" id="taskName" placeholder="Contoh: Rapat dengan klien" required maxlength="60">
+      </div>
+      <div class="field">
+        <label for="taskTime">Waktu Alarm</label>
+        <input type="time" id="taskTime" required>
+      </div>
+      <button type="submit" class="btn-gold">＋ Tambahkan Tugas</button>
+    </form>
+  </section>
+
+  <div class="section-title">
+    Daftar Tugas
+    <span class="count" id="taskCount">0</span>
+  </div>
+
+  <ul id="taskList"></ul>
+
+  <footer>Dirancang dengan <span>&#9829;</span> — Tema Luxury Royal</footer>
+
+  <!-- ALARM POPUP -->
+  <div class="alarm-overlay" id="alarmOverlay">
+    <div class="alarm-box">
+      <div class="alarm-icon">⏰</div>
+      <h2>SAATNYA TIBA!</h2>
+      <div class="alarm-task-name" id="alarmTaskName">Nama Tugas</div>
+      <div class="alarm-task-time" id="alarmTaskTime">00:00</div>
+      <button class="btn-stop-alarm" id="btnStopAlarm">🔕 Matikan Alarm</button>
+    </div>
+  </div>
+
+<script>
+(function(){
+  "use strict";
+
+  const STORAGE_KEY = "luxuryScheduleTasks";
+  const TRIGGERED_KEY = "luxuryScheduleTriggered";
+
+  let tasks = loadTasks();
+  let triggeredMap = loadTriggered();
+
+  const taskForm = document.getElementById("taskForm");
+  const taskNameInput = document.getElementById("taskName");
+  const taskTimeInput = document.getElementById("taskTime");
+  const taskList = document.getElementById("taskList");
+  const taskCount = document.getElementById("taskCount");
+  const liveClock = document.getElementById("liveClock");
+  const liveDate = document.getElementById("liveDate");
+  const alarmOverlay = document.getElementById("alarmOverlay");
+  const alarmTaskName = document.getElementById("alarmTaskName");
+  const alarmTaskTime = document.getElementById("alarmTaskTime");
+  const btnStopAlarm = document.getElementById("btnStopAlarm");
+
+  // ---------- Storage ----------
+  function loadTasks(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    }catch(e){
+      return [];
+    }
+  }
+
+  function saveTasks(){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+  }
+
+  function todayKey(){
+    const d = new Date();
+    return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+  }
+
+  function loadTriggered(){
+    try{
+      const raw = localStorage.getItem(TRIGGERED_KEY);
+      const parsed = raw ? JSON.parse(raw) : {date:todayKey(), ids:[]};
+      if(parsed.date !== todayKey()){
+        return {date:todayKey(), ids:[]};
+      }
+      return parsed;
+    }catch(e){
+      return {date:todayKey(), ids:[]};
+    }
+  }
+
+  function saveTriggered(){
+    localStorage.setItem(TRIGGERED_KEY, JSON.stringify(triggeredMap));
+  }
+
+  function markTriggered(id){
+    if(triggeredMap.date !== todayKey()){
+      triggeredMap = {date:todayKey(), ids:[]};
+    }
+    if(!triggeredMap.ids.includes(id)){
+      triggeredMap.ids.push(id);
+      saveTriggered();
+    }
+  }
+
+  function isTriggeredToday(id){
+    if(triggeredMap.date !== todayKey()){
+      triggeredMap = {date:todayKey(), ids:[]};
+      saveTriggered();
+      return false;
+    }
+    return triggeredMap.ids.includes(id);
+  }
+
+  // ---------- Render ----------
+  function formatTimeLabel(t){
+    return t;
+  }
+
+  function render(){
+    taskList.innerHTML = "";
+    taskCount.textContent = tasks.length;
+
+    if(tasks.length === 0){
+      const empty = document.createElement("li");
+      empty.className = "empty-state";
+      empty.innerHTML = '<div class="icon">🗓️</div>Belum ada tugas.<br>Tambahkan jadwal pertama Anda di atas.';
+      taskList.appendChild(empty);
+      return;
+    }
+
+    const sorted = [...tasks].sort((a,b)=> a.time.localeCompare(b.time));
+
+    sorted.forEach(task=>{
+      const li = document.createElement("li");
+      li.className = "task-card" + (task.done ? " done" : "");
+      li.dataset.id = task.id;
+
+      li.innerHTML = `
+        <div class="task-check ${task.done ? "checked" : ""}" data-action="toggle"></div>
+        <div class="task-info">
+          <div class="task-time">${formatTimeLabel(task.time)}</div>
+          <div class="task-name">${escapeHtml(task.name)}</div>
+        </div>
+        <div class="task-delete" data-action="delete">🗑️</div>
+      `;
+      taskList.appendChild(li);
+    });
+  }
+
+  function escapeHtml(str){
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  taskList.addEventListener("click", function(e){
+    const target = e.target.closest("[data-action]");
+    if(!target) return;
+    const card = target.closest(".task-card");
+    if(!card) return;
+    const id = card.dataset.id;
+    const action = target.dataset.action;
+
+    if(action === "toggle"){
+      const task = tasks.find(t=>t.id === id);
+      if(task){
+        task.done = !task.done;
+        saveTasks();
+        render();
+      }
+    }else if(action === "delete"){
+      card.classList.add("removing");
+      setTimeout(()=>{
+        tasks = tasks.filter(t=>t.id !== id);
+        saveTasks();
+        render();
+      }, 280);
+    }
+  });
+
+  // ---------- Add Task ----------
+  taskForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    const name = taskNameInput.value.trim();
+    const time = taskTimeInput.value;
+    if(!name || !time) return;
+
+    tasks.push({
+      id: Date.now().toString(36) + Math.random().toString(36).slice(2,7),
+      name: name,
+      time: time,
+      done: false
+    });
+
+    saveTasks();
+    render();
+    taskForm.reset();
+    taskNameInput.focus();
+  });
+
+  // ---------- Live Clock ----------
+  function pad(n){ return n.toString().padStart(2,"0"); }
+
+  function updateClock(){
+    const now = new Date();
+    const h = pad(now.getHours());
+    const m = pad(now.getMinutes());
+    const s = pad(now.getSeconds());
+    liveClock.innerHTML = `${h}:${m}<span>:${s}</span>`;
+
+    const days = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+    const months = ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
+    liveDate.textContent = "";
+    document.title = `${h}:${m} — Jadwal Harian`;
+    return {h, m, s, dayLabel: days[now.getDay()], dateLabel: `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`};
+  }
+
+  // ---------- Web Audio Alarm Beep ----------
+  let audioCtx = null;
+  let beepInterval = null;
+
+  function ensureAudioCtx(){
+    if(!audioCtx){
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioContextClass();
+    }
+    if(audioCtx.state === "suspended"){
+      audioCtx.resume();
+    }
+    return audioCtx;
+  }
+
+  function playBeepOnce(){
+    try{
+      const ctx = ensureAudioCtx();
+      const now = ctx.currentTime;
+
+      [0, 0.22].forEach(offset=>{
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "square";
+        osc.frequency.setValueAtTime(1046.5, now + offset);
+        gain.gain.setValueAtTime(0.0001, now + offset);
+        gain.gain.exponentialRampToValueAtTime(0.28, now + offset + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + offset + 0.18);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + offset);
+        osc.stop(now + offset + 0.2);
+      });
+    }catch(err){
+      console.warn("Audio alarm gagal diputar:", err);
+    }
+  }
+
+  function startAlarmSound(){
+    playBeepOnce();
+    if(beepInterval) clearInterval(beepInterval);
+    beepInterval = setInterval(playBeepOnce, 700);
+  }
+
+  function stopAlarmSound(){
+    if(beepInterval){
+      clearInterval(beepInterval);
+      beepInterval = null;
+    }
+  }
+
+  // ---------- Notification API ----------
+  function requestNotifPermission(){
+    if("Notification" in window && Notification.permission === "default"){
+      Notification.requestPermission();
+    }
+  }
+
+  function sendSystemNotification(task){
+    if("Notification" in window && Notification.permission === "granted"){
+      try{
+        new Notification("⏰ Waktunya: " + task.name, {
+          body: "Jadwal pukul " + task.time,
+          tag: "jadwal-" + task.id
+        });
+      }catch(err){
+        console.warn("Notifikasi gagal:", err);
+      }
+    }
+  }
+
+  // ---------- Alarm Popup Queue ----------
+  let alarmQueue = [];
+  let activeAlarmTask = null;
+
+  function triggerAlarm(task){
+    alarmQueue.push(task);
+    if(!activeAlarmTask){
+      showNextAlarm();
+    }
+  }
+
+  function showNextAlarm(){
+    if(alarmQueue.length === 0){
+      activeAlarmTask = null;
+      return;
+    }
+    activeAlarmTask = alarmQueue.shift();
+    alarmTaskName.textContent = activeAlarmTask.name;
+    alarmTaskTime.textContent = activeAlarmTask.time;
+    alarmOverlay.classList.add("active");
+    startAlarmSound();
+    sendSystemNotification(activeAlarmTask);
+  }
+
+  btnStopAlarm.addEventListener("click", function(){
+    stopAlarmSound();
+    alarmOverlay.classList.remove("active");
+    if(activeAlarmTask){
+      markTriggered(activeAlarmTask.id);
+    }
+    activeAlarmTask = null;
+    setTimeout(showNextAlarm, 300);
+  });
+
+  // ---------- Alarm Checker (every second) ----------
+  function checkAlarms(){
+    const now = new Date();
+    const currentHM = pad(now.getHours()) + ":" + pad(now.getMinutes());
+
+    tasks.forEach(task=>{
+      if(task.done) return;
+      if(task.time !== currentHM) return;
+      if(isTriggeredToday(task.id)) return;
+      if(alarmQueue.includes(task)) return;
+      if(activeAlarmTask && activeAlarmTask.id === task.id) return;
+
+      triggerAlarm(task);
+    });
+  }
+
+  // ---------- Main Loop ----------
+  function tick(){
+    updateClock();
+    checkAlarms();
+  }
+
+  // Unlock audio context on first user interaction (mobile browser requirement)
+  document.addEventListener("click", function unlockAudio(){
+    ensureAudioCtx();
+    document.removeEventListener("click", unlockAudio);
+  }, {once:true});
+
+  requestNotifPermission();
+  render();
+  tick();
+  setInterval(tick, 1000);
+
+})();
+</script>
+</body>
+  </html>
