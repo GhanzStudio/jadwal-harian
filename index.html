@@ -98,12 +98,8 @@
     100% { transform: translate(-20px, -20px) rotate(3deg); }
   }
 
-  /* Floating Particles */
   #particles-canvas {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
   }
 
   .container {
@@ -123,7 +119,7 @@
   }
 
   .icon-btn {
-    width: 40px; height: 40px;
+    width: 42px; height: 42px;
     border-radius: 12px;
     background: var(--bg-card);
     border: 1px solid var(--glass-border);
@@ -132,14 +128,22 @@
     display: flex; align-items: center; justify-content: center;
     cursor: pointer;
     transition: all 0.2s;
+    position: relative;
   }
   .icon-btn:hover { color: var(--accent-bright); border-color: var(--accent-primary); }
   .icon-btn:active { transform: scale(0.95); }
-
-  .header-section {
-    text-align: center;
-    margin-bottom: 24px;
+  .icon-btn .badge-dot {
+    position: absolute;
+    top: 6px; right: 6px;
+    width: 8px; height: 8px;
+    background: var(--danger);
+    border-radius: 50%;
+    border: 2px solid var(--bg-deep);
   }
+
+  .top-bar-group { display: flex; gap: 8px; }
+
+  .header-section { text-align: center; margin-bottom: 24px; }
 
   .greeting {
     font-family: 'Playfair Display', serif;
@@ -194,7 +198,6 @@
   .progress-text h3 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
   .progress-text p { font-size: 0.8rem; color: var(--text-secondary); }
 
-  /* Streak Badge */
   .streak-badge {
     display: inline-flex;
     align-items: center;
@@ -210,11 +213,8 @@
 
   /* Day Selector */
   .day-selector {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding: 4px 4px 12px;
-    margin-bottom: 20px;
+    display: flex; gap: 8px; overflow-x: auto;
+    padding: 4px 4px 12px; margin-bottom: 20px;
     scrollbar-width: none;
   }
   .day-selector::-webkit-scrollbar { display: none; }
@@ -246,14 +246,10 @@
     color: var(--accent-bright);
   }
 
-  /* Search Bar */
-  .search-wrap {
-    position: relative;
-    margin-bottom: 16px;
-  }
+  /* Search */
+  .search-wrap { position: relative; margin-bottom: 16px; }
   .search-wrap svg {
-    position: absolute;
-    left: 16px; top: 50%;
+    position: absolute; left: 16px; top: 50%;
     transform: translateY(-50%);
     color: var(--text-secondary);
   }
@@ -275,13 +271,10 @@
     box-shadow: 0 0 0 3px var(--accent-glow);
   }
 
-  /* Quick Action Bar */
+  /* Quick Actions */
   .quick-actions {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
-    overflow-x: auto;
-    scrollbar-width: none;
+    display: flex; gap: 8px; margin-bottom: 16px;
+    overflow-x: auto; scrollbar-width: none;
   }
   .quick-actions::-webkit-scrollbar { display: none; }
   
@@ -360,11 +353,7 @@
     background: rgba(0,0,0,0.5);
   }
 
-  textarea.input-royal {
-    resize: none;
-    min-height: 70px;
-    font-family: inherit;
-  }
+  textarea.input-royal { resize: none; min-height: 70px; }
 
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
@@ -377,29 +366,6 @@
     cursor: pointer;
   }
   select.input-royal option { background: #1a1a1a; color: white; }
-
-  /* Category Tags */
-  .category-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .category-tag {
-    padding: 8px 14px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--glass-border);
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .category-tag.selected {
-    background: var(--accent-primary);
-    color: #000;
-    border-color: transparent;
-  }
 
   .btn-royal {
     width: 100%;
@@ -563,6 +529,7 @@
     max-height: 85vh;
     overflow-y: auto;
     box-shadow: 0 0 60px var(--accent-glow);
+    position: relative;
   }
 
   .modal-title {
@@ -583,7 +550,9 @@
     color: var(--text-secondary);
     cursor: pointer;
     display: flex; align-items: center; justify-content: center;
+    z-index: 10;
   }
+  .modal-close:hover { color: var(--accent-bright); border-color: var(--accent-primary); }
 
   /* Stats Modal */
   .stats-grid {
@@ -614,7 +583,6 @@
     letter-spacing: 1px;
   }
 
-  /* Weekly Chart */
   .weekly-chart {
     background: rgba(255,255,255,0.03);
     border: 1px solid var(--glass-border);
@@ -655,18 +623,10 @@
     box-shadow: 0 0 10px var(--accent-glow);
   }
   .chart-bar.empty { background: rgba(255,255,255,0.05); box-shadow: none; }
-  .chart-label {
-    font-size: 0.7rem;
-    color: var(--text-secondary);
-    font-weight: 600;
-  }
+  .chart-label { font-size: 0.7rem; color: var(--text-secondary); font-weight: 600; }
 
   /* Achievements */
-  .achievement-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+  .achievement-list { display: flex; flex-direction: column; gap: 10px; }
   .achievement-item {
     display: flex;
     align-items: center;
@@ -726,12 +686,8 @@
   .theme-emerald { background: linear-gradient(135deg, #10b981, #34d399); }
   .theme-rose { background: linear-gradient(135deg, #f43f5e, #fb7185); }
 
-  /* Alarm Sound Picker */
-  .sound-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+  /* Sound Picker */
+  .sound-list { display: flex; flex-direction: column; gap: 8px; }
   .sound-option {
     display: flex;
     align-items: center;
@@ -755,6 +711,119 @@
     font-size: 0.75rem;
     color: var(--accent-bright);
   }
+
+  /* Settings Modal */
+  .settings-section {
+    margin-bottom: 20px;
+  }
+  .settings-section-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-primary);
+    margin-bottom: 10px;
+    font-weight: 700;
+    padding-left: 4px;
+  }
+  .settings-list {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .settings-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--glass-border);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .settings-item:last-child { border-bottom: none; }
+  .settings-item:hover { background: rgba(255,255,255,0.03); }
+  .settings-item-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+  }
+  .settings-item-icon {
+    width: 34px; height: 34px;
+    border-radius: 10px;
+    background: rgba(212, 175, 55, 0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .settings-item-text { flex: 1; }
+  .settings-item-title { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+  .settings-item-desc { font-size: 0.72rem; color: var(--text-secondary); margin-top: 2px; }
+  .settings-item-value {
+    font-size: 0.8rem;
+    color: var(--accent-bright);
+    font-weight: 600;
+  }
+
+  /* Toggle Switch */
+  .toggle {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+    flex-shrink: 0;
+  }
+  .toggle::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 20px; height: 20px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+  .toggle.active {
+    background: var(--accent-primary);
+  }
+  .toggle.active::after {
+    transform: translateX(20px);
+  }
+
+  /* About Modal */
+  .about-logo {
+    width: 80px; height: 80px;
+    margin: 0 auto 16px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--accent-bright), var(--accent-primary));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+    box-shadow: 0 10px 30px var(--accent-glow);
+  }
+  .about-version {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+  .about-info {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .about-info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .about-info-row:last-child { border-bottom: none; }
+  .about-info-label { color: var(--text-secondary); font-size: 0.85rem; }
+  .about-info-value { color: var(--text-primary); font-weight: 600; font-size: 0.85rem; }
 
   /* Alarm Overlay */
   .alarm-overlay {
@@ -811,7 +880,7 @@
   }
   .btn-snooze:hover { background: rgba(255,255,255,0.1); color: white; }
 
-  /* Toast Notifications */
+  /* Toast */
   .toast-container {
     position: fixed;
     top: 20px;
@@ -866,10 +935,10 @@
 <div class="container">
   <!-- Top Bar -->
   <div class="top-bar">
-    <button class="icon-btn" id="btnTheme" title="Ganti Tema">
+    <button class="icon-btn" id="btnTheme" title="Tema">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
     </button>
-    <div style="display: flex; gap: 8px;">
+    <div class="top-bar-group">
       <button class="icon-btn" id="btnStats" title="Statistik">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
       </button>
@@ -878,6 +947,9 @@
       </button>
       <button class="icon-btn" id="btnSettings" title="Pengaturan">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      </button>
+      <button class="icon-btn" id="btnAbout" title="Tentang">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
       </button>
     </div>
   </div>
@@ -920,7 +992,7 @@
 
   <!-- Quick Actions -->
   <div class="quick-actions">
-    <button class="quick-btn" data-filter="all">📋 Semua</button>
+    <button class="quick-btn active" data-filter="all">📋 Semua</button>
     <button class="quick-btn" data-filter="high">🔴 Prioritas Tinggi</button>
     <button class="quick-btn" data-filter="pending">⏳ Belum Selesai</button>
     <button class="quick-btn" data-filter="done">✅ Selesai</button>
@@ -998,10 +1070,10 @@
   <ul class="task-list" id="taskList"></ul>
 
   <div style="display: flex; gap: 10px; margin-top: 24px;">
-    <button class="btn-royal btn-secondary" onclick="exportData()" style="flex:1;">📥 Ekspor</button>
-    <button class="btn-royal btn-secondary" onclick="document.getElementById('importFile').click()" style="flex:1;">📤 Impor</button>
-    <button class="btn-royal btn-secondary" onclick="clearAllData()" style="flex:1;">🗑️ Reset</button>
-    <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importData(this)">
+    <button class="btn-royal btn-secondary" id="btnExport" style="flex:1;">📥 Ekspor</button>
+    <button class="btn-royal btn-secondary" id="btnImport" style="flex:1;">📤 Impor</button>
+    <button class="btn-royal btn-secondary" id="btnReset" style="flex:1;">🗑️ Reset</button>
+    <input type="file" id="importFile" accept=".json" style="display: none;">
   </div>
 
   <div class="footer">✦ ROYAL SCHEDULE • ULTIMATE EDITION ✦</div>
@@ -1009,8 +1081,8 @@
 
 <!-- Stats Modal -->
 <div class="modal-overlay" id="statsModal">
-  <div class="modal-card" style="position: relative;">
-    <button class="modal-close" onclick="closeModal('statsModal')">✕</button>
+  <div class="modal-card">
+    <button class="modal-close" data-close="statsModal">✕</button>
     <div class="modal-title">📊 Statistik Anda</div>
     
     <div class="stats-grid">
@@ -1046,8 +1118,8 @@
 
 <!-- Achievements Modal -->
 <div class="modal-overlay" id="achievementsModal">
-  <div class="modal-card" style="position: relative;">
-    <button class="modal-close" onclick="closeModal('achievementsModal')">✕</button>
+  <div class="modal-card">
+    <button class="modal-close" data-close="achievementsModal">✕</button>
     <div class="modal-title">🏆 Pencapaian</div>
     <div class="achievement-list" id="achievementList"></div>
   </div>
@@ -1055,8 +1127,8 @@
 
 <!-- Theme Modal -->
 <div class="modal-overlay" id="themeModal">
-  <div class="modal-card" style="position: relative;">
-    <button class="modal-close" onclick="closeModal('themeModal')">✕</button>
+  <div class="modal-card">
+    <button class="modal-close" data-close="themeModal">✕</button>
     <div class="modal-title">🎨 Pilih Tema</div>
     <div class="theme-grid">
       <div class="theme-option theme-gold active" data-theme="gold" data-name="Royal Gold"></div>
@@ -1087,6 +1159,248 @@
   </div>
 </div>
 
+<!-- Settings Modal -->
+<div class="modal-overlay" id="settingsModal">
+  <div class="modal-card">
+    <button class="modal-close" data-close="settingsModal">✕</button>
+    <div class="modal-title">⚙️ Pengaturan</div>
+
+    <!-- Suara & Notifikasi -->
+    <div class="settings-section">
+      <div class="settings-section-title">🔔 Suara & Notifikasi</div>
+      <div class="settings-list">
+        <div class="settings-item" data-setting="soundEnabled">
+          <div class="settings-item-left">
+            <div class="settings-item-icon">🔊</div>
+            <div class="settings-item-text">
+              <div class="settings-item-title">Suara Alarm</div>
+              <div class="settings-item-desc">Putar suara saat alarm berbunyi</div>
+            </div>
+          </div>
+          <div class="toggle active" data-toggle="soundEnabled"></div>
+        </div>
+        <div class="settings-item" data-setting="notificationEnabled">
+          <div class="settings-item-left">
+            <div class="settings-item-icon">🔔</div>
+            <div class="settings-item-text">
+              <div class="settings-item-title">Notifikasi Sistem</div>
+              <div class="settings-item-desc" id="notifStatus">Meminta izin...</div>
+            </div>
+          </div>
+          <div class="toggle" data-toggle="notificationEnabled"></div>
+        </div>
+        <div class="settings-item" data-setting="vibrationEnabled">
+          <div class="settings-item-left">
+            <div class="settings-item-icon">📳</div>
+            <div class="settings-item-text">
+              <div class="settings-item-title">Getaran</div>
+              <div class="settings-item-desc">Getar saat alarm & selesai tugas</div>
+            </div>
+          </div>
+          <div class="toggle active" data-toggle="vibrationEnabled"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tampilan -->
+    <div class="settings-section">
+      <div class="settings-section-title">🎨 Tampilan</div>
+      <div class="settings-list">
+        <div class="settings-item" data-setting="timeFormat">
+          <div class="settings-item-left">
+            <div class="settings-item-icon">⏰</div>
+            <div class="settings-item-text">
+              <div class="settings-item-title">Format Waktu</div>
+              <div class="settings-item-desc">Tampilan jam di daftar tugas</div>
+            </div>
+          </div>
+          <div class="settings-item-value" id="timeFormatValue">12 Jam</div>
+        </div>
+        <div class="settings-item" data-setting="snoozeDuration">
+          <div class="settings-item-left">
+            <div class="settings-item-icon">💤</div>
+            <div class="settings-item-text">
+              <div class="settings-item-title">Durasi Tunda</div>
+              <div class="settings-item-desc">Lama penundaan alarm</div>
+            </div>
+          </div>
+          <div class="settings-item-value" id="snoozeValue">5 Menit</div>
+        </div>
+        <div class="settings-item" data-setting="particlesEnabled">
+          <div class="settings-item-left">
+            <div class="settings-item-icon">✨</div>
+            <div class="settings-item-text">
+              <div class="settings-item-title">Efek Partikel</div>
+              <div class="settings-item-desc">Partikel mengambang di latar</div>
+            </div>
+          </div>
+          <div class="toggle active" data-toggle="particlesEnabled"></div>
+        </div>
+        <div class="settings-item" data-setting="confettiEnabled">
+          <div class="settings-item-left">
+            <div class="settings-item-icon">🎉</div>
+            <div class="settings-item-text">
+              <div class="settings-item-title">Efek Confetti</div>
+              <div class="settings-item-desc">Ledakan saat tugas selesai</div>
+            </div>
+          </div>
+          <div class="toggle active" data-toggle="confettiEnabled"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data -->
+    <div class="settings-section">
+      <div class="settings-section-title">💾 Data</div>
+      <div class="settings-list">
+        <div class="settings-item" id="settingsExport">
+          <div class="settings-item-left">
+            <div class="settings-item-icon">📥</div>
+            <div class="settings-item-text">
+              <div class="settings-item-title">Ekspor Data</div>
+              <div class="settings-item-desc">Simpan backup ke file JSON</div>
+            </div>
+          </div>
+          <div class="settings-item-value">→</div>
+        </div>
+        <div class="settings-item" id="settingsImport">
+          <div class="settings-item-left">
+            <div class="settings-item-icon">📤</div>
+            <div class="settings-item-text">
+              <div class="settings-item-title">Impor Data</div>
+              <div class="settings-item-desc">Muat dari file backup</div>
+            </div>
+          </div>
+          <div class="settings-item-value">→</div>
+        </div>
+        <div class="settings-item" id="settingsReset">
+          <div class="settings-item-left">
+            <div class="settings-item-icon" style="background: rgba(239, 68, 68, 0.15);">🗑️</div>
+            <div class="settings-item-text">
+              <div class="settings-item-title" style="color: var(--danger);">Reset Semua Data</div>
+              <div class="settings-item-desc">Hapus semua tugas & pengaturan</div>
+            </div>
+          </div>
+          <div class="settings-item-value">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="settings-section">
+      <div class="settings-section-title">ℹ️ Informasi</div>
+      <div class="settings-list">
+        <div class="settings-item" id="settingsAbout">
+          <div class="settings-item-left">
+            <div class="settings-item-icon">ℹ️</div>
+            <div class="settings-item-text">
+              <div class="settings-item-title">Tentang Aplikasi</div>
+              <div class="settings-item-desc">Versi, kredit, & lisensi</div>
+            </div>
+          </div>
+          <div class="settings-item-value">→</div>
+        </div>
+        <div class="settings-item" id="settingsHelp">
+          <div class="settings-item-left">
+            <div class="settings-item-icon">❓</div>
+            <div class="settings-item-text">
+              <div class="settings-item-title">Bantuan</div>
+              <div class="settings-item-desc">Panduan penggunaan</div>
+            </div>
+          </div>
+          <div class="settings-item-value">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- About Modal -->
+<div class="modal-overlay" id="aboutModal">
+  <div class="modal-card">
+    <button class="modal-close" data-close="aboutModal">✕</button>
+    <div class="about-logo">👑</div>
+    <div class="modal-title" style="margin-bottom: 4px;">Royal Schedule</div>
+    <div class="about-version">Ultimate Edition • v4.0.0</div>
+    
+    <div class="about-info">
+      <div class="about-info-row">
+        <span class="about-info-label">Versi</span>
+        <span class="about-info-value">4.0.0</span>
+      </div>
+      <div class="about-info-row">
+        <span class="about-info-label">Build</span>
+        <span class="about-info-value">2026.01.15</span>
+      </div>
+      <div class="about-info-row">
+        <span class="about-info-label">Developer</span>
+        <span class="about-info-value">Royal Studio</span>
+      </div>
+      <div class="about-info-row">
+        <span class="about-info-label">Lisensi</span>
+        <span class="about-info-value">Premium</span>
+      </div>
+      <div class="about-info-row">
+        <span class="about-info-label">Total Tugas</span>
+        <span class="about-info-value" id="aboutTaskCount">0</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; color: var(--text-secondary); font-size: 0.8rem; line-height: 1.6; padding: 12px;">
+      Aplikasi penjadwalan premium dengan desain mewah dan fitur lengkap. Dirancang untuk produktivitas maksimal dengan pengalaman visual terbaik.
+    </div>
+
+    <button class="btn-royal" id="btnCloseAbout" style="margin-top: 16px;">Tutup</button>
+  </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal-overlay" id="helpModal">
+  <div class="modal-card">
+    <button class="modal-close" data-close="helpModal">✕</button>
+    <div class="modal-title">❓ Panduan Penggunaan</div>
+    
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div class="about-info">
+        <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">📝 Menambah Tugas</div>
+        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+          Isi nama tugas, waktu, prioritas, hari, dan kategori. Klik tombol "Tambahkan" untuk menyimpan.
+        </div>
+      </div>
+      <div class="about-info">
+        <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">✅ Menyelesaikan Tugas</div>
+        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+          Klik lingkaran di sebelah kiri tugas untuk menandai selesai. Akan muncul efek confetti!
+        </div>
+      </div>
+      <div class="about-info">
+        <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">📅 Memilih Hari</div>
+        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+          Gunakan chip hari di atas untuk melihat jadwal per hari. Pilih "Setiap Hari" untuk tugas rutin.
+        </div>
+      </div>
+      <div class="about-info">
+        <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">🔍 Mencari Tugas</div>
+        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+          Ketik di kolom pencarian untuk mencari tugas berdasarkan nama atau catatan.
+        </div>
+      </div>
+      <div class="about-info">
+        <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">⏰ Alarm</div>
+        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+          Alarm otomatis berbunyi di waktu yang ditentukan. Anda bisa "Tunda" atau "Matikan".
+        </div>
+      </div>
+      <div class="about-info">
+        <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">🎯 Mode Fokus</div>
+        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+          Klik "Mode Fokus" untuk hanya menampilkan 3 tugas terdekat. Membantu konsentrasi.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Alarm Overlay -->
 <div class="alarm-overlay" id="alarmOverlay">
   <div class="alarm-card">
@@ -1100,10 +1414,10 @@
 </div>
 
 <script>
-const STORAGE_KEY = "royal_tasks_v4";
-const TRIGGERED_KEY = "royal_triggered_v4";
-const SETTINGS_KEY = "royal_settings_v4";
-const ACHIEVEMENTS_KEY = "royal_achievements_v4";
+const STORAGE_KEY = "royal_tasks_v5";
+const TRIGGERED_KEY = "royal_triggered_v5";
+const SETTINGS_KEY = "royal_settings_v5";
+const ACHIEVEMENTS_KEY = "royal_achievements_v5";
 
 let tasks = [];
 let triggeredMap = { date: getTodayKey(), ids: [] };
@@ -1114,7 +1428,22 @@ let audioCtx = null;
 let beepInterval = null;
 let activeAlarmTask = null;
 let alarmQueue = [];
-let settings = { theme: 'gold', sound: 'chime' };
+let particlesAnimId = null;
+
+// Default settings
+const DEFAULT_SETTINGS = {
+  theme: 'gold',
+  sound: 'chime',
+  soundEnabled: true,
+  notificationEnabled: false,
+  vibrationEnabled: true,
+  timeFormat: '12', // '12' or '24'
+  snoozeDuration: 5, // minutes
+  particlesEnabled: true,
+  confettiEnabled: true
+};
+
+let settings = { ...DEFAULT_SETTINGS };
 let achievements = {};
 
 const els = {
@@ -1168,7 +1497,9 @@ function loadData() {
     const savedTriggered = JSON.parse(localStorage.getItem(TRIGGERED_KEY));
     triggeredMap = (savedTriggered && savedTriggered.date === getTodayKey()) ? savedTriggered : { date: getTodayKey(), ids: [] };
     
-    settings = { theme: 'gold', sound: 'chime', ...JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') };
+    const savedSettings = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
+    settings = { ...DEFAULT_SETTINGS, ...savedSettings };
+    
     achievements = JSON.parse(localStorage.getItem(ACHIEVEMENTS_KEY) || '{}');
   } catch (e) {
     tasks = [];
@@ -1186,16 +1517,14 @@ function isTaskDone(task) { return task.completedDates && task.completedDates.in
 function isTaskForToday(task) { return task.scheduleType === 'daily' || task.dayOfWeek === getTodayName(); }
 function isTaskForView(task) { return currentViewDay === 'daily' || task.dayOfWeek === currentViewDay || task.scheduleType === 'daily'; }
 
-// --- Streak Calculation ---
+// --- Streak ---
 function calculateStreak() {
   let streak = 0;
   const today = new Date();
-  
   for (let i = 0; i < 365; i++) {
     const d = new Date(today);
     d.setDate(d.getDate() - i);
     const key = d.toISOString().split('T')[0];
-    
     const tasksForDay = tasks.filter(t => {
       if (t.scheduleType === 'specific' && t.dayOfWeek) {
         const dayNames = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
@@ -1203,22 +1532,11 @@ function calculateStreak() {
       }
       return true;
     });
-    
-    if (tasksForDay.length === 0) {
-      if (i === 0) continue;
-      break;
-    }
-    
+    if (tasksForDay.length === 0) { if (i === 0) continue; break; }
     const allDone = tasksForDay.every(t => t.completedDates && t.completedDates.includes(key));
-    if (allDone) streak++;
-    else break;
+    if (allDone) streak++; else break;
   }
-  
   return streak;
-}
-
-function getBestStreak() {
-  return achievements.bestStreak || 0;
 }
 
 function updateStreak() {
@@ -1243,14 +1561,14 @@ const ACHIEVEMENT_DEFS = [
   { id: 'first_complete', name: 'Penyelesai', desc: 'Selesaikan 1 tugas', icon: '✓', check: () => tasks.some(t => t.completedDates && t.completedDates.length > 0) },
   { id: 'ten_complete', name: 'Produktif', desc: 'Selesaikan 10 tugas total', icon: '💪', check: () => tasks.reduce((s, t) => s + (t.completedDates?.length || 0), 0) >= 10 },
   { id: 'fifty_complete', name: 'Master Produktivitas', desc: 'Selesaikan 50 tugas total', icon: '👑', check: () => tasks.reduce((s, t) => s + (t.completedDates?.length || 0), 0) >= 50 },
-  { id: 'streak_3', name: 'Konsisten', desc: 'Streak 3 hari berturut-turut', icon: '🔥', check: () => calculateStreak() >= 3 },
-  { id: 'streak_7', name: 'Disiplin Emas', desc: 'Streak 7 hari berturut-turut', icon: '🏆', check: () => calculateStreak() >= 7 },
-  { id: 'streak_30', name: 'Legendaris', desc: 'Streak 30 hari berturut-turut', icon: '💎', check: () => calculateStreak() >= 30 },
-  { id: 'perfect_day', name: 'Hari Sempurna', desc: 'Selesaikan semua tugas dalam sehari', icon: '⭐', check: () => {
+  { id: 'streak_3', name: 'Konsisten', desc: 'Streak 3 hari', icon: '🔥', check: () => calculateStreak() >= 3 },
+  { id: 'streak_7', name: 'Disiplin Emas', desc: 'Streak 7 hari', icon: '🏆', check: () => calculateStreak() >= 7 },
+  { id: 'streak_30', name: 'Legendaris', desc: 'Streak 30 hari', icon: '💎', check: () => calculateStreak() >= 30 },
+  { id: 'perfect_day', name: 'Hari Sempurna', desc: 'Selesaikan semua tugas', icon: '⭐', check: () => {
     const todayTasks = tasks.filter(isTaskForToday);
     return todayTasks.length > 0 && todayTasks.every(isTaskDone);
   }},
-  { id: 'early_bird', name: 'Early Bird', desc: 'Selesaikan tugas sebelum jam 9 pagi', icon: '🌅', check: () => tasks.some(t => {
+  { id: 'early_bird', name: 'Early Bird', desc: 'Selesaikan tugas sebelum jam 9', icon: '🌅', check: () => tasks.some(t => {
     const h = parseInt(t.time.split(':')[0]);
     return h < 9 && t.completedDates && t.completedDates.length > 0;
   })},
@@ -1266,7 +1584,9 @@ function checkAchievements() {
       achievements[def.id] = Date.now();
       saveData();
       showToast(`🏆 Pencapaian Baru!`, def.name, def.icon);
-      confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 }, colors: ['#d4af37', '#ffd700', '#ffffff'] });
+      if (settings.confettiEnabled) {
+        confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 }, colors: ['#d4af37', '#ffd700', '#ffffff'] });
+      }
     }
   });
 }
@@ -1318,15 +1638,17 @@ function openModal(id) {
 function closeModal(id) {
   document.getElementById(id).classList.remove('active');
 }
+function closeAllModals() {
+  document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+}
 
 // --- Stats ---
 function renderStats() {
   document.getElementById('statTotal').textContent = tasks.length;
   document.getElementById('statCompleted').textContent = tasks.reduce((s, t) => s + (t.completedDates?.length || 0), 0);
   document.getElementById('statStreak').textContent = calculateStreak();
-  document.getElementById('statBest').textContent = getBestStreak();
+  document.getElementById('statBest').textContent = achievements.bestStreak || 0;
   
-  // Weekly Chart
   const chart = document.getElementById('weeklyChart');
   const days = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
   const today = new Date();
@@ -1352,7 +1674,6 @@ function renderStats() {
     `;
   }).join('');
   
-  // Category Stats
   const catStats = document.getElementById('categoryStats');
   const categories = { '': 'Tanpa Kategori', work: '💼 Kerja', personal: '🏠 Pribadi', health: '💪 Kesehatan', study: '📚 Belajar', finance: '💰 Keuangan', social: '👥 Sosial' };
   const catCounts = {};
@@ -1374,6 +1695,19 @@ function renderStats() {
       </div>
     `;
   }).join('');
+}
+
+// --- Format Time ---
+function formatTaskTime(time) {
+  const [h, m] = time.split(':');
+  const hour = parseInt(h);
+  if (settings.timeFormat === '24') {
+    return `${h}:${m}`;
+  } else {
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+    const displayHour = hour % 12 || 12;
+    return `${displayHour}:${m} ${ampm}`;
+  }
 }
 
 // --- Core Logic ---
@@ -1406,7 +1740,7 @@ function handleAddTask(e) {
   document.getElementById('taskDay').value = currentViewDay === 'daily' ? 'daily' : currentViewDay;
   
   showToast('Tugas Ditambahkan', name, '✓');
-  if (navigator.vibrate) navigator.vibrate(30);
+  if (settings.vibrationEnabled && navigator.vibrate) navigator.vibrate(30);
 }
 
 function handleListClick(e) {
@@ -1423,6 +1757,7 @@ function handleListClick(e) {
       tasks = tasks.filter(t => t.id !== id);
       saveData();
       render();
+      showToast('Tugas Dihapus', task.name, '🗑️');
     }, 300);
   } else if (e.target.closest('.btn-icon.edit')) {
     editTask(task);
@@ -1433,8 +1768,8 @@ function handleListClick(e) {
       task.completedDates = task.completedDates.filter(d => d !== today);
     } else {
       task.completedDates.push(today);
-      triggerConfetti(item);
-      if (navigator.vibrate) navigator.vibrate([40, 40, 40]);
+      if (settings.confettiEnabled) triggerConfetti(item);
+      if (settings.vibrationEnabled && navigator.vibrate) navigator.vibrate([40, 40, 40]);
     }
     saveData();
     render();
@@ -1461,7 +1796,6 @@ function render() {
   
   let viewTasks = tasks.filter(isTaskForView);
   
-  // Apply filter
   if (currentFilter === 'high') viewTasks = viewTasks.filter(t => t.priority === 'high');
   else if (currentFilter === 'pending') viewTasks = viewTasks.filter(t => !isTaskDone(t));
   else if (currentFilter === 'done') viewTasks = viewTasks.filter(t => isTaskDone(t));
@@ -1471,7 +1805,6 @@ function render() {
     viewTasks = viewTasks.filter(t => !isTaskDone(t) && t.time >= currentHM).slice(0, 3);
   }
   
-  // Apply search
   if (searchQuery) {
     const q = searchQuery.toLowerCase();
     viewTasks = viewTasks.filter(t => t.name.toLowerCase().includes(q) || (t.notes && t.notes.toLowerCase().includes(q)));
@@ -1503,11 +1836,7 @@ function render() {
     li.dataset.id = task.id;
     li.draggable = true;
     
-    const [h, m] = task.time.split(':');
-    const hour = parseInt(h);
-    const ampm = hour >= 12 ? 'PM' : 'AM';
-    const displayHour = hour % 12 || 12;
-    const timeStr = `${displayHour}:${m} ${ampm}`;
+    const timeStr = formatTaskTime(task.time);
     
     let badges = '';
     if (task.scheduleType === 'daily') badges += '<span class="mini-badge badge-daily">Harian</span>';
@@ -1650,6 +1979,7 @@ document.querySelectorAll('.quick-btn').forEach(btn => {
     btn.classList.add('active');
     currentFilter = btn.dataset.filter;
     render();
+    showToast('Filter Aktif', btn.textContent.trim(), '🔍');
   });
 });
 
@@ -1691,9 +2021,12 @@ function showNextAlarm() {
   els.alarmTime.textContent = activeAlarmTask.task.time;
   els.alarmOverlay.classList.add('active');
   
-  playAlarmSound();
-  sendNotification(activeAlarmTask.task);
-  if (navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 1000]);
+  // Update snooze button text
+  els.btnSnooze.textContent = `⏰ Tunda ${settings.snoozeDuration} Menit`;
+  
+  if (settings.soundEnabled) playAlarmSound();
+  if (settings.notificationEnabled) sendNotification(activeAlarmTask.task);
+  if (settings.vibrationEnabled && navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 1000]);
 }
 
 function stopAlarm() {
@@ -1709,7 +2042,7 @@ function snoozeAlarm() {
   els.alarmOverlay.classList.remove('active');
   
   const now = new Date();
-  now.setMinutes(now.getMinutes() + 5);
+  now.setMinutes(now.getMinutes() + settings.snoozeDuration);
   const newH = String(now.getHours()).padStart(2, '0');
   const newM = String(now.getMinutes()).padStart(2, '0');
   
@@ -1717,8 +2050,9 @@ function snoozeAlarm() {
   triggeredMap.ids = triggeredMap.ids.filter(id => id !== activeAlarmTask.triggerId);
   saveData();
   
+  const taskName = activeAlarmTask.task.name;
   activeAlarmTask = null;
-  showToast('Alarm Ditunda', `Akan berbunyi pukul ${newH}:${newM}`, '⏰');
+  showToast('Alarm Ditunda', `${taskName} → ${newH}:${newM}`, '⏰');
   setTimeout(showNextAlarm, 300);
 }
 
@@ -1755,8 +2089,7 @@ function playAlarmSound() {
         [830, 1245, 1660].forEach((freq, i) => {
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
-          osc.type = 'sine';
-          osc.frequency.value = freq;
+          osc.type = 'sine'; osc.frequency.value = freq;
           gain.gain.setValueAtTime(0, now + offset);
           gain.gain.linearRampToValueAtTime(0.15 / (i + 1), now + offset + 0.01);
           gain.gain.exponentialRampToValueAtTime(0.001, now + offset + 2);
@@ -1771,8 +2104,7 @@ function playAlarmSound() {
       const playTone = (offset, freq) => {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.value = freq;
+        osc.type = 'sine'; osc.frequency.value = freq;
         gain.gain.setValueAtTime(0, now + offset);
         gain.gain.linearRampToValueAtTime(0.2, now + offset + 0.3);
         gain.gain.linearRampToValueAtTime(0, now + offset + 1.5);
@@ -1786,8 +2118,7 @@ function playAlarmSound() {
       const playBeep = (offset) => {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
-        osc.type = 'square';
-        osc.frequency.value = 880;
+        osc.type = 'square'; osc.frequency.value = 880;
         gain.gain.setValueAtTime(0, now + offset);
         gain.gain.linearRampToValueAtTime(0.2, now + offset + 0.02);
         gain.gain.exponentialRampToValueAtTime(0.001, now + offset + 0.3);
@@ -1803,4 +2134,370 @@ function playAlarmSound() {
 }
 
 function stopAlarmSound() {
-  if (beepInterval) { clearInterval(beep
+  if (beepInterval) { clearInterval(beepInterval); beepInterval = null; }
+}
+
+function previewSound(sound) {
+  const ctx = ensureAudio();
+  const now = ctx.currentTime;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = sound === 'urgent' ? 'square' : 'sine';
+  osc.frequency.value = sound === 'bell' ? 830 : sound === 'gentle' ? 392 : 523.25;
+  gain.gain.setValueAtTime(0, now);
+  gain.gain.linearRampToValueAtTime(0.2, now + 0.05);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+  osc.connect(gain); gain.connect(ctx.destination);
+  osc.start(now); osc.stop(now + 0.8);
+}
+
+function requestNotificationPermission() {
+  if ("Notification" in window && Notification.permission === "default") {
+    Notification.requestPermission().then(p => {
+      settings.notificationEnabled = (p === 'granted');
+      saveData();
+      updateSettingsUI();
+    });
+  }
+}
+
+function sendNotification(task) {
+  if ("Notification" in window && Notification.permission === "granted") {
+    new Notification("⏰ Jadwal Royal", { body: `Saatnya: ${task.name}`, tag: task.id });
+  }
+}
+
+// --- Data Management ---
+function exportData() {
+  const data = { tasks, settings, achievements, exportDate: new Date().toISOString() };
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+  const a = document.createElement('a');
+  a.href = dataStr; a.download = `royal-schedule-${getTodayKey()}.json`;
+  document.body.appendChild(a); a.click(); a.remove();
+  showToast('Data Diekspor', 'File JSON telah diunduh', '📥');
+}
+
+function importDataFromFile(file) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (data.tasks && Array.isArray(data.tasks)) {
+        tasks = data.tasks;
+        if (data.settings) settings = { ...DEFAULT_SETTINGS, ...data.settings };
+        if (data.achievements) achievements = { ...achievements, ...data.achievements };
+        saveData();
+        applyTheme(settings.theme);
+        updateSettingsUI();
+        render();
+        showToast('Data Diimpor', `${tasks.length} tugas dimuat`, '📤');
+      } else if (Array.isArray(data)) {
+        tasks = data;
+        saveData();
+        render();
+        showToast('Data Diimpor', `${tasks.length} tugas dimuat`, '📤');
+      } else {
+        showToast('Gagal', 'Format file tidak valid', '❌');
+      }
+    } catch (err) {
+      showToast('Gagal', 'File JSON tidak valid', '❌');
+    }
+  };
+  reader.readAsText(file);
+}
+
+function clearAllData() {
+  if (confirm('⚠️ Yakin ingin menghapus SEMUA data?\n\nTugas, pengaturan, dan pencapaian akan dihapus permanen.')) {
+    localStorage.clear();
+    tasks = [];
+    triggeredMap = { date: getTodayKey(), ids: [] };
+    achievements = {};
+    settings = { ...DEFAULT_SETTINGS };
+    applyTheme('gold');
+    updateSettingsUI();
+    render();
+    updateStreak();
+    showToast('Data Direset', 'Semua data telah dihapus', '🗑️');
+    closeAllModals();
+  }
+}
+
+// --- Settings UI ---
+function updateSettingsUI() {
+  // Toggles
+  document.querySelectorAll('[data-toggle]').forEach(toggle => {
+    const key = toggle.dataset.toggle;
+    toggle.classList.toggle('active', !!settings[key]);
+  });
+  
+  // Notification status
+  const notifStatus = document.getElementById('notifStatus');
+  if ("Notification" in window) {
+    const p = Notification.permission;
+    if (p === 'granted') notifStatus.textContent = '✓ Diizinkan';
+    else if (p === 'denied') notifStatus.textContent = '✕ Ditolak';
+    else notifStatus.textContent = 'Belum diizinkan';
+  } else {
+    notifStatus.textContent = 'Tidak didukung';
+  }
+  
+  // Time format
+  document.getElementById('timeFormatValue').textContent = settings.timeFormat === '24' ? '24 Jam' : '12 Jam';
+  
+  // Snooze
+  document.getElementById('snoozeValue').textContent = `${settings.snoozeDuration} Menit`;
+  
+  // About task count
+  document.getElementById('aboutTaskCount').textContent = tasks.length;
+}
+
+function cycleTimeFormat() {
+  settings.timeFormat = settings.timeFormat === '12' ? '24' : '12';
+  saveData();
+  updateSettingsUI();
+  render();
+  showToast('Format Waktu', settings.timeFormat === '24' ? '24 Jam' : '12 Jam', '⏰');
+}
+
+function cycleSnoozeDuration() {
+  const durations = [5, 10, 15, 30];
+  const idx = durations.indexOf(settings.snoozeDuration);
+  settings.snoozeDuration = durations[(idx + 1) % durations.length];
+  saveData();
+  updateSettingsUI();
+  showToast('Durasi Tunda', `${settings.snoozeDuration} Menit`, '💤');
+}
+
+function toggleSetting(key) {
+  if (key === 'notificationEnabled') {
+    if ("Notification" in window) {
+      if (Notification.permission === 'default') {
+        Notification.requestPermission().then(p => {
+          settings.notificationEnabled = (p === 'granted');
+          saveData();
+          updateSettingsUI();
+          if (p === 'granted') showToast('Notifikasi Aktif', 'Izin diberikan', '🔔');
+          else showToast('Notifikasi Ditolak', 'Aktifkan di pengaturan browser', '⚠️');
+        });
+      } else if (Notification.permission === 'denied') {
+        showToast('Tidak Bisa', 'Izin ditolak di browser', '⚠️');
+      } else {
+        settings.notificationEnabled = !settings.notificationEnabled;
+        saveData();
+        updateSettingsUI();
+      }
+    } else {
+      showToast('Tidak Didukung', 'Browser tidak mendukung notifikasi', '⚠️');
+    }
+    return;
+  }
+  
+  settings[key] = !settings[key];
+  saveData();
+  updateSettingsUI();
+  
+  if (key === 'particlesEnabled') {
+    if (settings.particlesEnabled) startParticles();
+    else stopParticles();
+  }
+  
+  const labels = {
+    soundEnabled: 'Suara Alarm',
+    vibrationEnabled: 'Getaran',
+    particlesEnabled: 'Efek Partikel',
+    confettiEnabled: 'Efek Confetti'
+  };
+  showToast(labels[key] || key, settings[key] ? 'Aktif' : 'Nonaktif', settings[key] ? '✓' : '✕');
+}
+
+// --- Particles ---
+let particles = [];
+function initParticles() {
+  const canvas = document.getElementById('particles-canvas');
+  const ctx = canvas.getContext('2d');
+  
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  for (let i = 0; i < 30; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 2 + 0.5,
+      speedX: (Math.random() - 0.5) * 0.3,
+      speedY: (Math.random() - 0.5) * 0.3,
+      opacity: Math.random() * 0.5 + 0.1
+    });
+  }
+  
+  function animate() {
+    if (!settings.particlesEnabled) {
+      particlesAnimId = requestAnimationFrame(animate);
+      return;
+    }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const style = getComputedStyle(document.documentElement);
+    const color = style.getPropertyValue('--accent-primary').trim() || '#d4af37';
+    
+    particles.forEach(p => {
+      p.x += p.speedX;
+      p.y += p.speedY;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+      
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.globalAlpha = p.opacity;
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    particlesAnimId = requestAnimationFrame(animate);
+  }
+  animate();
+}
+
+function startParticles() { /* handled in animate loop */ }
+function stopParticles() {
+  const canvas = document.getElementById('particles-canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+// --- Event Bindings ---
+document.addEventListener('click', () => { ensureAudio(); }, { once: true });
+
+// Form & List
+els.form.addEventListener('submit', handleAddTask);
+els.list.addEventListener('click', handleListClick);
+
+// Alarm buttons
+els.btnStop.addEventListener('click', stopAlarm);
+els.btnSnooze.addEventListener('click', snoozeAlarm);
+
+// Top bar buttons - each opens different modal
+document.getElementById('btnTheme').addEventListener('click', () => openModal('themeModal'));
+document.getElementById('btnStats').addEventListener('click', () => { renderStats(); openModal('statsModal'); });
+document.getElementById('btnAchievements').addEventListener('click', () => { renderAchievements(); openModal('achievementsModal'); });
+document.getElementById('btnSettings').addEventListener('click', () => { updateSettingsUI(); openModal('settingsModal'); });
+document.getElementById('btnAbout').addEventListener('click', () => { updateSettingsUI(); openModal('aboutModal'); });
+document.getElementById('btnProgress').addEventListener('click', () => { renderStats(); openModal('statsModal'); });
+
+// Bottom bar buttons
+document.getElementById('btnExport').addEventListener('click', exportData);
+document.getElementById('btnImport').addEventListener('click', () => document.getElementById('importFile').click());
+document.getElementById('importFile').addEventListener('change', (e) => {
+  if (e.target.files[0]) {
+    importDataFromFile(e.target.files[0]);
+    e.target.value = '';
+  }
+});
+document.getElementById('btnReset').addEventListener('click', clearAllData);
+
+// Close modal buttons
+document.querySelectorAll('[data-close]').forEach(btn => {
+  btn.addEventListener('click', () => closeModal(btn.dataset.close));
+});
+
+// Close on overlay click
+document.querySelectorAll('.modal-overlay').forEach(modal => {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('active');
+  });
+});
+
+// Theme options
+document.querySelectorAll('.theme-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    settings.theme = opt.dataset.theme;
+    applyTheme(settings.theme);
+    saveData();
+    showToast('Tema Diubah', opt.dataset.name, '🎨');
+  });
+});
+
+// Sound options
+document.querySelectorAll('.sound-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('.sound-option').forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+    settings.sound = opt.dataset.sound;
+    saveData();
+    previewSound(settings.sound);
+    showToast('Suara Alarm', opt.querySelector('.sound-option-name').textContent, '🔊');
+  });
+  const previewBtn = opt.querySelector('.sound-option-preview');
+  if (previewBtn) {
+    previewBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      previewSound(opt.dataset.sound);
+    });
+  }
+});
+
+// Settings toggles
+document.querySelectorAll('[data-toggle]').forEach(toggle => {
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleSetting(toggle.dataset.toggle);
+  });
+});
+
+// Settings items (non-toggle)
+document.querySelectorAll('.settings-item').forEach(item => {
+  const key = item.dataset.setting;
+  if (!key) return;
+  if (item.querySelector('.toggle')) return; // handled above
+  
+  item.addEventListener('click', () => {
+    if (key === 'timeFormat') cycleTimeFormat();
+    else if (key === 'snoozeDuration') cycleSnoozeDuration();
+  });
+});
+
+// Settings special actions
+document.getElementById('settingsExport').addEventListener('click', () => {
+  exportData();
+});
+document.getElementById('settingsImport').addEventListener('click', () => {
+  document.getElementById('importFile').click();
+});
+document.getElementById('settingsReset').addEventListener('click', () => {
+  clearAllData();
+});
+document.getElementById('settingsAbout').addEventListener('click', () => {
+  closeModal('settingsModal');
+  setTimeout(() => openModal('aboutModal'), 200);
+});
+document.getElementById('settingsHelp').addEventListener('click', () => {
+  closeModal('settingsModal');
+  setTimeout(() => openModal('helpModal'), 200);
+});
+
+// About modal
+document.getElementById('btnCloseAbout').addEventListener('click', () => closeModal('aboutModal'));
+
+// --- Init ---
+loadData();
+applyTheme(settings.theme);
+updateGreeting();
+updateDaySelector();
+updateSettingsUI();
+render();
+updateStreak();
+requestNotificationPermission();
+initParticles();
+checkAchievements();
+
+setInterval(tick, 1000);
+setInterval(() => { updateStreak(); checkAchievements(); }, 60000);
+tick();
+</script>
+</body>
+</html>
