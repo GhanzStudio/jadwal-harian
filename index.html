@@ -1,36 +1,36 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Royal Schedule | Ultimate Edition</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-700.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-800-italic.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-400.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-500.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-600.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-700.css">
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<style>
-  :root {
-    --bg-deep: #030304;
-    --bg-card: rgba(20, 20, 23, 0.65);
-    --text-primary: #ffffff;
-    --text-secondary: #9ca3af;
-    --accent-primary: #d4af37;
-    --accent-bright: #ffd700;
-    --accent-glow: rgba(212, 175, 55, 0.4);
-    --danger: #ef4444;
-    --success: #10b981;
-    --priority-high: #ef4444;
-    --priority-medium: #d4af37;
-    --priority-low: #3b82f6;
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-highlight: rgba(255, 255, 255, 0.03);
-    --aurora-1: rgba(212, 175, 55, 0.08);
-    --aurora-2: rgba(139, 92, 246, 0.05);
-    --aurora-3: rgba(212, 175, 55, 0.05);
-  }
+<!DOCTYPE html>  
+<html lang="id">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  
+<title>Royal Schedule | Ultimate Edition</title>  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-700.css">  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-800-italic.css">  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-400.css">  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-500.css">  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-600.css">  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-700.css">  
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>  
+<style>  
+  :root {  
+    --bg-deep: #030304;  
+    --bg-card: rgba(20, 20, 23, 0.65);  
+    --text-primary: #ffffff;  
+    --text-secondary: #9ca3af;  
+    --accent-primary: #d4af37;  
+    --accent-bright: #ffd700;  
+    --accent-glow: rgba(212, 175, 55, 0.4);  
+    --danger: #ef4444;  
+    --success: #10b981;  
+    --priority-high: #ef4444;  
+    --priority-medium: #d4af37;  
+    --priority-low: #3b82f6;  
+    --glass-border: rgba(255, 255, 255, 0.08);  
+    --glass-highlight: rgba(255, 255, 255, 0.03);  
+    --aurora-1: rgba(212, 175, 55, 0.08);  
+    --aurora-2: rgba(139, 92, 246, 0.05);  
+    --aurora-3: rgba(212, 175, 55, 0.05);  
+  }  
 
   [data-theme="midnight"] {
     --accent-primary: #6366f1;
@@ -60,7 +60,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  
+
   html, body {
     background-color: var(--bg-deep);
     color: var(--text-primary);
@@ -75,7 +75,7 @@
     position: fixed;
     top: -50%; left: -50%;
     width: 200%; height: 200%;
-    background: 
+    background:
       radial-gradient(circle at 50% 50%, var(--aurora-1), transparent 50%),
       radial-gradient(circle at 80% 20%, var(--aurora-2), transparent 40%),
       radial-gradient(circle at 20% 80%, var(--aurora-3), transparent 40%);
@@ -127,11 +127,8 @@
     color: var(--text-secondary);
     display: flex; align-items: center; justify-content: center;
     cursor: pointer;
-    transition: all 0.2s;
     position: relative;
   }
-  .icon-btn:hover { color: var(--accent-bright); border-color: var(--accent-primary); }
-  .icon-btn:active { transform: scale(0.95); }
   .icon-btn .badge-dot {
     position: absolute;
     top: 6px; right: 6px;
@@ -187,9 +184,7 @@
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(16px);
     cursor: pointer;
-    transition: all 0.3s;
   }
-  .progress-container:hover { border-color: var(--accent-primary); }
 
   .progress-ring { transform: rotate(-90deg); }
   .progress-ring-circle { transition: stroke-dashoffset 0.5s ease-in-out; }
@@ -229,7 +224,6 @@
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
     white-space: nowrap;
   }
 
@@ -238,7 +232,6 @@
     color: #0a0a0a;
     border-color: transparent;
     box-shadow: 0 4px 16px var(--accent-glow);
-    transform: translateY(-1px);
   }
 
   .day-chip.today {
@@ -264,7 +257,6 @@
     font-size: 0.9rem;
     outline: none;
     backdrop-filter: blur(10px);
-    transition: all 0.3s;
   }
   .search-input:focus {
     border-color: var(--accent-primary);
@@ -277,7 +269,7 @@
     overflow-x: auto; scrollbar-width: none;
   }
   .quick-actions::-webkit-scrollbar { display: none; }
-  
+
   .quick-btn {
     flex-shrink: 0;
     padding: 8px 14px;
@@ -288,12 +280,11 @@
     font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
     display: flex;
     align-items: center;
     gap: 6px;
+    white-space: nowrap;
   }
-  .quick-btn:hover { border-color: var(--accent-primary); color: var(--accent-bright); }
   .quick-btn.active {
     background: var(--accent-primary);
     color: #000;
@@ -310,7 +301,6 @@
     padding: 24px;
     margin-bottom: 24px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
-    transition: transform 0.3s ease;
   }
 
   .card-title {
@@ -380,14 +370,12 @@
     letter-spacing: 0.5px;
     cursor: pointer;
     box-shadow: 0 8px 24px var(--accent-glow);
-    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     margin-top: 8px;
   }
-  .btn-royal:active { transform: scale(0.97); }
 
   .btn-secondary {
     background: rgba(255,255,255,0.05);
@@ -398,7 +386,6 @@
     padding: 10px;
     margin-top: 12px;
   }
-  .btn-secondary:active { background: rgba(255,255,255,0.1); color: white; }
 
   .section-header {
     display: flex;
@@ -433,17 +420,9 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     cursor: pointer;
-  }
-
-  .task-item:hover {
-    background: rgba(255,255,255,0.06);
-    border-color: var(--accent-glow);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
 
   .task-item.dragging { opacity: 0.5; }
@@ -464,7 +443,7 @@
     border: 2px solid var(--text-secondary);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; transition: all 0.2s; z-index: 2;
+    flex-shrink: 0; z-index: 2;
   }
 
   .task-item.completed .task-checkbox {
@@ -481,7 +460,7 @@
   .task-time { font-size: 0.75rem; color: var(--accent-bright); font-weight: 600; letter-spacing: 0.5px; margin-bottom: 2px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
   .task-name { font-size: 0.95rem; font-weight: 500; color: var(--text-primary); line-height: 1.4; word-break: break-word; }
   .task-notes { font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px; font-style: italic; }
-  
+
   .mini-badge {
     font-size: 0.65rem;
     padding: 2px 6px;
@@ -496,7 +475,7 @@
     width: 34px; height: 34px; border-radius: 10px; border: none;
     background: rgba(255,255,255,0.05); color: var(--text-secondary);
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer; transition: all 0.2s;
+    cursor: pointer;
   }
   .btn-icon.delete:hover { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
   .btn-icon.edit:hover { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
@@ -552,7 +531,6 @@
     display: flex; align-items: center; justify-content: center;
     z-index: 10;
   }
-  .modal-close:hover { color: var(--accent-bright); border-color: var(--accent-primary); }
 
   /* Stats Modal */
   .stats-grid {
@@ -635,7 +613,6 @@
     background: rgba(255,255,255,0.03);
     border: 1px solid var(--glass-border);
     border-radius: 14px;
-    transition: all 0.3s;
   }
   .achievement-item.unlocked {
     border-color: var(--accent-primary);
@@ -666,11 +643,10 @@
     border-radius: 14px;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: all 0.2s;
     position: relative;
     overflow: hidden;
   }
-  .theme-option.active { border-color: white; transform: scale(1.05); }
+  .theme-option.active { border-color: white; }
   .theme-option::after {
     content: attr(data-name);
     position: absolute;
@@ -697,7 +673,6 @@
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     cursor: pointer;
-    transition: all 0.2s;
   }
   .sound-option.active {
     border-color: var(--accent-primary);
@@ -713,9 +688,7 @@
   }
 
   /* Settings Modal */
-  .settings-section {
-    margin-bottom: 20px;
-  }
+  .settings-section { margin-bottom: 20px; }
   .settings-section-title {
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -738,10 +711,8 @@
     padding: 14px 16px;
     border-bottom: 1px solid var(--glass-border);
     cursor: pointer;
-    transition: background 0.2s;
   }
   .settings-item:last-child { border-bottom: none; }
-  .settings-item:hover { background: rgba(255,255,255,0.03); }
   .settings-item-left {
     display: flex;
     align-items: center;
@@ -773,7 +744,6 @@
     background: rgba(255,255,255,0.1);
     border-radius: 12px;
     cursor: pointer;
-    transition: background 0.3s;
     flex-shrink: 0;
   }
   .toggle::after {
@@ -783,14 +753,10 @@
     width: 20px; height: 20px;
     background: white;
     border-radius: 50%;
-    transition: transform 0.3s;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .toggle.active {
-    background: var(--accent-primary);
-  }
-  .toggle.active::after {
-    transform: translateX(20px);
-  }
+  .toggle.active { background: var(--accent-primary); }
+  .toggle.active::after { transform: translateX(20px); }
 
   /* About Modal */
   .about-logo {
@@ -801,6 +767,8 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 2.5rem;
     box-shadow: 0 10px 30px var(--accent-glow);
+    overflow: hidden;
+    padding: 0;
   }
   .about-version {
     text-align: center;
@@ -868,17 +836,15 @@
     width: 100%; padding: 18px; border: none; border-radius: 16px;
     background: var(--accent-primary); color: #000; font-weight: 700;
     font-size: 1.1rem; cursor: pointer; margin-bottom: 12px;
-    box-shadow: 0 8px 24px var(--accent-glow); transition: transform 0.1s;
+    box-shadow: 0 8px 24px var(--accent-glow);
   }
-  .btn-stop:active { transform: scale(0.96); }
 
   .btn-snooze {
     width: 100%; padding: 14px; border: 1px solid var(--glass-border);
     border-radius: 16px; background: rgba(255,255,255,0.05);
     color: var(--text-secondary); font-weight: 600; font-size: 0.95rem;
-    cursor: pointer; transition: all 0.2s;
+    cursor: pointer;
   }
-  .btn-snooze:hover { background: rgba(255,255,255,0.1); color: white; }
 
   /* Toast */
   .toast-container {
@@ -920,1584 +886,1522 @@
 
   .footer { text-align: center; margin-top: 48px; color: rgba(255,255,255,0.2); font-size: 0.75rem; letter-spacing: 1px; }
 
+  /* =========================================
+     PREMIUM SMOOTH BUTTON INTERACTIONS
+     ========================================= */
+  .icon-btn, .btn-royal, .btn-secondary, .day-chip, .quick-btn, .btn-icon, .btn-stop, .btn-snooze, .modal-close, .theme-option, .sound-option, .settings-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, background-color, box-shadow, border-color;
+  }
+
+  .icon-btn:hover { 
+    color: var(--accent-bright); 
+    border-color: var(--accent-primary); 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--accent-glow);
+  }
+  .icon-btn:active { transform: translateY(0) scale(0.9); }
+
+  .btn-royal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px var(--accent-glow);
+  }
+  .btn-royal:active { 
+    transform: translateY(1px) scale(0.96); 
+    box-shadow: 0 4px 12px var(--accent-glow);
+  }
+
+  .btn-secondary:hover { 
+    background: rgba(255,255,255,0.08); 
+    color: var(--text-primary);
+    transform: translateY(-1px);
+  }
+  .btn-secondary:active { 
+    transform: translateY(1px) scale(0.96); 
+  }
+
+  .day-chip:hover {
+    background: rgba(255,255,255,0.06);
+    transform: translateY(-1px);
+  }
+  .day-chip:active { transform: scale(0.95); }
+
+  .quick-btn:hover { 
+    border-color: var(--accent-primary); 
+    color: var(--accent-bright);
+    transform: translateY(-1px);
+  }
+  .quick-btn:active { transform: scale(0.95); }
+
+  .btn-icon:hover { 
+    background: rgba(255,255,255,0.1); 
+    color: var(--text-primary);
+    transform: scale(1.1);
+  }
+  .btn-icon:active { transform: scale(0.85); }
+
+  .btn-stop:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px var(--accent-glow);
+  }
+  .btn-stop:active { transform: translateY(1px) scale(0.96); }
+
+  .btn-snooze:hover { 
+    background: rgba(255,255,255,0.1); 
+    color: white;
+    transform: translateY(-1px);
+  }
+  .btn-snooze:active { transform: translateY(1px) scale(0.96); }
+
+  .modal-close:hover { 
+    color: var(--accent-bright); 
+    border-color: var(--accent-primary);
+    transform: rotate(90deg);
+  }
+  .modal-close:active { transform: scale(0.9) rotate(90deg); }
+
+  .theme-option:hover { transform: scale(1.05); }
+  .theme-option:active { transform: scale(0.95); }
+
+  .sound-option:hover, .settings-item:hover { 
+    background: rgba(255,255,255,0.06); 
+    transform: translateX(4px);
+  }
+  .sound-option:active, .settings-item:active { transform: scale(0.98); }
+
   @media (max-width: 480px) {
     .live-clock { font-size: 2.8rem; }
     .card { padding: 20px; border-radius: 20px; }
   }
 </style>
-</head>
-<body>
+</head>  
+<body>  
+  <canvas id="particles-canvas"></canvas>
+  <div class="toast-container" id="toastContainer"></div>  
 
-<canvas id="particles-canvas"></canvas>
+  <div class="container">  
+    <!-- Top Bar -->  
+    <div class="top-bar">  
+      <button class="icon-btn" id="btnTheme" title="Tema">  
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>  
+      </button>  
+      <div class="top-bar-group">  
+        <button class="icon-btn" id="btnStats" title="Statistik">  
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>  
+        </button>  
+        <button class="icon-btn" id="btnAchievements" title="Pencapaian">  
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>  
+        </button>  
+        <button class="icon-btn" id="btnSettings" title="Pengaturan">  
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>  
+        </button>  
+        <button class="icon-btn" id="btnAbout" title="Tentang">  
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>  
+        </button>  
+      </div>  
+    </div>  
 
-<div class="toast-container" id="toastContainer"></div>
+    <div class="header-section">  
+      <div class="greeting" id="greetingText">Selamat Datang</div>  
+      <div class="live-clock" id="liveClock">00:00</div>  
+      <div class="live-date" id="liveDate">Senin, 1 Jan 2026</div>  
+      <div class="progress-container" id="btnProgress">  
+        <svg class="progress-ring" width="60" height="60">  
+          <circle stroke="rgba(255,255,255,0.05)" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>  
+          <circle class="progress-ring-circle" id="progressCircle" stroke="var(--accent-primary)" stroke-width="4" fill="transparent" r="26" cx="30" cy="30" stroke-dasharray="163.36" stroke-dashoffset="163.36" stroke-linecap="round"/>  
+        </svg>  
+        <div class="progress-text">  
+          <h3 id="progressPercent">0%</h3>  
+          <p>Tugas Selesai Hari Ini</p>  
+        </div>  
+        <div class="streak-badge" id="streakBadge" style="display:none;">🔥 <span id="streakCount">0</span></div>  
+      </div>  
+    </div>  
 
-<div class="container">
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <button class="icon-btn" id="btnTheme" title="Tema">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-    </button>
-    <div class="top-bar-group">
-      <button class="icon-btn" id="btnStats" title="Statistik">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-      </button>
-      <button class="icon-btn" id="btnAchievements" title="Pencapaian">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
-      </button>
-      <button class="icon-btn" id="btnSettings" title="Pengaturan">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-      </button>
-      <button class="icon-btn" id="btnAbout" title="Tentang">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-      </button>
-    </div>
-  </div>
+    <!-- Day Selector -->  
+    <div class="day-selector" id="daySelector">  
+      <button class="day-chip active" data-day="daily">🔄 Setiap Hari</button>  
+      <button class="day-chip" data-day="monday">Sen</button>  
+      <button class="day-chip" data-day="tuesday">Sel</button>  
+      <button class="day-chip" data-day="wednesday">Rab</button>  
+      <button class="day-chip" data-day="thursday">Kam</button>  
+      <button class="day-chip" data-day="friday">Jum</button>  
+      <button class="day-chip" data-day="saturday">Sab</button>  
+      <button class="day-chip" data-day="sunday">Min</button>  
+    </div>  
 
-  <div class="header-section">
-    <div class="greeting" id="greetingText">Selamat Datang</div>
-    <div class="live-clock" id="liveClock">00:00</div>
-    <div class="live-date" id="liveDate">Senin, 1 Jan 2026</div>
-    
-    <div class="progress-container" id="btnProgress">
-      <svg class="progress-ring" width="60" height="60">
-        <circle stroke="rgba(255,255,255,0.05)" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
-        <circle class="progress-ring-circle" id="progressCircle" stroke="var(--accent-primary)" stroke-width="4" fill="transparent" r="26" cx="30" cy="30" stroke-dasharray="163.36" stroke-dashoffset="163.36" stroke-linecap="round"/>
-      </svg>
-      <div class="progress-text">
-        <h3 id="progressPercent">0%</h3>
-        <p>Tugas Selesai Hari Ini</p>
-      </div>
-      <div class="streak-badge" id="streakBadge" style="display:none;">🔥 <span id="streakCount">0</span></div>
-    </div>
-  </div>
+    <!-- Search -->  
+    <div class="search-wrap">  
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>  
+      <input type="text" class="search-input" id="searchInput" placeholder="Cari tugas...">  
+    </div>  
 
-  <!-- Day Selector -->
-  <div class="day-selector" id="daySelector">
-    <button class="day-chip active" data-day="daily">🔄 Setiap Hari</button>
-    <button class="day-chip" data-day="monday">Sen</button>
-    <button class="day-chip" data-day="tuesday">Sel</button>
-    <button class="day-chip" data-day="wednesday">Rab</button>
-    <button class="day-chip" data-day="thursday">Kam</button>
-    <button class="day-chip" data-day="friday">Jum</button>
-    <button class="day-chip" data-day="saturday">Sab</button>
-    <button class="day-chip" data-day="sunday">Min</button>
-  </div>
+    <!-- Quick Actions -->  
+    <div class="quick-actions">  
+      <button class="quick-btn active" data-filter="all">📋 Semua</button>  
+      <button class="quick-btn" data-filter="high">🔴 Prioritas Tinggi</button>  
+      <button class="quick-btn" data-filter="pending">⏳ Belum Selesai</button>  
+      <button class="quick-btn" data-filter="done">✅ Selesai</button>  
+      <button class="quick-btn" data-filter="focus">🎯 Mode Fokus</button>  
+    </div>  
 
-  <!-- Search -->
-  <div class="search-wrap">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-    <input type="text" class="search-input" id="searchInput" placeholder="Cari tugas...">
-  </div>
+    <!-- Add Task Form -->  
+    <div class="card" id="formCard">  
+      <div class="card-title"><span>✦</span> Tambah Tugas Baru</div>  
+      <form id="taskForm">  
+        <div class="form-group">  
+          <label class="form-label">Nama Tugas</label>  
+          <input type="text" id="taskName" class="input-royal" placeholder="Contoh: Meeting dengan Investor" required maxlength="60">  
+        </div>  
+        <div class="form-group">  
+          <label class="form-label">Catatan (Opsional)</label>  
+          <textarea id="taskNotes" class="input-royal" placeholder="Tambahkan detail atau catatan..." maxlength="200"></textarea>  
+        </div>  
+        <div class="row">  
+          <div class="form-group">  
+            <label class="form-label">Waktu</label>  
+            <input type="time" id="taskTime" class="input-royal" required>  
+          </div>  
+          <div class="form-group">  
+            <label class="form-label">Prioritas</label>  
+            <select id="taskPriority" class="input-royal">  
+              <option value="high">🔴 Tinggi</option>  
+              <option value="medium" selected>🟡 Sedang</option>  
+              <option value="low">🔵 Rendah</option>  
+            </select>  
+          </div>  
+        </div>  
+        <div class="row">  
+          <div class="form-group">  
+            <label class="form-label">Berlaku Untuk</label>  
+            <select id="taskDay" class="input-royal">  
+              <option value="daily">🔄 Setiap Hari</option>  
+              <option value="monday">📅 Senin</option>  
+              <option value="tuesday">📅 Selasa</option>  
+              <option value="wednesday">📅 Rabu</option>  
+              <option value="thursday">📅 Kamis</option>  
+              <option value="friday">📅 Jumat</option>  
+              <option value="saturday">📅 Sabtu</option>  
+              <option value="sunday">📅 Minggu</option>  
+            </select>  
+          </div>  
+          <div class="form-group">  
+            <label class="form-label">Kategori</label>  
+            <select id="taskCategory" class="input-royal">  
+              <option value="">Tanpa Kategori</option>  
+              <option value="work">💼 Kerja</option>  
+              <option value="personal">🏠 Pribadi</option>  
+              <option value="health">💪 Kesehatan</option>  
+              <option value="study">📚 Belajar</option>  
+              <option value="finance">💰 Keuangan</option>  
+              <option value="social">👥 Sosial</option>  
+            </select>  
+          </div>  
+        </div>  
+        <button type="submit" class="btn-royal">  
+          <span>+</span> Tambahkan ke Jadwal  
+        </button>  
+      </form>  
+    </div>  
 
-  <!-- Quick Actions -->
-  <div class="quick-actions">
-    <button class="quick-btn active" data-filter="all">📋 Semua</button>
-    <button class="quick-btn" data-filter="high">🔴 Prioritas Tinggi</button>
-    <button class="quick-btn" data-filter="pending">⏳ Belum Selesai</button>
-    <button class="quick-btn" data-filter="done">✅ Selesai</button>
-    <button class="quick-btn" data-filter="focus">🎯 Mode Fokus</button>
-  </div>
+    <div class="section-header">  
+      <div class="section-title" id="listTitle">Jadwal Hari Ini</div>  
+      <div class="task-count-badge" id="taskCount">0 Tugas</div>  
+    </div>  
+    <ul class="task-list" id="taskList"></ul>  
 
-  <!-- Add Task Form -->
-  <div class="card" id="formCard">
-    <div class="card-title"><span>✦</span> Tambah Tugas Baru</div>
-    <form id="taskForm">
-      <div class="form-group">
-        <label class="form-label">Nama Tugas</label>
-        <input type="text" id="taskName" class="input-royal" placeholder="Contoh: Meeting dengan Investor" required maxlength="60">
-      </div>
+    <div style="display: flex; gap: 10px; margin-top: 24px;">  
+      <button class="btn-royal btn-secondary" id="btnExport" style="flex:1;">📥 Ekspor</button>  
+      <button class="btn-royal btn-secondary" id="btnImport" style="flex:1;">📤 Impor</button>  
+      <button class="btn-royal btn-secondary" id="btnReset" style="flex:1;">🗑️ Reset</button>  
+      <input type="file" id="importFile" accept=".json" style="display: none;">  
+    </div>  
+
+    <div class="footer">✦ ROYAL SCHEDULE • ULTIMATE EDITION ✦</div>  
+  </div>  
+
+  <!-- Stats Modal -->  
+  <div class="modal-overlay" id="statsModal">  
+    <div class="modal-card">  
+      <button class="modal-close" data-close="statsModal">✕</button>  
+      <div class="modal-title">📊 Statistik Anda</div>  
+      <div class="stats-grid">  
+        <div class="stat-card">  
+          <div class="stat-value" id="statTotal">0</div>  
+          <div class="stat-label">Total Tugas</div>  
+        </div>  
+        <div class="stat-card">  
+          <div class="stat-value" id="statCompleted">0</div>  
+          <div class="stat-label">Selesai</div>  
+        </div>  
+        <div class="stat-card">  
+          <div class="stat-value" id="statStreak">0</div>  
+          <div class="stat-label">Hari Streak 🔥</div>  
+        </div>  
+        <div class="stat-card">  
+          <div class="stat-value" id="statBest">0</div>  
+          <div class="stat-label">Rekor Terbaik</div>  
+        </div>  
+      </div>  
+      <div class="weekly-chart">  
+        <div class="chart-title">Aktivitas 7 Hari Terakhir</div>  
+        <div class="chart-bars" id="weeklyChart"></div>  
+      </div>  
+      <div class="weekly-chart">  
+        <div class="chart-title">Distribusi Kategori</div>  
+        <div id="categoryStats" style="display: flex; flex-direction: column; gap: 8px;"></div>  
+      </div>  
+    </div>  
+  </div>  
+
+  <!-- Achievements Modal -->  
+  <div class="modal-overlay" id="achievementsModal">  
+    <div class="modal-card">  
+      <button class="modal-close" data-close="achievementsModal">✕</button>  
+      <div class="modal-title">🏆 Pencapaian</div>  
+      <div class="achievement-list" id="achievementList"></div>  
+    </div>  
+  </div>  
+
+  <!-- Theme Modal -->  
+  <div class="modal-overlay" id="themeModal">  
+    <div class="modal-card">  
+      <button class="modal-close" data-close="themeModal">✕</button>  
+      <div class="modal-title">🎨 Pilih Tema</div>  
+      <div class="theme-grid">  
+        <div class="theme-option theme-gold active" data-theme="gold" data-name="Royal Gold"></div>  
+        <div class="theme-option theme-midnight" data-theme="midnight" data-name="Midnight"></div>  
+        <div class="theme-option theme-emerald" data-theme="emerald" data-name="Emerald"></div>  
+        <div class="theme-option theme-rose" data-theme="rose" data-name="Rose Gold"></div>  
+      </div>  
+      <div class="modal-title" style="font-size: 1.1rem; margin-top: 24px;">🔊 Suara Alarm</div>  
+      <div class="sound-list" id="soundList">  
+        <div class="sound-option active" data-sound="chime">  
+          <span class="sound-option-name">🎵 Royal Chime</span>  
+          <span class="sound-option-preview">▶ Preview</span>  
+        </div>  
+        <div class="sound-option" data-sound="bell">  
+          <span class="sound-option-name">🔔 Classic Bell</span>  
+          <span class="sound-option-preview">▶ Preview</span>  
+        </div>  
+        <div class="sound-option" data-sound="gentle">  
+          <span class="sound-option-name">🌸 Gentle Wake</span>  
+          <span class="sound-option-preview">▶ Preview</span>  
+        </div>  
+        <div class="sound-option" data-sound="urgent">  
+          <span class="sound-option-name">⚡ Urgent Alert</span>  
+          <span class="sound-option-preview">▶ Preview</span>  
+        </div>  
+      </div>  
+    </div>  
+  </div>  
+
+  <!-- Settings Modal -->  
+  <div class="modal-overlay" id="settingsModal">  
+    <div class="modal-card">  
+      <button class="modal-close" data-close="settingsModal">✕</button>  
+      <div class="modal-title">⚙️ Pengaturan</div>  
+      <div class="settings-section">  
+        <div class="settings-section-title">🔔 Suara & Notifikasi</div>  
+        <div class="settings-list">  
+          <div class="settings-item" data-setting="soundEnabled">  
+            <div class="settings-item-left">  
+              <div class="settings-item-icon">🔊</div>  
+              <div class="settings-item-text">  
+                <div class="settings-item-title">Suara Alarm</div>  
+                <div class="settings-item-desc">Putar suara saat alarm berbunyi</div>  
+              </div>  
+            </div>  
+            <div class="toggle active" data-toggle="soundEnabled"></div>  
+          </div>  
+          <div class="settings-item" data-setting="notificationEnabled">  
+            <div class="settings-item-left">  
+              <div class="settings-item-icon">🔔</div>  
+              <div class="settings-item-text">  
+                <div class="settings-item-title">Notifikasi Sistem</div>  
+                <div class="settings-item-desc" id="notifStatus">Meminta izin...</div>  
+              </div>  
+            </div>  
+            <div class="toggle" data-toggle="notificationEnabled"></div>  
+          </div>  
+          <div class="settings-item" data-setting="vibrationEnabled">  
+            <div class="settings-item-left">  
+              <div class="settings-item-icon">📳</div>  
+              <div class="settings-item-text">  
+                <div class="settings-item-title">Getaran</div>  
+                <div class="settings-item-desc">Getar saat alarm & selesai tugas</div>  
+              </div>  
+            </div>  
+            <div class="toggle active" data-toggle="vibrationEnabled"></div>  
+          </div>  
+        </div>  
+      </div>  
+      <div class="settings-section">  
+        <div class="settings-section-title">🎨 Tampilan</div>  
+        <div class="settings-list">  
+          <div class="settings-item" data-setting="timeFormat">  
+            <div class="settings-item-left">  
+              <div class="settings-item-icon">⏰</div>  
+              <div class="settings-item-text">  
+                <div class="settings-item-title">Format Waktu</div>  
+                <div class="settings-item-desc">Tampilan jam di daftar tugas</div>  
+              </div>  
+            </div>  
+            <div class="settings-item-value" id="timeFormatValue">12 Jam</div>  
+          </div>  
+          <div class="settings-item" data-setting="snoozeDuration">  
+            <div class="settings-item-left">  
+              <div class="settings-item-icon">💤</div>  
+              <div class="settings-item-text">  
+                <div class="settings-item-title">Durasi Tunda</div>  
+                <div class="settings-item-desc">Lama penundaan alarm</div>  
+              </div>  
+            </div>  
+            <div class="settings-item-value" id="snoozeValue">5 Menit</div>  
+          </div>  
+          <div class="settings-item" data-setting="particlesEnabled">  
+            <div class="settings-item-left">  
+              <div class="settings-item-icon">✨</div>  
+              <div class="settings-item-text">  
+                <div class="settings-item-title">Efek Partikel</div>  
+                <div class="settings-item-desc">Partikel mengambang di latar</div>  
+              </div>  
+            </div>  
+            <div class="toggle active" data-toggle="particlesEnabled"></div>  
+          </div>  
+          <div class="settings-item" data-setting="confettiEnabled">  
+            <div class="settings-item-left">  
+              <div class="settings-item-icon">🎉</div>  
+              <div class="settings-item-text">  
+                <div class="settings-item-title">Efek Confetti</div>  
+                <div class="settings-item-desc">Ledakan saat tugas selesai</div>  
+              </div>  
+            </div>  
+            <div class="toggle active" data-toggle="confettiEnabled"></div>  
+          </div>  
+        </div>  
+      </div>  
+      <div class="settings-section">  
+        <div class="settings-section-title">💾 Data</div>  
+        <div class="settings-list">  
+          <div class="settings-item" id="settingsExport">  
+            <div class="settings-item-left">  
+              <div class="settings-item-icon">📥</div>  
+              <div class="settings-item-text">  
+                <div class="settings-item-title">Ekspor Data</div>  
+                <div class="settings-item-desc">Simpan backup ke file JSON</div>  
+              </div>  
+            </div>  
+            <div class="settings-item-value">→</div>  
+          </div>  
+          <div class="settings-item" id="settingsImport">  
+            <div class="settings-item-left">  
+              <div class="settings-item-icon">📤</div>  
+              <div class="settings-item-text">  
+                <div class="settings-item-title">Impor Data</div>  
+                <div class="settings-item-desc">Muat dari file backup</div>  
+              </div>  
+            </div>  
+            <div class="settings-item-value">→</div>  
+          </div>  
+          <div class="settings-item" id="settingsReset">  
+            <div class="settings-item-left">  
+              <div class="settings-item-icon" style="background: rgba(239, 68, 68, 0.15);">🗑️</div>  
+              <div class="settings-item-text">  
+                <div class="settings-item-title" style="color: var(--danger);">Reset Semua Data</div>  
+                <div class="settings-item-desc">Hapus semua tugas & pengaturan</div>  
+              </div>  
+            </div>  
+            <div class="settings-item-value">→</div>  
+          </div>  
+        </div>  
+      </div>  
+      <div class="settings-section">  
+        <div class="settings-section-title">ℹ️ Informasi</div>  
+        <div class="settings-list">  
+          <div class="settings-item" id="settingsAbout">  
+            <div class="settings-item-left">  
+              <div class="settings-item-icon">ℹ️</div>  
+              <div class="settings-item-text">  
+                <div class="settings-item-title">Tentang Aplikasi</div>  
+                <div class="settings-item-desc">Versi, kredit, & lisensi</div>  
+              </div>  
+            </div>  
+            <div class="settings-item-value">→</div>  
+          </div>  
+          <div class="settings-item" id="settingsHelp">  
+            <div class="settings-item-left">  
+              <div class="settings-item-icon">❓</div>  
+              <div class="settings-item-text">  
+                <div class="settings-item-title">Bantuan</div>  
+                <div class="settings-item-desc">Panduan penggunaan</div>  
+              </div>  
+            </div>  
+            <div class="settings-item-value">→</div>  
+          </div>  
+        </div>  
+      </div>  
+    </div>  
+  </div>  
+
+  <!-- About Modal -->  
+  <div class="modal-overlay" id="aboutModal">  
+    <div class="modal-card">  
+      <button class="modal-close" data-close="aboutModal">✕</button>  
+      <div class="about-logo">
+        <!-- Logo Ghanz_Studio dengan fallback otomatis ke emoji jika gambar tidak ditemukan -->
+        <img src="logo.png" alt="Ghanz_Studio Logo" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <span style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; font-size: 2.5rem;">👑</span>
+      </div>  
+      <div class="modal-title" style="margin-bottom: 4px;">Royal Schedule</div>  
+      <div class="about-version">Ultimate Edition • v4.0.0</div>  
+      <div class="about-info">  
+        <div class="about-info-row">  
+          <span class="about-info-label">Versi</span>  
+          <span class="about-info-value">4.0.0</span>  
+        </div>  
+        <div class="about-info-row">  
+          <span class="about-info-label">Build</span>  
+          <span class="about-info-value">2026.01.15</span>  
+        </div>  
+        <div class="about-info-row">  
+          <span class="about-info-label">Developer</span>  
+          <span class="about-info-value">Ghanz_Studio</span>  
+        </div>  
+        <div class="about-info-row">  
+          <span class="about-info-label">Lisensi</span>  
+          <span class="about-info-value">Premium</span>  
+        </div>  
+        <div class="about-info-row">  
+          <span class="about-info-label">Total Tugas</span>  
+          <span class="about-info-value" id="aboutTaskCount">0</span>  
+        </div>  
+      </div>  
+      <div style="text-align: center; color: var(--text-secondary); font-size: 0.8rem; line-height: 1.6; padding: 12px;">  
+        Aplikasi penjadwalan premium dengan desain mewah dan fitur lengkap. Dirancang untuk produktivitas maksimal dengan pengalaman visual terbaik.  
+      </div>  
+      <button class="btn-royal" id="btnCloseAbout" style="margin-top: 16px;">Tutup</button>  
+    </div>  
+  </div>  
+
+  <!-- Help Modal -->  
+  <div class="modal-overlay" id="helpModal">  
+    <div class="modal-card">  
+      <button class="modal-close" data-close="helpModal">✕</button>  
+      <div class="modal-title">❓ Panduan Penggunaan</div>  
+      <div style="display: flex; flex-direction: column; gap: 12px;">  
+        <div class="about-info">  
+          <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">📝 Menambah Tugas</div>  
+          <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">  
+            Isi nama tugas, waktu, prioritas, hari, dan kategori. Klik tombol "Tambahkan" untuk menyimpan.  
+          </div>  
+        </div>  
+        <div class="about-info">  
+          <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">✅ Menyelesaikan Tugas</div>  
+          <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">  
+            Klik lingkaran di sebelah kiri tugas untuk menandai selesai. Akan muncul efek confetti!  
+          </div>  
+        </div>  
+        <div class="about-info">  
+          <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">📅 Memilih Hari</div>  
+          <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">  
+            Gunakan chip hari di atas untuk melihat jadwal per hari. Pilih "Setiap Hari" untuk tugas rutin.  
+          </div>  
+        </div>  
+        <div class="about-info">  
+          <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">🔍 Mencari Tugas</div>  
+          <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">  
+            Ketik di kolom pencarian untuk mencari tugas berdasarkan nama atau catatan.  
+          </div>  
+        </div>  
+        <div class="about-info">  
+          <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">⏰ Alarm</div>  
+          <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">  
+            Alarm otomatis berbunyi di waktu yang ditentukan. Anda bisa "Tunda" atau "Matikan".  
+          </div>  
+        </div>  
+        <div class="about-info">  
+          <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">🎯 Mode Fokus</div>  
+          <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">  
+            Klik "Mode Fokus" untuk hanya menampilkan 3 tugas terdekat. Membantu konsentrasi.  
+          </div>  
+        </div>  
+      </div>  
+    </div>  
+  </div>  
+
+  <!-- Alarm Overlay -->  
+  <div class="alarm-overlay" id="alarmOverlay">  
+    <div class="alarm-card">  
+      <div class="alarm-icon">🔔</div>  
+      <div class="alarm-title">Waktunya Tiba!</div>  
+      <div class="alarm-task-name" id="alarmTaskName">Nama Tugas</div>  
+      <div class="alarm-time" id="alarmTaskTime">00:00</div>  
+      <button class="btn-stop" id="btnStopAlarm">✓ Selesaikan & Matikan</button>  
+      <button class="btn-snooze" id="btnSnoozeAlarm">⏰ Tunda 5 Menit</button>  
+    </div>  
+  </div>  
+
+  <script>  
+    const STORAGE_KEY = "royal_tasks_v5";  
+    const TRIGGERED_KEY = "royal_triggered_v5";  
+    const SETTINGS_KEY = "royal_settings_v5";  
+    const ACHIEVEMENTS_KEY = "royal_achievements_v5";  
       
-      <div class="form-group">
-        <label class="form-label">Catatan (Opsional)</label>
-        <textarea id="taskNotes" class="input-royal" placeholder="Tambahkan detail atau catatan..." maxlength="200"></textarea>
-      </div>
+    let tasks = [];  
+    let triggeredMap = { date: getTodayKey(), ids: [] };  
+    let currentViewDay = getTodayName();  
+    let currentFilter = 'all';  
+    let searchQuery = '';  
+    let audioCtx = null;  
+    let beepInterval = null;  
+    let activeAlarmTask = null;  
+    let alarmQueue = [];  
+    let particlesAnimId = null;  
       
-      <div class="row">
-        <div class="form-group">
-          <label class="form-label">Waktu</label>
-          <input type="time" id="taskTime" class="input-royal" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Prioritas</label>
-          <select id="taskPriority" class="input-royal">
-            <option value="high">🔴 Tinggi</option>
-            <option value="medium" selected>🟡 Sedang</option>
-            <option value="low">🔵 Rendah</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group">
-          <label class="form-label">Berlaku Untuk</label>
-          <select id="taskDay" class="input-royal">
-            <option value="daily">🔄 Setiap Hari</option>
-            <option value="monday">📅 Senin</option>
-            <option value="tuesday">📅 Selasa</option>
-            <option value="wednesday">📅 Rabu</option>
-            <option value="thursday">📅 Kamis</option>
-            <option value="friday">📅 Jumat</option>
-            <option value="saturday">📅 Sabtu</option>
-            <option value="sunday">📅 Minggu</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Kategori</label>
-          <select id="taskCategory" class="input-royal">
-            <option value="">Tanpa Kategori</option>
-            <option value="work">💼 Kerja</option>
-            <option value="personal">🏠 Pribadi</option>
-            <option value="health">💪 Kesehatan</option>
-            <option value="study">📚 Belajar</option>
-            <option value="finance">💰 Keuangan</option>
-            <option value="social">👥 Sosial</option>
-          </select>
-        </div>
-      </div>
-
-      <button type="submit" class="btn-royal">
-        <span>+</span> Tambahkan ke Jadwal
-      </button>
-    </form>
-  </div>
-
-  <div class="section-header">
-    <div class="section-title" id="listTitle">Jadwal Hari Ini</div>
-    <div class="task-count-badge" id="taskCount">0 Tugas</div>
-  </div>
-
-  <ul class="task-list" id="taskList"></ul>
-
-  <div style="display: flex; gap: 10px; margin-top: 24px;">
-    <button class="btn-royal btn-secondary" id="btnExport" style="flex:1;">📥 Ekspor</button>
-    <button class="btn-royal btn-secondary" id="btnImport" style="flex:1;">📤 Impor</button>
-    <button class="btn-royal btn-secondary" id="btnReset" style="flex:1;">🗑️ Reset</button>
-    <input type="file" id="importFile" accept=".json" style="display: none;">
-  </div>
-
-  <div class="footer">✦ ROYAL SCHEDULE • ULTIMATE EDITION ✦</div>
-</div>
-
-<!-- Stats Modal -->
-<div class="modal-overlay" id="statsModal">
-  <div class="modal-card">
-    <button class="modal-close" data-close="statsModal">✕</button>
-    <div class="modal-title">📊 Statistik Anda</div>
-    
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-value" id="statTotal">0</div>
-        <div class="stat-label">Total Tugas</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="statCompleted">0</div>
-        <div class="stat-label">Selesai</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="statStreak">0</div>
-        <div class="stat-label">Hari Streak 🔥</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="statBest">0</div>
-        <div class="stat-label">Rekor Terbaik</div>
-      </div>
-    </div>
-
-    <div class="weekly-chart">
-      <div class="chart-title">Aktivitas 7 Hari Terakhir</div>
-      <div class="chart-bars" id="weeklyChart"></div>
-    </div>
-
-    <div class="weekly-chart">
-      <div class="chart-title">Distribusi Kategori</div>
-      <div id="categoryStats" style="display: flex; flex-direction: column; gap: 8px;"></div>
-    </div>
-  </div>
-</div>
-
-<!-- Achievements Modal -->
-<div class="modal-overlay" id="achievementsModal">
-  <div class="modal-card">
-    <button class="modal-close" data-close="achievementsModal">✕</button>
-    <div class="modal-title">🏆 Pencapaian</div>
-    <div class="achievement-list" id="achievementList"></div>
-  </div>
-</div>
-
-<!-- Theme Modal -->
-<div class="modal-overlay" id="themeModal">
-  <div class="modal-card">
-    <button class="modal-close" data-close="themeModal">✕</button>
-    <div class="modal-title">🎨 Pilih Tema</div>
-    <div class="theme-grid">
-      <div class="theme-option theme-gold active" data-theme="gold" data-name="Royal Gold"></div>
-      <div class="theme-option theme-midnight" data-theme="midnight" data-name="Midnight"></div>
-      <div class="theme-option theme-emerald" data-theme="emerald" data-name="Emerald"></div>
-      <div class="theme-option theme-rose" data-theme="rose" data-name="Rose Gold"></div>
-    </div>
-    
-    <div class="modal-title" style="font-size: 1.1rem; margin-top: 24px;">🔊 Suara Alarm</div>
-    <div class="sound-list" id="soundList">
-      <div class="sound-option active" data-sound="chime">
-        <span class="sound-option-name">🎵 Royal Chime</span>
-        <span class="sound-option-preview">▶ Preview</span>
-      </div>
-      <div class="sound-option" data-sound="bell">
-        <span class="sound-option-name">🔔 Classic Bell</span>
-        <span class="sound-option-preview">▶ Preview</span>
-      </div>
-      <div class="sound-option" data-sound="gentle">
-        <span class="sound-option-name">🌸 Gentle Wake</span>
-        <span class="sound-option-preview">▶ Preview</span>
-      </div>
-      <div class="sound-option" data-sound="urgent">
-        <span class="sound-option-name">⚡ Urgent Alert</span>
-        <span class="sound-option-preview">▶ Preview</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Settings Modal -->
-<div class="modal-overlay" id="settingsModal">
-  <div class="modal-card">
-    <button class="modal-close" data-close="settingsModal">✕</button>
-    <div class="modal-title">⚙️ Pengaturan</div>
-
-    <!-- Suara & Notifikasi -->
-    <div class="settings-section">
-      <div class="settings-section-title">🔔 Suara & Notifikasi</div>
-      <div class="settings-list">
-        <div class="settings-item" data-setting="soundEnabled">
-          <div class="settings-item-left">
-            <div class="settings-item-icon">🔊</div>
-            <div class="settings-item-text">
-              <div class="settings-item-title">Suara Alarm</div>
-              <div class="settings-item-desc">Putar suara saat alarm berbunyi</div>
-            </div>
-          </div>
-          <div class="toggle active" data-toggle="soundEnabled"></div>
-        </div>
-        <div class="settings-item" data-setting="notificationEnabled">
-          <div class="settings-item-left">
-            <div class="settings-item-icon">🔔</div>
-            <div class="settings-item-text">
-              <div class="settings-item-title">Notifikasi Sistem</div>
-              <div class="settings-item-desc" id="notifStatus">Meminta izin...</div>
-            </div>
-          </div>
-          <div class="toggle" data-toggle="notificationEnabled"></div>
-        </div>
-        <div class="settings-item" data-setting="vibrationEnabled">
-          <div class="settings-item-left">
-            <div class="settings-item-icon">📳</div>
-            <div class="settings-item-text">
-              <div class="settings-item-title">Getaran</div>
-              <div class="settings-item-desc">Getar saat alarm & selesai tugas</div>
-            </div>
-          </div>
-          <div class="toggle active" data-toggle="vibrationEnabled"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tampilan -->
-    <div class="settings-section">
-      <div class="settings-section-title">🎨 Tampilan</div>
-      <div class="settings-list">
-        <div class="settings-item" data-setting="timeFormat">
-          <div class="settings-item-left">
-            <div class="settings-item-icon">⏰</div>
-            <div class="settings-item-text">
-              <div class="settings-item-title">Format Waktu</div>
-              <div class="settings-item-desc">Tampilan jam di daftar tugas</div>
-            </div>
-          </div>
-          <div class="settings-item-value" id="timeFormatValue">12 Jam</div>
-        </div>
-        <div class="settings-item" data-setting="snoozeDuration">
-          <div class="settings-item-left">
-            <div class="settings-item-icon">💤</div>
-            <div class="settings-item-text">
-              <div class="settings-item-title">Durasi Tunda</div>
-              <div class="settings-item-desc">Lama penundaan alarm</div>
-            </div>
-          </div>
-          <div class="settings-item-value" id="snoozeValue">5 Menit</div>
-        </div>
-        <div class="settings-item" data-setting="particlesEnabled">
-          <div class="settings-item-left">
-            <div class="settings-item-icon">✨</div>
-            <div class="settings-item-text">
-              <div class="settings-item-title">Efek Partikel</div>
-              <div class="settings-item-desc">Partikel mengambang di latar</div>
-            </div>
-          </div>
-          <div class="toggle active" data-toggle="particlesEnabled"></div>
-        </div>
-        <div class="settings-item" data-setting="confettiEnabled">
-          <div class="settings-item-left">
-            <div class="settings-item-icon">🎉</div>
-            <div class="settings-item-text">
-              <div class="settings-item-title">Efek Confetti</div>
-              <div class="settings-item-desc">Ledakan saat tugas selesai</div>
-            </div>
-          </div>
-          <div class="toggle active" data-toggle="confettiEnabled"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Data -->
-    <div class="settings-section">
-      <div class="settings-section-title">💾 Data</div>
-      <div class="settings-list">
-        <div class="settings-item" id="settingsExport">
-          <div class="settings-item-left">
-            <div class="settings-item-icon">📥</div>
-            <div class="settings-item-text">
-              <div class="settings-item-title">Ekspor Data</div>
-              <div class="settings-item-desc">Simpan backup ke file JSON</div>
-            </div>
-          </div>
-          <div class="settings-item-value">→</div>
-        </div>
-        <div class="settings-item" id="settingsImport">
-          <div class="settings-item-left">
-            <div class="settings-item-icon">📤</div>
-            <div class="settings-item-text">
-              <div class="settings-item-title">Impor Data</div>
-              <div class="settings-item-desc">Muat dari file backup</div>
-            </div>
-          </div>
-          <div class="settings-item-value">→</div>
-        </div>
-        <div class="settings-item" id="settingsReset">
-          <div class="settings-item-left">
-            <div class="settings-item-icon" style="background: rgba(239, 68, 68, 0.15);">🗑️</div>
-            <div class="settings-item-text">
-              <div class="settings-item-title" style="color: var(--danger);">Reset Semua Data</div>
-              <div class="settings-item-desc">Hapus semua tugas & pengaturan</div>
-            </div>
-          </div>
-          <div class="settings-item-value">→</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Info -->
-    <div class="settings-section">
-      <div class="settings-section-title">ℹ️ Informasi</div>
-      <div class="settings-list">
-        <div class="settings-item" id="settingsAbout">
-          <div class="settings-item-left">
-            <div class="settings-item-icon">ℹ️</div>
-            <div class="settings-item-text">
-              <div class="settings-item-title">Tentang Aplikasi</div>
-              <div class="settings-item-desc">Versi, kredit, & lisensi</div>
-            </div>
-          </div>
-          <div class="settings-item-value">→</div>
-        </div>
-        <div class="settings-item" id="settingsHelp">
-          <div class="settings-item-left">
-            <div class="settings-item-icon">❓</div>
-            <div class="settings-item-text">
-              <div class="settings-item-title">Bantuan</div>
-              <div class="settings-item-desc">Panduan penggunaan</div>
-            </div>
-          </div>
-          <div class="settings-item-value">→</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- About Modal -->
-<div class="modal-overlay" id="aboutModal">
-  <div class="modal-card">
-    <button class="modal-close" data-close="aboutModal">✕</button>
-    <div class="about-logo">👑</div>
-    <div class="modal-title" style="margin-bottom: 4px;">Royal Schedule</div>
-    <div class="about-version">Ultimate Edition • v4.0.0</div>
-    
-    <div class="about-info">
-      <div class="about-info-row">
-        <span class="about-info-label">Versi</span>
-        <span class="about-info-value">4.0.0</span>
-      </div>
-      <div class="about-info-row">
-        <span class="about-info-label">Build</span>
-        <span class="about-info-value">2026.01.15</span>
-      </div>
-      <div class="about-info-row">
-        <span class="about-info-label">Developer</span>
-        <span class="about-info-value">Royal Studio</span>
-      </div>
-      <div class="about-info-row">
-        <span class="about-info-label">Lisensi</span>
-        <span class="about-info-value">Premium</span>
-      </div>
-      <div class="about-info-row">
-        <span class="about-info-label">Total Tugas</span>
-        <span class="about-info-value" id="aboutTaskCount">0</span>
-      </div>
-    </div>
-
-    <div style="text-align: center; color: var(--text-secondary); font-size: 0.8rem; line-height: 1.6; padding: 12px;">
-      Aplikasi penjadwalan premium dengan desain mewah dan fitur lengkap. Dirancang untuk produktivitas maksimal dengan pengalaman visual terbaik.
-    </div>
-
-    <button class="btn-royal" id="btnCloseAbout" style="margin-top: 16px;">Tutup</button>
-  </div>
-</div>
-
-<!-- Help Modal -->
-<div class="modal-overlay" id="helpModal">
-  <div class="modal-card">
-    <button class="modal-close" data-close="helpModal">✕</button>
-    <div class="modal-title">❓ Panduan Penggunaan</div>
-    
-    <div style="display: flex; flex-direction: column; gap: 12px;">
-      <div class="about-info">
-        <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">📝 Menambah Tugas</div>
-        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
-          Isi nama tugas, waktu, prioritas, hari, dan kategori. Klik tombol "Tambahkan" untuk menyimpan.
-        </div>
-      </div>
-      <div class="about-info">
-        <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">✅ Menyelesaikan Tugas</div>
-        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
-          Klik lingkaran di sebelah kiri tugas untuk menandai selesai. Akan muncul efek confetti!
-        </div>
-      </div>
-      <div class="about-info">
-        <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">📅 Memilih Hari</div>
-        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
-          Gunakan chip hari di atas untuk melihat jadwal per hari. Pilih "Setiap Hari" untuk tugas rutin.
-        </div>
-      </div>
-      <div class="about-info">
-        <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">🔍 Mencari Tugas</div>
-        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
-          Ketik di kolom pencarian untuk mencari tugas berdasarkan nama atau catatan.
-        </div>
-      </div>
-      <div class="about-info">
-        <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">⏰ Alarm</div>
-        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
-          Alarm otomatis berbunyi di waktu yang ditentukan. Anda bisa "Tunda" atau "Matikan".
-        </div>
-      </div>
-      <div class="about-info">
-        <div style="font-weight: 700; color: var(--accent-bright); margin-bottom: 8px;">🎯 Mode Fokus</div>
-        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
-          Klik "Mode Fokus" untuk hanya menampilkan 3 tugas terdekat. Membantu konsentrasi.
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Alarm Overlay -->
-<div class="alarm-overlay" id="alarmOverlay">
-  <div class="alarm-card">
-    <div class="alarm-icon">🔔</div>
-    <div class="alarm-title">Waktunya Tiba!</div>
-    <div class="alarm-task-name" id="alarmTaskName">Nama Tugas</div>
-    <div class="alarm-time" id="alarmTaskTime">00:00</div>
-    <button class="btn-stop" id="btnStopAlarm">✓ Selesaikan & Matikan</button>
-    <button class="btn-snooze" id="btnSnoozeAlarm">⏰ Tunda 5 Menit</button>
-  </div>
-</div>
-
-<script>
-const STORAGE_KEY = "royal_tasks_v5";
-const TRIGGERED_KEY = "royal_triggered_v5";
-const SETTINGS_KEY = "royal_settings_v5";
-const ACHIEVEMENTS_KEY = "royal_achievements_v5";
-
-let tasks = [];
-let triggeredMap = { date: getTodayKey(), ids: [] };
-let currentViewDay = getTodayName();
-let currentFilter = 'all';
-let searchQuery = '';
-let audioCtx = null;
-let beepInterval = null;
-let activeAlarmTask = null;
-let alarmQueue = [];
-let particlesAnimId = null;
-
-// Default settings
-const DEFAULT_SETTINGS = {
-  theme: 'gold',
-  sound: 'chime',
-  soundEnabled: true,
-  notificationEnabled: false,
-  vibrationEnabled: true,
-  timeFormat: '12', // '12' or '24'
-  snoozeDuration: 5, // minutes
-  particlesEnabled: true,
-  confettiEnabled: true
-};
-
-let settings = { ...DEFAULT_SETTINGS };
-let achievements = {};
-
-const els = {
-  clock: document.getElementById('liveClock'),
-  date: document.getElementById('liveDate'),
-  greeting: document.getElementById('greetingText'),
-  form: document.getElementById('taskForm'),
-  list: document.getElementById('taskList'),
-  count: document.getElementById('taskCount'),
-  listTitle: document.getElementById('listTitle'),
-  progressCircle: document.getElementById('progressCircle'),
-  progressPercent: document.getElementById('progressPercent'),
-  alarmOverlay: document.getElementById('alarmOverlay'),
-  alarmName: document.getElementById('alarmTaskName'),
-  alarmTime: document.getElementById('alarmTaskTime'),
-  btnStop: document.getElementById('btnStopAlarm'),
-  btnSnooze: document.getElementById('btnSnoozeAlarm'),
-  formCard: document.getElementById('formCard'),
-  daySelector: document.getElementById('daySelector'),
-  searchInput: document.getElementById('searchInput'),
-  toastContainer: document.getElementById('toastContainer'),
-  streakBadge: document.getElementById('streakBadge'),
-  streakCount: document.getElementById('streakCount')
-};
-
-function getTodayKey() { return new Date().toISOString().split('T')[0]; }
-function getTodayName() {
-  const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-  return days[new Date().getDay()];
-}
-function getDayLabel(dayKey) {
-  if (dayKey === 'daily') return 'Jadwal Setiap Hari';
-  const labels = { monday: 'Senin', tuesday: 'Selasa', wednesday: 'Rabu', thursday: 'Kamis', friday: 'Jumat', saturday: 'Sabtu', sunday: 'Minggu' };
-  return `Jadwal Hari ${labels[dayKey] || dayKey}`;
-}
-
-// --- Data ---
-function loadData() {
-  try {
-    tasks = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-    tasks = tasks.map(t => ({
-      completedDates: [],
-      scheduleType: 'daily',
-      dayOfWeek: null,
-      notes: '',
-      category: '',
-      order: 0,
-      ...t
-    }));
-    
-    const savedTriggered = JSON.parse(localStorage.getItem(TRIGGERED_KEY));
-    triggeredMap = (savedTriggered && savedTriggered.date === getTodayKey()) ? savedTriggered : { date: getTodayKey(), ids: [] };
-    
-    const savedSettings = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
-    settings = { ...DEFAULT_SETTINGS, ...savedSettings };
-    
-    achievements = JSON.parse(localStorage.getItem(ACHIEVEMENTS_KEY) || '{}');
-  } catch (e) {
-    tasks = [];
-  }
-}
-
-function saveData() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-  localStorage.setItem(TRIGGERED_KEY, JSON.stringify(triggeredMap));
-  localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
-  localStorage.setItem(ACHIEVEMENTS_KEY, JSON.stringify(achievements));
-}
-
-function isTaskDone(task) { return task.completedDates && task.completedDates.includes(getTodayKey()); }
-function isTaskForToday(task) { return task.scheduleType === 'daily' || task.dayOfWeek === getTodayName(); }
-function isTaskForView(task) { return currentViewDay === 'daily' || task.dayOfWeek === currentViewDay || task.scheduleType === 'daily'; }
-
-// --- Streak ---
-function calculateStreak() {
-  let streak = 0;
-  const today = new Date();
-  for (let i = 0; i < 365; i++) {
-    const d = new Date(today);
-    d.setDate(d.getDate() - i);
-    const key = d.toISOString().split('T')[0];
-    const tasksForDay = tasks.filter(t => {
-      if (t.scheduleType === 'specific' && t.dayOfWeek) {
-        const dayNames = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
-        return t.dayOfWeek === dayNames[d.getDay()];
-      }
-      return true;
-    });
-    if (tasksForDay.length === 0) { if (i === 0) continue; break; }
-    const allDone = tasksForDay.every(t => t.completedDates && t.completedDates.includes(key));
-    if (allDone) streak++; else break;
-  }
-  return streak;
-}
-
-function updateStreak() {
-  const streak = calculateStreak();
-  if (streak > (achievements.bestStreak || 0)) {
-    achievements.bestStreak = streak;
-    saveData();
-  }
-  if (streak > 0) {
-    els.streakBadge.style.display = 'inline-flex';
-    els.streakCount.textContent = streak;
-  } else {
-    els.streakBadge.style.display = 'none';
-  }
-}
-
-// --- Achievements ---
-const ACHIEVEMENT_DEFS = [
-  { id: 'first_task', name: 'Langkah Pertama', desc: 'Buat tugas pertamamu', icon: '🌟', check: () => tasks.length >= 1 },
-  { id: 'five_tasks', name: 'Perencana', desc: 'Buat 5 tugas', icon: '📝', check: () => tasks.length >= 5 },
-  { id: 'ten_tasks', name: 'Arsitek Waktu', desc: 'Buat 10 tugas', icon: '⏰', check: () => tasks.length >= 10 },
-  { id: 'first_complete', name: 'Penyelesai', desc: 'Selesaikan 1 tugas', icon: '✓', check: () => tasks.some(t => t.completedDates && t.completedDates.length > 0) },
-  { id: 'ten_complete', name: 'Produktif', desc: 'Selesaikan 10 tugas total', icon: '💪', check: () => tasks.reduce((s, t) => s + (t.completedDates?.length || 0), 0) >= 10 },
-  { id: 'fifty_complete', name: 'Master Produktivitas', desc: 'Selesaikan 50 tugas total', icon: '👑', check: () => tasks.reduce((s, t) => s + (t.completedDates?.length || 0), 0) >= 50 },
-  { id: 'streak_3', name: 'Konsisten', desc: 'Streak 3 hari', icon: '🔥', check: () => calculateStreak() >= 3 },
-  { id: 'streak_7', name: 'Disiplin Emas', desc: 'Streak 7 hari', icon: '🏆', check: () => calculateStreak() >= 7 },
-  { id: 'streak_30', name: 'Legendaris', desc: 'Streak 30 hari', icon: '💎', check: () => calculateStreak() >= 30 },
-  { id: 'perfect_day', name: 'Hari Sempurna', desc: 'Selesaikan semua tugas', icon: '⭐', check: () => {
-    const todayTasks = tasks.filter(isTaskForToday);
-    return todayTasks.length > 0 && todayTasks.every(isTaskDone);
-  }},
-  { id: 'early_bird', name: 'Early Bird', desc: 'Selesaikan tugas sebelum jam 9', icon: '🌅', check: () => tasks.some(t => {
-    const h = parseInt(t.time.split(':')[0]);
-    return h < 9 && t.completedDates && t.completedDates.length > 0;
-  })},
-  { id: 'night_owl', name: 'Night Owl', desc: 'Buat tugas di atas jam 10 malam', icon: '🦉', check: () => {
-    const h = new Date().getHours();
-    return h >= 22 && tasks.length > 0;
-  }}
-];
-
-function checkAchievements() {
-  ACHIEVEMENT_DEFS.forEach(def => {
-    if (!achievements[def.id] && def.check()) {
-      achievements[def.id] = Date.now();
-      saveData();
-      showToast(`🏆 Pencapaian Baru!`, def.name, def.icon);
-      if (settings.confettiEnabled) {
-        confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 }, colors: ['#d4af37', '#ffd700', '#ffffff'] });
-      }
-    }
-  });
-}
-
-function renderAchievements() {
-  const list = document.getElementById('achievementList');
-  list.innerHTML = ACHIEVEMENT_DEFS.map(def => {
-    const unlocked = !!achievements[def.id];
-    return `
-      <div class="achievement-item ${unlocked ? 'unlocked' : 'locked'}">
-        <div class="achievement-icon">${def.icon}</div>
-        <div class="achievement-info">
-          <div class="achievement-name">${def.name}</div>
-          <div class="achievement-desc">${def.desc}</div>
-        </div>
-      </div>
-    `;
-  }).join('');
-}
-
-// --- Toast ---
-function showToast(title, desc, icon = '✨') {
-  const toast = document.createElement('div');
-  toast.className = 'toast';
-  toast.innerHTML = `
-    <div class="toast-icon">${icon}</div>
-    <div class="toast-content">
-      <div class="toast-title">${title}</div>
-      <div class="toast-desc">${desc}</div>
-    </div>
-  `;
-  els.toastContainer.appendChild(toast);
-  setTimeout(() => toast.remove(), 4000);
-}
-
-// --- Theme ---
-function applyTheme(theme) {
-  if (theme === 'gold') document.documentElement.removeAttribute('data-theme');
-  else document.documentElement.setAttribute('data-theme', theme);
-  document.querySelectorAll('.theme-option').forEach(el => {
-    el.classList.toggle('active', el.dataset.theme === theme);
-  });
-}
-
-// --- Modals ---
-function openModal(id) {
-  document.getElementById(id).classList.add('active');
-}
-function closeModal(id) {
-  document.getElementById(id).classList.remove('active');
-}
-function closeAllModals() {
-  document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
-}
-
-// --- Stats ---
-function renderStats() {
-  document.getElementById('statTotal').textContent = tasks.length;
-  document.getElementById('statCompleted').textContent = tasks.reduce((s, t) => s + (t.completedDates?.length || 0), 0);
-  document.getElementById('statStreak').textContent = calculateStreak();
-  document.getElementById('statBest').textContent = achievements.bestStreak || 0;
-  
-  const chart = document.getElementById('weeklyChart');
-  const days = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
-  const today = new Date();
-  let maxCount = 1;
-  const weekData = [];
-  
-  for (let i = 6; i >= 0; i--) {
-    const d = new Date(today);
-    d.setDate(d.getDate() - i);
-    const key = d.toISOString().split('T')[0];
-    const count = tasks.reduce((s, t) => s + (t.completedDates?.includes(key) ? 1 : 0), 0);
-    weekData.push({ day: days[d.getDay()], count, isToday: i === 0 });
-    if (count > maxCount) maxCount = count;
-  }
-  
-  chart.innerHTML = weekData.map(d => {
-    const height = (d.count / maxCount) * 100;
-    return `
-      <div class="chart-bar-wrap">
-        <div class="chart-bar ${d.count === 0 ? 'empty' : ''}" style="height: ${Math.max(height, 3)}%;" title="${d.count} tugas"></div>
-        <div class="chart-label" style="${d.isToday ? 'color: var(--accent-bright); font-weight: 700;' : ''}">${d.day}</div>
-      </div>
-    `;
-  }).join('');
-  
-  const catStats = document.getElementById('categoryStats');
-  const categories = { '': 'Tanpa Kategori', work: '💼 Kerja', personal: '🏠 Pribadi', health: '💪 Kesehatan', study: '📚 Belajar', finance: '💰 Keuangan', social: '👥 Sosial' };
-  const catCounts = {};
-  tasks.forEach(t => {
-    const cat = t.category || '';
-    catCounts[cat] = (catCounts[cat] || 0) + 1;
-  });
-  
-  catStats.innerHTML = Object.keys(categories).map(key => {
-    const count = catCounts[key] || 0;
-    const percent = tasks.length > 0 ? (count / tasks.length) * 100 : 0;
-    return `
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <div style="flex: 1; font-size: 0.85rem; color: var(--text-secondary);">${categories[key]}</div>
-        <div style="flex: 3; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
-          <div style="width: ${percent}%; height: 100%; background: linear-gradient(90deg, var(--accent-bright), var(--accent-primary)); border-radius: 4px;"></div>
-        </div>
-        <div style="width: 30px; text-align: right; font-size: 0.8rem; color: var(--text-primary); font-weight: 600;">${count}</div>
-      </div>
-    `;
-  }).join('');
-}
-
-// --- Format Time ---
-function formatTaskTime(time) {
-  const [h, m] = time.split(':');
-  const hour = parseInt(h);
-  if (settings.timeFormat === '24') {
-    return `${h}:${m}`;
-  } else {
-    const ampm = hour >= 12 ? 'PM' : 'AM';
-    const displayHour = hour % 12 || 12;
-    return `${displayHour}:${m} ${ampm}`;
-  }
-}
-
-// --- Core Logic ---
-function handleAddTask(e) {
-  e.preventDefault();
-  const name = document.getElementById('taskName').value.trim();
-  const notes = document.getElementById('taskNotes').value.trim();
-  const time = document.getElementById('taskTime').value;
-  const priority = document.getElementById('taskPriority').value;
-  const day = document.getElementById('taskDay').value;
-  const category = document.getElementById('taskCategory').value;
-
-  if (!name || !time) return;
-
-  tasks.push({
-    id: crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).substr(2),
-    name, notes, time, priority, category,
-    scheduleType: day === 'daily' ? 'daily' : 'specific',
-    dayOfWeek: day === 'daily' ? null : day,
-    completedDates: [],
-    order: tasks.length
-  });
-
-  tasks.sort((a, b) => a.time.localeCompare(b.time));
-  saveData();
-  render();
-  checkAchievements();
-  els.form.reset();
-  document.getElementById('taskPriority').value = 'medium';
-  document.getElementById('taskDay').value = currentViewDay === 'daily' ? 'daily' : currentViewDay;
-  
-  showToast('Tugas Ditambahkan', name, '✓');
-  if (settings.vibrationEnabled && navigator.vibrate) navigator.vibrate(30);
-}
-
-function handleListClick(e) {
-  const item = e.target.closest('.task-item');
-  if (!item) return;
-  const id = item.dataset.id;
-  const task = tasks.find(t => t.id === id);
-  if (!task) return;
-
-  if (e.target.closest('.btn-icon.delete')) {
-    item.style.transform = 'translateX(100px)';
-    item.style.opacity = '0';
-    setTimeout(() => {
-      tasks = tasks.filter(t => t.id !== id);
-      saveData();
-      render();
-      showToast('Tugas Dihapus', task.name, '🗑️');
-    }, 300);
-  } else if (e.target.closest('.btn-icon.edit')) {
-    editTask(task);
-  } else {
-    if (!task.completedDates) task.completedDates = [];
-    const today = getTodayKey();
-    if (task.completedDates.includes(today)) {
-      task.completedDates = task.completedDates.filter(d => d !== today);
-    } else {
-      task.completedDates.push(today);
-      if (settings.confettiEnabled) triggerConfetti(item);
-      if (settings.vibrationEnabled && navigator.vibrate) navigator.vibrate([40, 40, 40]);
-    }
-    saveData();
-    render();
-    checkAchievements();
-    updateStreak();
-  }
-}
-
-function editTask(task) {
-  const newName = prompt('Nama Tugas:', task.name);
-  if (newName === null) return;
-  const newNotes = prompt('Catatan:', task.notes || '');
-  if (newNotes === null) return;
-  task.name = newName.trim() || task.name;
-  task.notes = newNotes.trim();
-  saveData();
-  render();
-  showToast('Tugas Diperbarui', task.name, '✏️');
-}
-
-function render() {
-  els.list.innerHTML = '';
-  els.listTitle.textContent = getDayLabel(currentViewDay);
-  
-  let viewTasks = tasks.filter(isTaskForView);
-  
-  if (currentFilter === 'high') viewTasks = viewTasks.filter(t => t.priority === 'high');
-  else if (currentFilter === 'pending') viewTasks = viewTasks.filter(t => !isTaskDone(t));
-  else if (currentFilter === 'done') viewTasks = viewTasks.filter(t => isTaskDone(t));
-  else if (currentFilter === 'focus') {
-    const now = new Date();
-    const currentHM = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
-    viewTasks = viewTasks.filter(t => !isTaskDone(t) && t.time >= currentHM).slice(0, 3);
-  }
-  
-  if (searchQuery) {
-    const q = searchQuery.toLowerCase();
-    viewTasks = viewTasks.filter(t => t.name.toLowerCase().includes(q) || (t.notes && t.notes.toLowerCase().includes(q)));
-  }
-  
-  const activeTasks = viewTasks.filter(t => !isTaskDone(t));
-  const completedTasks = viewTasks.filter(t => isTaskDone(t));
-  const displayTasks = [...activeTasks, ...completedTasks];
-
-  els.count.textContent = `${activeTasks.length} Aktif`;
-
-  if (viewTasks.length === 0) {
-    els.list.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-icon">👑</div>
-        <p>${searchQuery ? 'Tidak ada hasil pencarian.' : 'Belum ada jadwal untuk hari ini.<br>Rencanakan hari kejayaan Anda.'}</p>
-      </div>
-    `;
-    updateProgress(0, 0);
-    return;
-  }
-
-  const categoryLabels = { work: '💼', personal: '🏠', health: '💪', study: '📚', finance: '💰', social: '👥' };
-
-  displayTasks.forEach(task => {
-    const done = isTaskDone(task);
-    const li = document.createElement('li');
-    li.className = `task-item priority-${task.priority} ${done ? 'completed' : ''}`;
-    li.dataset.id = task.id;
-    li.draggable = true;
-    
-    const timeStr = formatTaskTime(task.time);
-    
-    let badges = '';
-    if (task.scheduleType === 'daily') badges += '<span class="mini-badge badge-daily">Harian</span>';
-    if (task.category && categoryLabels[task.category]) badges += `<span class="mini-badge badge-category">${categoryLabels[task.category]}</span>`;
-
-    li.innerHTML = `
-      <div class="priority-dot"></div>
-      <div class="task-checkbox"></div>
-      <div class="task-content">
-        <div class="task-time">${timeStr} ${badges}</div>
-        <div class="task-name">${escapeHtml(task.name)}</div>
-        ${task.notes ? `<div class="task-notes">${escapeHtml(task.notes)}</div>` : ''}
-      </div>
-      <div class="task-actions">
-        <button class="btn-icon edit" aria-label="Edit">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-        </button>
-        <button class="btn-icon delete" aria-label="Hapus">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-        </button>
-      </div>
-    `;
-    els.list.appendChild(li);
-  });
-
-  const todayTasks = tasks.filter(isTaskForToday);
-  const todayDone = todayTasks.filter(isTaskDone).length;
-  updateProgress(todayDone, todayTasks.length);
-  
-  setupDragAndDrop();
-}
-
-function updateProgress(done, total) {
-  const percent = total === 0 ? 0 : Math.round((done / total) * 100);
-  const circumference = 2 * Math.PI * 26;
-  const offset = circumference - (percent / 100) * circumference;
-  
-  els.progressCircle.style.strokeDashoffset = offset;
-  els.progressPercent.textContent = `${percent}%`;
-}
-
-// --- Drag & Drop ---
-let draggedItem = null;
-function setupDragAndDrop() {
-  document.querySelectorAll('.task-item').forEach(item => {
-    item.addEventListener('dragstart', (e) => {
-      draggedItem = item;
-      setTimeout(() => item.classList.add('dragging'), 0);
-    });
-    item.addEventListener('dragend', () => {
-      item.classList.remove('dragging');
-      document.querySelectorAll('.task-item').forEach(i => i.classList.remove('drag-over'));
-      draggedItem = null;
-    });
-    item.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      if (item !== draggedItem) item.classList.add('drag-over');
-    });
-    item.addEventListener('dragleave', () => item.classList.remove('drag-over'));
-    item.addEventListener('drop', (e) => {
-      e.preventDefault();
-      item.classList.remove('drag-over');
-      if (item !== draggedItem && draggedItem) {
-        const fromId = draggedItem.dataset.id;
-        const toId = item.dataset.id;
-        const fromIdx = tasks.findIndex(t => t.id === fromId);
-        const toIdx = tasks.findIndex(t => t.id === toId);
-        if (fromIdx > -1 && toIdx > -1) {
-          const [moved] = tasks.splice(fromIdx, 1);
-          tasks.splice(toIdx, 0, moved);
-          saveData();
-          render();
-        }
-      }
-    });
-  });
-}
-
-// --- Visual ---
-function updateGreeting() {
-  const hour = new Date().getHours();
-  let greet = "Selamat Malam";
-  if (hour >= 4 && hour < 11) greet = "Selamat Pagi";
-  else if (hour >= 11 && hour < 15) greet = "Selamat Siang";
-  else if (hour >= 15 && hour < 18) greet = "Selamat Sore";
-  els.greeting.textContent = `${greet}, Tuan`;
-}
-
-function tick() {
-  const now = new Date();
-  const h = String(now.getHours()).padStart(2, '0');
-  const m = String(now.getMinutes()).padStart(2, '0');
-  const s = String(now.getSeconds()).padStart(2, '0');
-  
-  els.clock.innerHTML = `${h}:${m}<span style="font-size:1.5rem; color:var(--text-secondary)">:${s}</span>`;
-  els.date.textContent = now.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
-  
-  checkAlarms(h, m);
-}
-
-function triggerConfetti(element) {
-  const rect = element.getBoundingClientRect();
-  confetti({
-    particleCount: 60, spread: 60,
-    origin: { x: (rect.left + rect.width / 2) / window.innerWidth, y: (rect.top + rect.height / 2) / window.innerHeight },
-    colors: ['#d4af37', '#ffd700', '#ffffff'], disableForReducedMotion: true, zIndex: 9999
-  });
-}
-
-function escapeHtml(text) {
-  const div = document.createElement('div'); div.textContent = text; return div.innerHTML;
-}
-
-// --- Day Selector ---
-function updateDaySelector() {
-  document.querySelectorAll('.day-chip').forEach(chip => {
-    chip.classList.toggle('today', chip.dataset.day === getTodayName());
-  });
-}
-
-els.daySelector.addEventListener('click', (e) => {
-  const chip = e.target.closest('.day-chip');
-  if (!chip) return;
-  document.querySelectorAll('.day-chip').forEach(c => c.classList.remove('active'));
-  chip.classList.add('active');
-  currentViewDay = chip.dataset.day;
-  document.getElementById('taskDay').value = currentViewDay;
-  render();
-});
-
-// --- Search & Filter ---
-els.searchInput.addEventListener('input', (e) => {
-  searchQuery = e.target.value;
-  render();
-});
-
-document.querySelectorAll('.quick-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentFilter = btn.dataset.filter;
-    render();
-    showToast('Filter Aktif', btn.textContent.trim(), '🔍');
-  });
-});
-
-// --- Alarm ---
-function checkAlarms(h, m) {
-  const currentHM = `${h}:${m}`;
-  const todayKey = getTodayKey();
-  
-  tasks.forEach(task => {
-    if (!isTaskForToday(task)) return;
-    if (isTaskDone(task)) return;
-    if (task.time !== currentHM) return;
-    
-    const triggerId = `${task.id}_${todayKey}`;
-    if (triggeredMap.ids.includes(triggerId)) return;
-    if (alarmQueue.includes(triggerId) || (activeAlarmTask && activeAlarmTask.triggerId === triggerId)) return;
-    
-    triggeredMap.ids.push(triggerId);
-    saveData();
-    triggerAlarm(task, triggerId);
-  });
-}
-
-function triggerAlarm(task, triggerId) {
-  alarmQueue.push(triggerId);
-  if (!activeAlarmTask) showNextAlarm();
-}
-
-function showNextAlarm() {
-  if (alarmQueue.length === 0) { activeAlarmTask = null; return; }
-  
-  const triggerId = alarmQueue.shift();
-  const taskId = triggerId.split('_')[0];
-  activeAlarmTask = { task: tasks.find(t => t.id === taskId), triggerId };
-  
-  if (!activeAlarmTask.task) { showNextAlarm(); return; }
-  
-  els.alarmName.textContent = activeAlarmTask.task.name;
-  els.alarmTime.textContent = activeAlarmTask.task.time;
-  els.alarmOverlay.classList.add('active');
-  
-  // Update snooze button text
-  els.btnSnooze.textContent = `⏰ Tunda ${settings.snoozeDuration} Menit`;
-  
-  if (settings.soundEnabled) playAlarmSound();
-  if (settings.notificationEnabled) sendNotification(activeAlarmTask.task);
-  if (settings.vibrationEnabled && navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 1000]);
-}
-
-function stopAlarm() {
-  stopAlarmSound();
-  els.alarmOverlay.classList.remove('active');
-  activeAlarmTask = null;
-  setTimeout(showNextAlarm, 300);
-}
-
-function snoozeAlarm() {
-  if (!activeAlarmTask) return;
-  stopAlarmSound();
-  els.alarmOverlay.classList.remove('active');
-  
-  const now = new Date();
-  now.setMinutes(now.getMinutes() + settings.snoozeDuration);
-  const newH = String(now.getHours()).padStart(2, '0');
-  const newM = String(now.getMinutes()).padStart(2, '0');
-  
-  activeAlarmTask.task.time = `${newH}:${newM}`;
-  triggeredMap.ids = triggeredMap.ids.filter(id => id !== activeAlarmTask.triggerId);
-  saveData();
-  
-  const taskName = activeAlarmTask.task.name;
-  activeAlarmTask = null;
-  showToast('Alarm Ditunda', `${taskName} → ${newH}:${newM}`, '⏰');
-  setTimeout(showNextAlarm, 300);
-}
-
-// --- Audio ---
-function ensureAudio() {
-  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  if (audioCtx.state === 'suspended') audioCtx.resume();
-  return audioCtx;
-}
-
-function playAlarmSound() {
-  const ctx = ensureAudio();
-  const now = ctx.currentTime;
-  
-  const sounds = {
-    chime: () => {
-      const playChime = (offset, freq = 523.25) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, now + offset);
-        osc.frequency.exponentialRampToValueAtTime(freq * 2, now + offset + 0.1);
-        gain.gain.setValueAtTime(0, now + offset);
-        gain.gain.linearRampToValueAtTime(0.3, now + offset + 0.05);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + offset + 1.5);
-        osc.connect(gain); gain.connect(ctx.destination);
-        osc.start(now + offset); osc.stop(now + offset + 1.5);
-      };
-      playChime(0); playChime(0.4); playChime(0.8);
-      beepInterval = setInterval(() => { const t = ctx.currentTime; playChime(t); playChime(t + 0.4); }, 2500);
-    },
-    bell: () => {
-      const playBell = (offset) => {
-        [830, 1245, 1660].forEach((freq, i) => {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = 'sine'; osc.frequency.value = freq;
-          gain.gain.setValueAtTime(0, now + offset);
-          gain.gain.linearRampToValueAtTime(0.15 / (i + 1), now + offset + 0.01);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + offset + 2);
-          osc.connect(gain); gain.connect(ctx.destination);
-          osc.start(now + offset); osc.stop(now + offset + 2);
-        });
-      };
-      playBell(0); playBell(0.8);
-      beepInterval = setInterval(() => { const t = ctx.currentTime; playBell(t); }, 2000);
-    },
-    gentle: () => {
-      const playTone = (offset, freq) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine'; osc.frequency.value = freq;
-        gain.gain.setValueAtTime(0, now + offset);
-        gain.gain.linearRampToValueAtTime(0.2, now + offset + 0.3);
-        gain.gain.linearRampToValueAtTime(0, now + offset + 1.5);
-        osc.connect(gain); gain.connect(ctx.destination);
-        osc.start(now + offset); osc.stop(now + offset + 1.5);
-      };
-      playTone(0, 392); playTone(0.5, 523.25); playTone(1, 659.25);
-      beepInterval = setInterval(() => { const t = ctx.currentTime; playTone(t, 392); playTone(t + 0.5, 523.25); }, 3000);
-    },
-    urgent: () => {
-      const playBeep = (offset) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'square'; osc.frequency.value = 880;
-        gain.gain.setValueAtTime(0, now + offset);
-        gain.gain.linearRampToValueAtTime(0.2, now + offset + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + offset + 0.3);
-        osc.connect(gain); gain.connect(ctx.destination);
-        osc.start(now + offset); osc.stop(now + offset + 0.3);
-      };
-      [0, 0.15, 0.3, 0.6, 0.75, 0.9].forEach(playBeep);
-      beepInterval = setInterval(() => { const t = ctx.currentTime; [0, 0.15, 0.3].forEach(o => playBeep(t + o)); }, 1500);
-    }
-  };
-  
-  (sounds[settings.sound] || sounds.chime)();
-}
-
-function stopAlarmSound() {
-  if (beepInterval) { clearInterval(beepInterval); beepInterval = null; }
-}
-
-function previewSound(sound) {
-  const ctx = ensureAudio();
-  const now = ctx.currentTime;
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.type = sound === 'urgent' ? 'square' : 'sine';
-  osc.frequency.value = sound === 'bell' ? 830 : sound === 'gentle' ? 392 : 523.25;
-  gain.gain.setValueAtTime(0, now);
-  gain.gain.linearRampToValueAtTime(0.2, now + 0.05);
-  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
-  osc.connect(gain); gain.connect(ctx.destination);
-  osc.start(now); osc.stop(now + 0.8);
-}
-
-function requestNotificationPermission() {
-  if ("Notification" in window && Notification.permission === "default") {
-    Notification.requestPermission().then(p => {
-      settings.notificationEnabled = (p === 'granted');
-      saveData();
-      updateSettingsUI();
-    });
-  }
-}
-
-function sendNotification(task) {
-  if ("Notification" in window && Notification.permission === "granted") {
-    new Notification("⏰ Jadwal Royal", { body: `Saatnya: ${task.name}`, tag: task.id });
-  }
-}
-
-// --- Data Management ---
-function exportData() {
-  const data = { tasks, settings, achievements, exportDate: new Date().toISOString() };
-  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
-  const a = document.createElement('a');
-  a.href = dataStr; a.download = `royal-schedule-${getTodayKey()}.json`;
-  document.body.appendChild(a); a.click(); a.remove();
-  showToast('Data Diekspor', 'File JSON telah diunduh', '📥');
-}
-
-function importDataFromFile(file) {
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    try {
-      const data = JSON.parse(e.target.result);
-      if (data.tasks && Array.isArray(data.tasks)) {
-        tasks = data.tasks;
-        if (data.settings) settings = { ...DEFAULT_SETTINGS, ...data.settings };
-        if (data.achievements) achievements = { ...achievements, ...data.achievements };
-        saveData();
-        applyTheme(settings.theme);
-        updateSettingsUI();
-        render();
-        showToast('Data Diimpor', `${tasks.length} tugas dimuat`, '📤');
-      } else if (Array.isArray(data)) {
-        tasks = data;
-        saveData();
-        render();
-        showToast('Data Diimpor', `${tasks.length} tugas dimuat`, '📤');
-      } else {
-        showToast('Gagal', 'Format file tidak valid', '❌');
-      }
-    } catch (err) {
-      showToast('Gagal', 'File JSON tidak valid', '❌');
-    }
-  };
-  reader.readAsText(file);
-}
-
-function clearAllData() {
-  if (confirm('⚠️ Yakin ingin menghapus SEMUA data?\n\nTugas, pengaturan, dan pencapaian akan dihapus permanen.')) {
-    localStorage.clear();
-    tasks = [];
-    triggeredMap = { date: getTodayKey(), ids: [] };
-    achievements = {};
-    settings = { ...DEFAULT_SETTINGS };
-    applyTheme('gold');
-    updateSettingsUI();
-    render();
-    updateStreak();
-    showToast('Data Direset', 'Semua data telah dihapus', '🗑️');
-    closeAllModals();
-  }
-}
-
-// --- Settings UI ---
-function updateSettingsUI() {
-  // Toggles
-  document.querySelectorAll('[data-toggle]').forEach(toggle => {
-    const key = toggle.dataset.toggle;
-    toggle.classList.toggle('active', !!settings[key]);
-  });
-  
-  // Notification status
-  const notifStatus = document.getElementById('notifStatus');
-  if ("Notification" in window) {
-    const p = Notification.permission;
-    if (p === 'granted') notifStatus.textContent = '✓ Diizinkan';
-    else if (p === 'denied') notifStatus.textContent = '✕ Ditolak';
-    else notifStatus.textContent = 'Belum diizinkan';
-  } else {
-    notifStatus.textContent = 'Tidak didukung';
-  }
-  
-  // Time format
-  document.getElementById('timeFormatValue').textContent = settings.timeFormat === '24' ? '24 Jam' : '12 Jam';
-  
-  // Snooze
-  document.getElementById('snoozeValue').textContent = `${settings.snoozeDuration} Menit`;
-  
-  // About task count
-  document.getElementById('aboutTaskCount').textContent = tasks.length;
-}
-
-function cycleTimeFormat() {
-  settings.timeFormat = settings.timeFormat === '12' ? '24' : '12';
-  saveData();
-  updateSettingsUI();
-  render();
-  showToast('Format Waktu', settings.timeFormat === '24' ? '24 Jam' : '12 Jam', '⏰');
-}
-
-function cycleSnoozeDuration() {
-  const durations = [5, 10, 15, 30];
-  const idx = durations.indexOf(settings.snoozeDuration);
-  settings.snoozeDuration = durations[(idx + 1) % durations.length];
-  saveData();
-  updateSettingsUI();
-  showToast('Durasi Tunda', `${settings.snoozeDuration} Menit`, '💤');
-}
-
-function toggleSetting(key) {
-  if (key === 'notificationEnabled') {
-    if ("Notification" in window) {
-      if (Notification.permission === 'default') {
-        Notification.requestPermission().then(p => {
-          settings.notificationEnabled = (p === 'granted');
-          saveData();
-          updateSettingsUI();
-          if (p === 'granted') showToast('Notifikasi Aktif', 'Izin diberikan', '🔔');
-          else showToast('Notifikasi Ditolak', 'Aktifkan di pengaturan browser', '⚠️');
-        });
-      } else if (Notification.permission === 'denied') {
-        showToast('Tidak Bisa', 'Izin ditolak di browser', '⚠️');
-      } else {
-        settings.notificationEnabled = !settings.notificationEnabled;
-        saveData();
-        updateSettingsUI();
-      }
-    } else {
-      showToast('Tidak Didukung', 'Browser tidak mendukung notifikasi', '⚠️');
-    }
-    return;
-  }
-  
-  settings[key] = !settings[key];
-  saveData();
-  updateSettingsUI();
-  
-  if (key === 'particlesEnabled') {
-    if (settings.particlesEnabled) startParticles();
-    else stopParticles();
-  }
-  
-  const labels = {
-    soundEnabled: 'Suara Alarm',
-    vibrationEnabled: 'Getaran',
-    particlesEnabled: 'Efek Partikel',
-    confettiEnabled: 'Efek Confetti'
-  };
-  showToast(labels[key] || key, settings[key] ? 'Aktif' : 'Nonaktif', settings[key] ? '✓' : '✕');
-}
-
-// --- Particles ---
-let particles = [];
-function initParticles() {
-  const canvas = document.getElementById('particles-canvas');
-  const ctx = canvas.getContext('2d');
-  
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-  
-  for (let i = 0; i < 30; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      size: Math.random() * 2 + 0.5,
-      speedX: (Math.random() - 0.5) * 0.3,
-      speedY: (Math.random() - 0.5) * 0.3,
-      opacity: Math.random() * 0.5 + 0.1
-    });
-  }
-  
-  function animate() {
-    if (!settings.particlesEnabled) {
-      particlesAnimId = requestAnimationFrame(animate);
-      return;
-    }
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const style = getComputedStyle(document.documentElement);
-    const color = style.getPropertyValue('--accent-primary').trim() || '#d4af37';
-    
-    particles.forEach(p => {
-      p.x += p.speedX;
-      p.y += p.speedY;
-      if (p.x < 0) p.x = canvas.width;
-      if (p.x > canvas.width) p.x = 0;
-      if (p.y < 0) p.y = canvas.height;
-      if (p.y > canvas.height) p.y = 0;
+    const DEFAULT_SETTINGS = {  
+      theme: 'gold',  
+      sound: 'chime',  
+      soundEnabled: true,  
+      notificationEnabled: false,  
+      vibrationEnabled: true,  
+      timeFormat: '12',  
+      snoozeDuration: 5,  
+      particlesEnabled: true,  
+      confettiEnabled: true  
+    };  
       
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = color;
-      ctx.globalAlpha = p.opacity;
-      ctx.fill();
-    });
-    ctx.globalAlpha = 1;
-    particlesAnimId = requestAnimationFrame(animate);
-  }
-  animate();
-}
-
-function startParticles() { /* handled in animate loop */ }
-function stopParticles() {
-  const canvas = document.getElementById('particles-canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
-
-// --- Event Bindings ---
-document.addEventListener('click', () => { ensureAudio(); }, { once: true });
-
-// Form & List
-els.form.addEventListener('submit', handleAddTask);
-els.list.addEventListener('click', handleListClick);
-
-// Alarm buttons
-els.btnStop.addEventListener('click', stopAlarm);
-els.btnSnooze.addEventListener('click', snoozeAlarm);
-
-// Top bar buttons - each opens different modal
-document.getElementById('btnTheme').addEventListener('click', () => openModal('themeModal'));
-document.getElementById('btnStats').addEventListener('click', () => { renderStats(); openModal('statsModal'); });
-document.getElementById('btnAchievements').addEventListener('click', () => { renderAchievements(); openModal('achievementsModal'); });
-document.getElementById('btnSettings').addEventListener('click', () => { updateSettingsUI(); openModal('settingsModal'); });
-document.getElementById('btnAbout').addEventListener('click', () => { updateSettingsUI(); openModal('aboutModal'); });
-document.getElementById('btnProgress').addEventListener('click', () => { renderStats(); openModal('statsModal'); });
-
-// Bottom bar buttons
-document.getElementById('btnExport').addEventListener('click', exportData);
-document.getElementById('btnImport').addEventListener('click', () => document.getElementById('importFile').click());
-document.getElementById('importFile').addEventListener('change', (e) => {
-  if (e.target.files[0]) {
-    importDataFromFile(e.target.files[0]);
-    e.target.value = '';
-  }
-});
-document.getElementById('btnReset').addEventListener('click', clearAllData);
-
-// Close modal buttons
-document.querySelectorAll('[data-close]').forEach(btn => {
-  btn.addEventListener('click', () => closeModal(btn.dataset.close));
-});
-
-// Close on overlay click
-document.querySelectorAll('.modal-overlay').forEach(modal => {
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) modal.classList.remove('active');
-  });
-});
-
-// Theme options
-document.querySelectorAll('.theme-option').forEach(opt => {
-  opt.addEventListener('click', () => {
-    settings.theme = opt.dataset.theme;
-    applyTheme(settings.theme);
-    saveData();
-    showToast('Tema Diubah', opt.dataset.name, '🎨');
-  });
-});
-
-// Sound options
-document.querySelectorAll('.sound-option').forEach(opt => {
-  opt.addEventListener('click', () => {
-    document.querySelectorAll('.sound-option').forEach(o => o.classList.remove('active'));
-    opt.classList.add('active');
-    settings.sound = opt.dataset.sound;
-    saveData();
-    previewSound(settings.sound);
-    showToast('Suara Alarm', opt.querySelector('.sound-option-name').textContent, '🔊');
-  });
-  const previewBtn = opt.querySelector('.sound-option-preview');
-  if (previewBtn) {
-    previewBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      previewSound(opt.dataset.sound);
-    });
-  }
-});
-
-// Settings toggles
-document.querySelectorAll('[data-toggle]').forEach(toggle => {
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleSetting(toggle.dataset.toggle);
-  });
-});
-
-// Settings items (non-toggle)
-document.querySelectorAll('.settings-item').forEach(item => {
-  const key = item.dataset.setting;
-  if (!key) return;
-  if (item.querySelector('.toggle')) return; // handled above
-  
-  item.addEventListener('click', () => {
-    if (key === 'timeFormat') cycleTimeFormat();
-    else if (key === 'snoozeDuration') cycleSnoozeDuration();
-  });
-});
-
-// Settings special actions
-document.getElementById('settingsExport').addEventListener('click', () => {
-  exportData();
-});
-document.getElementById('settingsImport').addEventListener('click', () => {
-  document.getElementById('importFile').click();
-});
-document.getElementById('settingsReset').addEventListener('click', () => {
-  clearAllData();
-});
-document.getElementById('settingsAbout').addEventListener('click', () => {
-  closeModal('settingsModal');
-  setTimeout(() => openModal('aboutModal'), 200);
-});
-document.getElementById('settingsHelp').addEventListener('click', () => {
-  closeModal('settingsModal');
-  setTimeout(() => openModal('helpModal'), 200);
-});
-
-// About modal
-document.getElementById('btnCloseAbout').addEventListener('click', () => closeModal('aboutModal'));
-
-// --- Init ---
-loadData();
-applyTheme(settings.theme);
-updateGreeting();
-updateDaySelector();
-updateSettingsUI();
-render();
-updateStreak();
-requestNotificationPermission();
-initParticles();
-checkAchievements();
-
-setInterval(tick, 1000);
-setInterval(() => { updateStreak(); checkAchievements(); }, 60000);
-tick();
-</script>
-</body>
+    let settings = { ...DEFAULT_SETTINGS };  
+    let achievements = {};  
+      
+    const els = {  
+      clock: document.getElementById('liveClock'),  
+      date: document.getElementById('liveDate'),  
+      greeting: document.getElementById('greetingText'),  
+      form: document.getElementById('taskForm'),  
+      list: document.getElementById('taskList'),  
+      count: document.getElementById('taskCount'),  
+      listTitle: document.getElementById('listTitle'),  
+      progressCircle: document.getElementById('progressCircle'),  
+      progressPercent: document.getElementById('progressPercent'),  
+      alarmOverlay: document.getElementById('alarmOverlay'),  
+      alarmName: document.getElementById('alarmTaskName'),  
+      alarmTime: document.getElementById('alarmTaskTime'),  
+      btnStop: document.getElementById('btnStopAlarm'),  
+      btnSnooze: document.getElementById('btnSnoozeAlarm'),  
+      formCard: document.getElementById('formCard'),  
+      daySelector: document.getElementById('daySelector'),  
+      searchInput: document.getElementById('searchInput'),  
+      toastContainer: document.getElementById('toastContainer'),  
+      streakBadge: document.getElementById('streakBadge'),  
+      streakCount: document.getElementById('streakCount')  
+    };  
+      
+    function getTodayKey() { return new Date().toISOString().split('T')[0]; }  
+    function getTodayName() {  
+      const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];  
+      return days[new Date().getDay()];  
+    }  
+    function getDayLabel(dayKey) {  
+      if (dayKey === 'daily') return 'Jadwal Setiap Hari';  
+      const labels = { monday: 'Senin', tuesday: 'Selasa', wednesday: 'Rabu', thursday: 'Kamis', friday: 'Jumat', saturday: 'Sabtu', sunday: 'Minggu' };  
+      return `Jadwal Hari ${labels[dayKey] || dayKey}`;  
+    }  
+      
+    function loadData() {  
+      try {  
+        tasks = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];  
+        tasks = tasks.map(t => ({  
+          completedDates: [],  
+          scheduleType: 'daily',  
+          dayOfWeek: null,  
+          notes: '',  
+          category: '',  
+          order: 0,  
+          ...t  
+        }));  
+        const savedTriggered = JSON.parse(localStorage.getItem(TRIGGERED_KEY));  
+        triggeredMap = (savedTriggered && savedTriggered.date === getTodayKey()) ? savedTriggered : { date: getTodayKey(), ids: [] };  
+        const savedSettings = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');  
+        settings = { ...DEFAULT_SETTINGS, ...savedSettings };  
+        achievements = JSON.parse(localStorage.getItem(ACHIEVEMENTS_KEY) || '{}');  
+      } catch (e) {  
+        tasks = [];  
+      }  
+    }  
+      
+    function saveData() {  
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));  
+      localStorage.setItem(TRIGGERED_KEY, JSON.stringify(triggeredMap));  
+      localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));  
+      localStorage.setItem(ACHIEVEMENTS_KEY, JSON.stringify(achievements));  
+    }  
+      
+    function isTaskDone(task) { return task.completedDates && task.completedDates.includes(getTodayKey()); }  
+    function isTaskForToday(task) { return task.scheduleType === 'daily' || task.dayOfWeek === getTodayName(); }  
+    function isTaskForView(task) { return currentViewDay === 'daily' || task.dayOfWeek === currentViewDay || task.scheduleType === 'daily'; }  
+      
+    function calculateStreak() {  
+      let streak = 0;  
+      const today = new Date();  
+      for (let i = 0; i < 365; i++) {  
+        const d = new Date(today);  
+        d.setDate(d.getDate() - i);  
+        const key = d.toISOString().split('T')[0];  
+        const tasksForDay = tasks.filter(t => {  
+          if (t.scheduleType === 'specific' && t.dayOfWeek) {  
+            const dayNames = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];  
+            return t.dayOfWeek === dayNames[d.getDay()];  
+          }  
+          return true;  
+        });  
+        if (tasksForDay.length === 0) { if (i === 0) continue; break; }  
+        const allDone = tasksForDay.every(t => t.completedDates && t.completedDates.includes(key));  
+        if (allDone) streak++; else break;  
+      }  
+      return streak;  
+    }  
+      
+    function updateStreak() {  
+      const streak = calculateStreak();  
+      if (streak > (achievements.bestStreak || 0)) {  
+        achievements.bestStreak = streak;  
+        saveData();  
+      }  
+      if (streak > 0) {  
+        els.streakBadge.style.display = 'inline-flex';  
+        els.streakCount.textContent = streak;  
+      } else {  
+        els.streakBadge.style.display = 'none';  
+      }  
+    }  
+      
+    const ACHIEVEMENT_DEFS = [  
+      { id: 'first_task', name: 'Langkah Pertama', desc: 'Buat tugas pertamamu', icon: '🌟', check: () => tasks.length >= 1 },  
+      { id: 'five_tasks', name: 'Perencana', desc: 'Buat 5 tugas', icon: '📝', check: () => tasks.length >= 5 },  
+      { id: 'ten_tasks', name: 'Arsitek Waktu', desc: 'Buat 10 tugas', icon: '⏰', check: () => tasks.length >= 10 },  
+      { id: 'first_complete', name: 'Penyelesai', desc: 'Selesaikan 1 tugas', icon: '✓', check: () => tasks.some(t => t.completedDates && t.completedDates.length > 0) },  
+      { id: 'ten_complete', name: 'Produktif', desc: 'Selesaikan 10 tugas total', icon: '💪', check: () => tasks.reduce((s, t) => s + (t.completedDates?.length || 0), 0) >= 10 },  
+      { id: 'fifty_complete', name: 'Master Produktivitas', desc: 'Selesaikan 50 tugas total', icon: '👑', check: () => tasks.reduce((s, t) => s + (t.completedDates?.length || 0), 0) >= 50 },  
+      { id: 'streak_3', name: 'Konsisten', desc: 'Streak 3 hari', icon: '🔥', check: () => calculateStreak() >= 3 },  
+      { id: 'streak_7', name: 'Disiplin Emas', desc: 'Streak 7 hari', icon: '🏆', check: () => calculateStreak() >= 7 },  
+      { id: 'streak_30', name: 'Legendaris', desc: 'Streak 30 hari', icon: '💎', check: () => calculateStreak() >= 30 },  
+      { id: 'perfect_day', name: 'Hari Sempurna', desc: 'Selesaikan semua tugas', icon: '⭐', check: () => {  
+        const todayTasks = tasks.filter(isTaskForToday);  
+        return todayTasks.length > 0 && todayTasks.every(isTaskDone);  
+      }},  
+      { id: 'early_bird', name: 'Early Bird', desc: 'Selesaikan tugas sebelum jam 9', icon: '🌅', check: () => tasks.some(t => {  
+        const h = parseInt(t.time.split(':')[0]);  
+        return h < 9 && t.completedDates && t.completedDates.length > 0;  
+      })},  
+      { id: 'night_owl', name: 'Night Owl', desc: 'Buat tugas di atas jam 10 malam', icon: '🦉', check: () => {  
+        const h = new Date().getHours();  
+        return h >= 22 && tasks.length > 0;  
+      }}  
+    ];  
+      
+    function checkAchievements() {  
+      ACHIEVEMENT_DEFS.forEach(def => {  
+        if (!achievements[def.id] && def.check()) {  
+          achievements[def.id] = Date.now();  
+          saveData();  
+          showToast(`🏆 Pencapaian Baru!`, def.name, def.icon);  
+          if (settings.confettiEnabled) {  
+            confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 }, colors: ['#d4af37', '#ffd700', '#ffffff'] });  
+          }  
+        }  
+      });  
+    }  
+      
+    function renderAchievements() {  
+      const list = document.getElementById('achievementList');  
+      list.innerHTML = ACHIEVEMENT_DEFS.map(def => {  
+        const unlocked = !!achievements[def.id];  
+        return `  
+          <div class="achievement-item ${unlocked ? 'unlocked' : 'locked'}">  
+            <div class="achievement-icon">${def.icon}</div>  
+            <div class="achievement-info">  
+              <div class="achievement-name">${def.name}</div>  
+              <div class="achievement-desc">${def.desc}</div>  
+            </div>  
+          </div>  
+        `;  
+      }).join('');  
+    }  
+      
+    function showToast(title, desc, icon = '✨') {  
+      const toast = document.createElement('div');  
+      toast.className = 'toast';  
+      toast.innerHTML = `  
+        <div class="toast-icon">${icon}</div>  
+        <div class="toast-content">  
+          <div class="toast-title">${title}</div>  
+          <div class="toast-desc">${desc}</div>  
+        </div>  
+      `;  
+      els.toastContainer.appendChild(toast);  
+      setTimeout(() => toast.remove(), 4000);  
+    }  
+      
+    function applyTheme(theme) {  
+      if (theme === 'gold') document.documentElement.removeAttribute('data-theme');  
+      else document.documentElement.setAttribute('data-theme', theme);  
+      document.querySelectorAll('.theme-option').forEach(el => {  
+        el.classList.toggle('active', el.dataset.theme === theme);  
+      });  
+    }  
+      
+    function openModal(id) { document.getElementById(id).classList.add('active'); }  
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }  
+    function closeAllModals() { document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active')); }  
+      
+    function renderStats() {  
+      document.getElementById('statTotal').textContent = tasks.length;  
+      document.getElementById('statCompleted').textContent = tasks.reduce((s, t) => s + (t.completedDates?.length || 0), 0);  
+      document.getElementById('statStreak').textContent = calculateStreak();  
+      document.getElementById('statBest').textContent = achievements.bestStreak || 0;  
+      const chart = document.getElementById('weeklyChart');  
+      const days = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];  
+      const today = new Date();  
+      let maxCount = 1;  
+      const weekData = [];  
+      for (let i = 6; i >= 0; i--) {  
+        const d = new Date(today);  
+        d.setDate(d.getDate() - i);  
+        const key = d.toISOString().split('T')[0];  
+        const count = tasks.reduce((s, t) => s + (t.completedDates?.includes(key) ? 1 : 0), 0);  
+        weekData.push({ day: days[d.getDay()], count, isToday: i === 0 });  
+        if (count > maxCount) maxCount = count;  
+      }  
+      chart.innerHTML = weekData.map(d => {  
+        const height = (d.count / maxCount) * 100;  
+        return `  
+          <div class="chart-bar-wrap">  
+            <div class="chart-bar ${d.count === 0 ? 'empty' : ''}" style="height: ${Math.max(height, 3)}%;" title="${d.count} tugas"></div>  
+            <div class="chart-label" style="${d.isToday ? 'color: var(--accent-bright); font-weight: 700;' : ''}">${d.day}</div>  
+          </div>  
+        `;  
+      }).join('');  
+      const catStats = document.getElementById('categoryStats');  
+      const categories = { '': 'Tanpa Kategori', work: '💼 Kerja', personal: '🏠 Pribadi', health: '💪 Kesehatan', study: '📚 Belajar', finance: '💰 Keuangan', social: '👥 Sosial' };  
+      const catCounts = {};  
+      tasks.forEach(t => {  
+        const cat = t.category || '';  
+        catCounts[cat] = (catCounts[cat] || 0) + 1;  
+      });  
+      catStats.innerHTML = Object.keys(categories).map(key => {  
+        const count = catCounts[key] || 0;  
+        const percent = tasks.length > 0 ? (count / tasks.length) * 100 : 0;  
+        return `  
+          <div style="display: flex; align-items: center; gap: 10px;">  
+            <div style="flex: 1; font-size: 0.85rem; color: var(--text-secondary);">${categories[key]}</div>  
+            <div style="flex: 3; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">  
+              <div style="width: ${percent}%; height: 100%; background: linear-gradient(90deg, var(--accent-bright), var(--accent-primary)); border-radius: 4px;"></div>  
+            </div>  
+            <div style="width: 30px; text-align: right; font-size: 0.8rem; color: var(--text-primary); font-weight: 600;">${count}</div>  
+          </div>  
+        `;  
+      }).join('');  
+    }  
+      
+    function formatTaskTime(time) {  
+      const [h, m] = time.split(':');  
+      const hour = parseInt(h);  
+      if (settings.timeFormat === '24') {  
+        return `${h}:${m}`;  
+      } else {  
+        const ampm = hour >= 12 ? 'PM' : 'AM';  
+        const displayHour = hour % 12 || 12;  
+        return `${displayHour}:${m} ${ampm}`;  
+      }  
+    }  
+      
+    function handleAddTask(e) {  
+      e.preventDefault();  
+      const name = document.getElementById('taskName').value.trim();  
+      const notes = document.getElementById('taskNotes').value.trim();  
+      const time = document.getElementById('taskTime').value;  
+      const priority = document.getElementById('taskPriority').value;  
+      const day = document.getElementById('taskDay').value;  
+      const category = document.getElementById('taskCategory').value;  
+      if (!name || !time) return;  
+      tasks.push({  
+        id: crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).substr(2),  
+        name, notes, time, priority, category,  
+        scheduleType: day === 'daily' ? 'daily' : 'specific',  
+        dayOfWeek: day === 'daily' ? null : day,  
+        completedDates: [],  
+        order: tasks.length  
+      });  
+      tasks.sort((a, b) => a.time.localeCompare(b.time));  
+      saveData();  
+      render();  
+      checkAchievements();  
+      els.form.reset();  
+      document.getElementById('taskPriority').value = 'medium';  
+      document.getElementById('taskDay').value = currentViewDay === 'daily' ? 'daily' : currentViewDay;  
+      showToast('Tugas Ditambahkan', name, '✓');  
+      if (settings.vibrationEnabled && navigator.vibrate) navigator.vibrate(30);  
+    }  
+      
+    function handleListClick(e) {  
+      const item = e.target.closest('.task-item');  
+      if (!item) return;  
+      const id = item.dataset.id;  
+      const task = tasks.find(t => t.id === id);  
+      if (!task) return;  
+      if (e.target.closest('.btn-icon.delete')) {  
+        item.style.transform = 'translateX(100px)';  
+        item.style.opacity = '0';  
+        setTimeout(() => {  
+          tasks = tasks.filter(t => t.id !== id);  
+          saveData();  
+          render();  
+          showToast('Tugas Dihapus', task.name, '🗑️');  
+        }, 300);  
+      } else if (e.target.closest('.btn-icon.edit')) {  
+        editTask(task);  
+      } else {  
+        if (!task.completedDates) task.completedDates = [];  
+        const today = getTodayKey();  
+        if (task.completedDates.includes(today)) {  
+          task.completedDates = task.completedDates.filter(d => d !== today);  
+        } else {  
+          task.completedDates.push(today);  
+          if (settings.confettiEnabled) triggerConfetti(item);  
+          if (settings.vibrationEnabled && navigator.vibrate) navigator.vibrate([40, 40, 40]);  
+        }  
+        saveData();  
+        render();  
+        checkAchievements();  
+        updateStreak();  
+      }  
+    }  
+      
+    function editTask(task) {  
+      const newName = prompt('Nama Tugas:', task.name);  
+      if (newName === null) return;  
+      const newNotes = prompt('Catatan:', task.notes || '');  
+      if (newNotes === null) return;  
+      task.name = newName.trim() || task.name;  
+      task.notes = newNotes.trim();  
+      saveData();  
+      render();  
+      showToast('Tugas Diperbarui', task.name, '✏️');  
+    }  
+      
+    function render() {  
+      els.list.innerHTML = '';  
+      els.listTitle.textContent = getDayLabel(currentViewDay);  
+      let viewTasks = tasks.filter(isTaskForView);  
+      if (currentFilter === 'high') viewTasks = viewTasks.filter(t => t.priority === 'high');  
+      else if (currentFilter === 'pending') viewTasks = viewTasks.filter(t => !isTaskDone(t));  
+      else if (currentFilter === 'done') viewTasks = viewTasks.filter(t => isTaskDone(t));  
+      else if (currentFilter === 'focus') {  
+        const now = new Date();  
+        const currentHM = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;  
+        viewTasks = viewTasks.filter(t => !isTaskDone(t) && t.time >= currentHM).slice(0, 3);  
+      }  
+      if (searchQuery) {  
+        const q = searchQuery.toLowerCase();  
+        viewTasks = viewTasks.filter(t => t.name.toLowerCase().includes(q) || (t.notes && t.notes.toLowerCase().includes(q)));  
+      }  
+      const activeTasks = viewTasks.filter(t => !isTaskDone(t));  
+      const completedTasks = viewTasks.filter(t => isTaskDone(t));  
+      const displayTasks = [...activeTasks, ...completedTasks];  
+      els.count.textContent = `${activeTasks.length} Aktif`;  
+      if (viewTasks.length === 0) {  
+        els.list.innerHTML = `  
+          <div class="empty-state">  
+            <div class="empty-icon">👑</div>  
+            <p>${searchQuery ? 'Tidak ada hasil pencarian.' : 'Belum ada jadwal untuk hari ini.<br>Rencanakan hari kejayaan Anda.'}</p>  
+          </div>  
+        `;  
+        updateProgress(0, 0);  
+        return;  
+      }  
+      const categoryLabels = { work: '💼', personal: '🏠', health: '💪', study: '📚', finance: '💰', social: '👥' };  
+      displayTasks.forEach(task => {  
+        const done = isTaskDone(task);  
+        const li = document.createElement('li');  
+        li.className = `task-item priority-${task.priority} ${done ? 'completed' : ''}`;  
+        li.dataset.id = task.id;  
+        li.draggable = true;  
+        const timeStr = formatTaskTime(task.time);  
+        let badges = '';  
+        if (task.scheduleType === 'daily') badges += '<span class="mini-badge badge-daily">Harian</span>';  
+        if (task.category && categoryLabels[task.category]) badges += `<span class="mini-badge badge-category">${categoryLabels[task.category]}</span>`;  
+        li.innerHTML = `  
+          <div class="priority-dot"></div>  
+          <div class="task-checkbox"></div>  
+          <div class="task-content">  
+            <div class="task-time">${timeStr} ${badges}</div>  
+            <div class="task-name">${escapeHtml(task.name)}</div>  
+            ${task.notes ? `<div class="task-notes">${escapeHtml(task.notes)}</div>` : ''}  
+          </div>  
+          <div class="task-actions">  
+            <button class="btn-icon edit" aria-label="Edit">  
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>  
+            </button>  
+            <button class="btn-icon delete" aria-label="Hapus">  
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>  
+            </button>  
+          </div>  
+        `;  
+        els.list.appendChild(li);  
+      });  
+      const todayTasks = tasks.filter(isTaskForToday);  
+      const todayDone = todayTasks.filter(isTaskDone).length;  
+      updateProgress(todayDone, todayTasks.length);  
+      setupDragAndDrop();  
+    }  
+      
+    function updateProgress(done, total) {  
+      const percent = total === 0 ? 0 : Math.round((done / total) * 100);  
+      const circumference = 2 * Math.PI * 26;  
+      const offset = circumference - (percent / 100) * circumference;  
+      els.progressCircle.style.strokeDashoffset = offset;  
+      els.progressPercent.textContent = `${percent}%`;  
+    }  
+      
+    let draggedItem = null;  
+    function setupDragAndDrop() {  
+      document.querySelectorAll('.task-item').forEach(item => {  
+        item.addEventListener('dragstart', (e) => {  
+          draggedItem = item;  
+          setTimeout(() => item.classList.add('dragging'), 0);  
+        });  
+        item.addEventListener('dragend', () => {  
+          item.classList.remove('dragging');  
+          document.querySelectorAll('.task-item').forEach(i => i.classList.remove('drag-over'));  
+          draggedItem = null;  
+        });  
+        item.addEventListener('dragover', (e) => {  
+          e.preventDefault();  
+          if (item !== draggedItem) item.classList.add('drag-over');  
+        });  
+        item.addEventListener('dragleave', () => item.classList.remove('drag-over'));  
+        item.addEventListener('drop', (e) => {  
+          e.preventDefault();  
+          item.classList.remove('drag-over');  
+          if (item !== draggedItem && draggedItem) {  
+            const fromId = draggedItem.dataset.id;  
+            const toId = item.dataset.id;  
+            const fromIdx = tasks.findIndex(t => t.id === fromId);  
+            const toIdx = tasks.findIndex(t => t.id === toId);  
+            if (fromIdx > -1 && toIdx > -1) {  
+              const [moved] = tasks.splice(fromIdx, 1);  
+              tasks.splice(toIdx, 0, moved);  
+              saveData();  
+              render();  
+            }  
+          }  
+        });  
+      });  
+    }  
+      
+    function updateGreeting() {  
+      const hour = new Date().getHours();  
+      let greet = "Selamat Malam";  
+      if (hour >= 4 && hour < 11) greet = "Selamat Pagi";  
+      else if (hour >= 11 && hour < 15) greet = "Selamat Siang";  
+      else if (hour >= 15 && hour < 18) greet = "Selamat Sore";  
+      els.greeting.textContent = `${greet}, Tuan`;  
+    }  
+      
+    function tick() {  
+      const now = new Date();  
+      const h = String(now.getHours()).padStart(2, '0');  
+      const m = String(now.getMinutes()).padStart(2, '0');  
+      const s = String(now.getSeconds()).padStart(2, '0');  
+      els.clock.innerHTML = `${h}:${m}<span style="font-size:1.5rem; color:var(--text-secondary)">:${s}</span>`;  
+      els.date.textContent = now.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });  
+      checkAlarms(h, m);  
+    }  
+      
+    function triggerConfetti(element) {  
+      const rect = element.getBoundingClientRect();  
+      confetti({  
+        particleCount: 60, spread: 60,  
+        origin: { x: (rect.left + rect.width / 2) / window.innerWidth, y: (rect.top + rect.height / 2) / window.innerHeight },  
+        colors: ['#d4af37', '#ffd700', '#ffffff'], disableForReducedMotion: true, zIndex: 9999  
+      });  
+    }  
+      
+    function escapeHtml(text) {  
+      const div = document.createElement('div'); div.textContent = text; return div.innerHTML;  
+    }  
+      
+    function updateDaySelector() {  
+      document.querySelectorAll('.day-chip').forEach(chip => {  
+        chip.classList.toggle('today', chip.dataset.day === getTodayName());  
+      });  
+    }  
+      
+    els.daySelector.addEventListener('click', (e) => {  
+      const chip = e.target.closest('.day-chip');  
+      if (!chip) return;  
+      document.querySelectorAll('.day-chip').forEach(c => c.classList.remove('active'));  
+      chip.classList.add('active');  
+      currentViewDay = chip.dataset.day;  
+      document.getElementById('taskDay').value = currentViewDay;  
+      render();  
+    });  
+      
+    els.searchInput.addEventListener('input', (e) => {  
+      searchQuery = e.target.value;  
+      render();  
+    });  
+      
+    document.querySelectorAll('.quick-btn').forEach(btn => {  
+      btn.addEventListener('click', () => {  
+        document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));  
+        btn.classList.add('active');  
+        currentFilter = btn.dataset.filter;  
+        render();  
+        showToast('Filter Aktif', btn.textContent.trim(), '🔍');  
+      });  
+    });  
+      
+    function checkAlarms(h, m) {  
+      const currentHM = `${h}:${m}`;  
+      const todayKey = getTodayKey();  
+      tasks.forEach(task => {  
+        if (!isTaskForToday(task)) return;  
+        if (isTaskDone(task)) return;  
+        if (task.time !== currentHM) return;  
+        const triggerId = `${task.id}_${todayKey}`;  
+        if (triggeredMap.ids.includes(triggerId)) return;  
+        if (alarmQueue.includes(triggerId) || (activeAlarmTask && activeAlarmTask.triggerId === triggerId)) return;  
+        triggeredMap.ids.push(triggerId);  
+        saveData();  
+        triggerAlarm(task, triggerId);  
+      });  
+    }  
+      
+    function triggerAlarm(task, triggerId) {  
+      alarmQueue.push(triggerId);  
+      if (!activeAlarmTask) showNextAlarm();  
+    }  
+      
+    function showNextAlarm() {  
+      if (alarmQueue.length === 0) { activeAlarmTask = null; return; }  
+      const triggerId = alarmQueue.shift();  
+      const taskId = triggerId.split('_')[0];  
+      activeAlarmTask = { task: tasks.find(t => t.id === taskId), triggerId };  
+      if (!activeAlarmTask.task) { showNextAlarm(); return; }  
+      els.alarmName.textContent = activeAlarmTask.task.name;  
+      els.alarmTime.textContent = activeAlarmTask.task.time;  
+      els.alarmOverlay.classList.add('active');  
+      els.btnSnooze.textContent = `⏰ Tunda ${settings.snoozeDuration} Menit`;  
+      if (settings.soundEnabled) playAlarmSound();  
+      if (settings.notificationEnabled) sendNotification(activeAlarmTask.task);  
+      if (settings.vibrationEnabled && navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 1000]);  
+    }  
+      
+    function stopAlarm() {  
+      stopAlarmSound();  
+      els.alarmOverlay.classList.remove('active');  
+      activeAlarmTask = null;  
+      setTimeout(showNextAlarm, 300);  
+    }  
+      
+    function snoozeAlarm() {  
+      if (!activeAlarmTask) return;  
+      stopAlarmSound();  
+      els.alarmOverlay.classList.remove('active');  
+      const now = new Date();  
+      now.setMinutes(now.getMinutes() + settings.snoozeDuration);  
+      const newH = String(now.getHours()).padStart(2, '0');  
+      const newM = String(now.getMinutes()).padStart(2, '0');  
+      activeAlarmTask.task.time = `${newH}:${newM}`;  
+      triggeredMap.ids = triggeredMap.ids.filter(id => id !== activeAlarmTask.triggerId);  
+      saveData();  
+      const taskName = activeAlarmTask.task.name;  
+      activeAlarmTask = null;  
+      showToast('Alarm Ditunda', `${taskName} → ${newH}:${newM}`, '⏰');  
+      setTimeout(showNextAlarm, 300);  
+    }  
+      
+    function ensureAudio() {  
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();  
+      if (audioCtx.state === 'suspended') audioCtx.resume();  
+      return audioCtx;  
+    }  
+      
+    function playAlarmSound() {  
+      const ctx = ensureAudio();  
+      const now = ctx.currentTime;  
+      const sounds = {  
+        chime: () => {  
+          const playChime = (offset, freq = 523.25) => {  
+            const osc = ctx.createOscillator();  
+            const gain = ctx.createGain();  
+            osc.type = 'sine';  
+            osc.frequency.setValueAtTime(freq, now + offset);  
+            osc.frequency.exponentialRampToValueAtTime(freq * 2, now + offset + 0.1);  
+            gain.gain.setValueAtTime(0, now + offset);  
+            gain.gain.linearRampToValueAtTime(0.3, now + offset + 0.05);  
+            gain.gain.exponentialRampToValueAtTime(0.001, now + offset + 1.5);  
+            osc.connect(gain); gain.connect(ctx.destination);  
+            osc.start(now + offset); osc.stop(now + offset + 1.5);  
+          };  
+          playChime(0); playChime(0.4); playChime(0.8);  
+          beepInterval = setInterval(() => { const t = ctx.currentTime; playChime(t); playChime(t + 0.4); }, 2500);  
+        },  
+        bell: () => {  
+          const playBell = (offset) => {  
+            [830, 1245, 1660].forEach((freq, i) => {  
+              const osc = ctx.createOscillator();  
+              const gain = ctx.createGain();  
+              osc.type = 'sine'; osc.frequency.value = freq;  
+              gain.gain.setValueAtTime(0, now + offset);  
+              gain.gain.linearRampToValueAtTime(0.15 / (i + 1), now + offset + 0.01);  
+              gain.gain.exponentialRampToValueAtTime(0.001, now + offset + 2);  
+              osc.connect(gain); gain.connect(ctx.destination);  
+              osc.start(now + offset); osc.stop(now + offset + 2);  
+            });  
+          };  
+          playBell(0); playBell(0.8);  
+          beepInterval = setInterval(() => { const t = ctx.currentTime; playBell(t); }, 2000);  
+        },  
+        gentle: () => {  
+          const playTone = (offset, freq) => {  
+            const osc = ctx.createOscillator();  
+            const gain = ctx.createGain();  
+            osc.type = 'sine'; osc.frequency.value = freq;  
+            gain.gain.setValueAtTime(0, now + offset);  
+            gain.gain.linearRampToValueAtTime(0.2, now + offset + 0.3);  
+            gain.gain.linearRampToValueAtTime(0, now + offset + 1.5);  
+            osc.connect(gain); gain.connect(ctx.destination);  
+            osc.start(now + offset); osc.stop(now + offset + 1.5);  
+          };  
+          playTone(0, 392); playTone(0.5, 523.25); playTone(1, 659.25);  
+          beepInterval = setInterval(() => { const t = ctx.currentTime; playTone(t, 392); playTone(t + 0.5, 523.25); }, 3000);  
+        },  
+        urgent: () => {  
+          const playBeep = (offset) => {  
+            const osc = ctx.createOscillator();  
+            const gain = ctx.createGain();  
+            osc.type = 'square'; osc.frequency.value = 880;  
+            gain.gain.setValueAtTime(0, now + offset);  
+            gain.gain.linearRampToValueAtTime(0.2, now + offset + 0.02);  
+            gain.gain.exponentialRampToValueAtTime(0.001, now + offset + 0.3);  
+            osc.connect(gain); gain.connect(ctx.destination);  
+            osc.start(now + offset); osc.stop(now + offset + 0.3);  
+          };  
+          [0, 0.15, 0.3, 0.6, 0.75, 0.9].forEach(playBeep);  
+          beepInterval = setInterval(() => { const t = ctx.currentTime; [0, 0.15, 0.3].forEach(o => playBeep(t + o)); }, 1500);  
+        }  
+      };  
+      (sounds[settings.sound] || sounds.chime)();  
+    }  
+      
+    function stopAlarmSound() {  
+      if (beepInterval) { clearInterval(beepInterval); beepInterval = null; }  
+    }  
+      
+    function previewSound(sound) {  
+      const ctx = ensureAudio();  
+      const now = ctx.currentTime;  
+      const osc = ctx.createOscillator();  
+      const gain = ctx.createGain();  
+      osc.type = sound === 'urgent' ? 'square' : 'sine';  
+      osc.frequency.value = sound === 'bell' ? 830 : sound === 'gentle' ? 392 : 523.25;  
+      gain.gain.setValueAtTime(0, now);  
+      gain.gain.linearRampToValueAtTime(0.2, now + 0.05);  
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);  
+      osc.connect(gain); gain.connect(ctx.destination);  
+      osc.start(now); osc.stop(now + 0.8);  
+    }  
+      
+    function requestNotificationPermission() {  
+      if ("Notification" in window && Notification.permission === "default") {  
+        Notification.requestPermission().then(p => {  
+          settings.notificationEnabled = (p === 'granted');  
+          saveData();  
+          updateSettingsUI();  
+        });  
+      }  
+    }  
+      
+    function sendNotification(task) {  
+      if ("Notification" in window && Notification.permission === "granted") {  
+        new Notification("⏰ Jadwal Royal", { body: `Saatnya: ${task.name}`, tag: task.id });  
+      }  
+    }  
+      
+    function exportData() {  
+      const data = { tasks, settings, achievements, exportDate: new Date().toISOString() };  
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));  
+      const a = document.createElement('a');  
+      a.href = dataStr; a.download = `royal-schedule-${getTodayKey()}.json`;  
+      document.body.appendChild(a); a.click(); a.remove();  
+      showToast('Data Diekspor', 'File JSON telah diunduh', '📥');  
+    }  
+      
+    function importDataFromFile(file) {  
+      const reader = new FileReader();  
+      reader.onload = function(e) {  
+        try {  
+          const data = JSON.parse(e.target.result);  
+          if (data.tasks && Array.isArray(data.tasks)) {  
+            tasks = data.tasks;  
+            if (data.settings) settings = { ...DEFAULT_SETTINGS, ...data.settings };  
+            if (data.achievements) achievements = { ...achievements, ...data.achievements };  
+            saveData();  
+            applyTheme(settings.theme);  
+            updateSettingsUI();  
+            render();  
+            showToast('Data Diimpor', `${tasks.length} tugas dimuat`, '📤');  
+          } else if (Array.isArray(data)) {  
+            tasks = data;  
+            saveData();  
+            render();  
+            showToast('Data Diimpor', `${tasks.length} tugas dimuat`, '📤');  
+          } else {  
+            showToast('Gagal', 'Format file tidak valid', '❌');  
+          }  
+        } catch (err) {  
+          showToast('Gagal', 'File JSON tidak valid', '❌');  
+        }  
+      };  
+      reader.readAsText(file);  
+    }  
+      
+    function clearAllData() {  
+      if (confirm('⚠️ Yakin ingin menghapus SEMUA data?\n\nTugas, pengaturan, dan pencapaian akan dihapus permanen.')) {  
+        localStorage.clear();  
+        tasks = [];  
+        triggeredMap = { date: getTodayKey(), ids: [] };  
+        achievements = {};  
+        settings = { ...DEFAULT_SETTINGS };  
+        applyTheme('gold');  
+        updateSettingsUI();  
+        render();  
+        updateStreak();  
+        showToast('Data Direset', 'Semua data telah dihapus', '🗑️');  
+        closeAllModals();  
+      }  
+    }  
+      
+    function updateSettingsUI() {  
+      document.querySelectorAll('[data-toggle]').forEach(toggle => {  
+        const key = toggle.dataset.toggle;  
+        toggle.classList.toggle('active', !!settings[key]);  
+      });  
+      const notifStatus = document.getElementById('notifStatus');  
+      if ("Notification" in window) {  
+        const p = Notification.permission;  
+        if (p === 'granted') notifStatus.textContent = '✓ Diizinkan';  
+        else if (p === 'denied') notifStatus.textContent = '✕ Ditolak';  
+        else notifStatus.textContent = 'Belum diizinkan';  
+      } else {  
+        notifStatus.textContent = 'Tidak didukung';  
+      }  
+      document.getElementById('timeFormatValue').textContent = settings.timeFormat === '24' ? '24 Jam' : '12 Jam';  
+      document.getElementById('snoozeValue').textContent = `${settings.snoozeDuration} Menit`;  
+      document.getElementById('aboutTaskCount').textContent = tasks.length;  
+    }  
+      
+    function cycleTimeFormat() {  
+      settings.timeFormat = settings.timeFormat === '12' ? '24' : '12';  
+      saveData();  
+      updateSettingsUI();  
+      render();  
+      showToast('Format Waktu', settings.timeFormat === '24' ? '24 Jam' : '12 Jam', '⏰');  
+    }  
+      
+    function cycleSnoozeDuration() {  
+      const durations = [5, 10, 15, 30];  
+      const idx = durations.indexOf(settings.snoozeDuration);  
+      settings.snoozeDuration = durations[(idx + 1) % durations.length];  
+      saveData();  
+      updateSettingsUI();  
+      showToast('Durasi Tunda', `${settings.snoozeDuration} Menit`, '💤');  
+    }  
+      
+    function toggleSetting(key) {  
+      if (key === 'notificationEnabled') {  
+        if ("Notification" in window) {  
+          if (Notification.permission === 'default') {  
+            Notification.requestPermission().then(p => {  
+              settings.notificationEnabled = (p === 'granted');  
+              saveData();  
+              updateSettingsUI();  
+              if (p === 'granted') showToast('Notifikasi Aktif', 'Izin diberikan', '🔔');  
+              else showToast('Notifikasi Ditolak', 'Aktifkan di pengaturan browser', '⚠️');  
+            });  
+          } else if (Notification.permission === 'denied') {  
+            showToast('Tidak Bisa', 'Izin ditolak di browser', '⚠️');  
+          } else {  
+            settings.notificationEnabled = !settings.notificationEnabled;  
+            saveData();  
+            updateSettingsUI();  
+          }  
+        } else {  
+          showToast('Tidak Didukung', 'Browser tidak mendukung notifikasi', '⚠️');  
+        }  
+        return;  
+      }  
+      settings[key] = !settings[key];  
+      saveData();  
+      updateSettingsUI();  
+      if (key === 'particlesEnabled') {  
+        if (settings.particlesEnabled) startParticles();  
+        else stopParticles();  
+      }  
+      const labels = {  
+        soundEnabled: 'Suara Alarm',  
+        vibrationEnabled: 'Getaran',  
+        particlesEnabled: 'Efek Partikel',  
+        confettiEnabled: 'Efek Confetti'  
+      };  
+      showToast(labels[key] || key, settings[key] ? 'Aktif' : 'Nonaktif', settings[key] ? '✓' : '✕');  
+    }  
+      
+    let particles = [];  
+    function initParticles() {  
+      const canvas = document.getElementById('particles-canvas');  
+      const ctx = canvas.getContext('2d');  
+      function resize() {  
+        canvas.width = window.innerWidth;  
+        canvas.height = window.innerHeight;  
+      }  
+      resize();  
+      window.addEventListener('resize', resize);  
+      for (let i = 0; i < 30; i++) {  
+        particles.push({  
+          x: Math.random() * canvas.width,  
+          y: Math.random() * canvas.height,  
+          size: Math.random() * 2 + 0.5,  
+          speedX: (Math.random() - 0.5) * 0.3,  
+          speedY: (Math.random() - 0.5) * 0.3,  
+          opacity: Math.random() * 0.5 + 0.1  
+        });  
+      }  
+      function animate() {  
+        if (!settings.particlesEnabled) {  
+          particlesAnimId = requestAnimationFrame(animate);  
+          return;  
+        }  
+        ctx.clearRect(0, 0, canvas.width, canvas.height);  
+        const style = getComputedStyle(document.documentElement);  
+        const color = style.getPropertyValue('--accent-primary').trim() || '#d4af37';  
+        particles.forEach(p => {  
+          p.x += p.speedX;  
+          p.y += p.speedY;  
+          if (p.x < 0) p.x = canvas.width;  
+          if (p.x > canvas.width) p.x = 0;  
+          if (p.y < 0) p.y = canvas.height;  
+          if (p.y > canvas.height) p.y = 0;  
+          ctx.beginPath();  
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);  
+          ctx.fillStyle = color;  
+          ctx.globalAlpha = p.opacity;  
+          ctx.fill();  
+        });  
+        ctx.globalAlpha = 1;  
+        particlesAnimId = requestAnimationFrame(animate);  
+      }  
+      animate();  
+    }  
+      
+    function startParticles() { }  
+    function stopParticles() {  
+      const canvas = document.getElementById('particles-canvas');  
+      const ctx = canvas.getContext('2d');  
+      ctx.clearRect(0, 0, canvas.width, canvas.height);  
+    }  
+      
+    document.addEventListener('click', () => { ensureAudio(); }, { once: true });  
+    els.form.addEventListener('submit', handleAddTask);  
+    els.list.addEventListener('click', handleListClick);  
+    els.btnStop.addEventListener('click', stopAlarm);  
+    els.btnSnooze.addEventListener('click', snoozeAlarm);  
+    document.getElementById('btnTheme').addEventListener('click', () => openModal('themeModal'));  
+    document.getElementById('btnStats').addEventListener('click', () => { renderStats(); openModal('statsModal'); });  
+    document.getElementById('btnAchievements').addEventListener('click', () => { renderAchievements(); openModal('achievementsModal'); });  
+    document.getElementById('btnSettings').addEventListener('click', () => { updateSettingsUI(); openModal('settingsModal'); });  
+    document.getElementById('btnAbout').addEventListener('click', () => { updateSettingsUI(); openModal('aboutModal'); });  
+    document.getElementById('btnProgress').addEventListener('click', () => { renderStats(); openModal('statsModal'); });  
+    document.getElementById('btnExport').addEventListener('click', exportData);  
+    document.getElementById('btnImport').addEventListener('click', () => document.getElementById('importFile').click());  
+    document.getElementById('importFile').addEventListener('change', (e) => {  
+      if (e.target.files[0]) {  
+        importDataFromFile(e.target.files[0]);  
+        e.target.value = '';  
+      }  
+    });  
+    document.getElementById('btnReset').addEventListener('click', clearAllData);  
+    document.querySelectorAll('[data-close]').forEach(btn => {  
+      btn.addEventListener('click', () => closeModal(btn.dataset.close));  
+    });  
+    document.querySelectorAll('.modal-overlay').forEach(modal => {  
+      modal.addEventListener('click', (e) => {  
+        if (e.target === modal) modal.classList.remove('active');  
+      });  
+    });  
+    document.querySelectorAll('.theme-option').forEach(opt => {  
+      opt.addEventListener('click', () => {  
+        settings.theme = opt.dataset.theme;  
+        applyTheme(settings.theme);  
+        saveData();  
+        showToast('Tema Diubah', opt.dataset.name, '🎨');  
+      });  
+    });  
+    document.querySelectorAll('.sound-option').forEach(opt => {  
+      opt.addEventListener('click', () => {  
+        document.querySelectorAll('.sound-option').forEach(o => o.classList.remove('active'));  
+        opt.classList.add('active');  
+        settings.sound = opt.dataset.sound;  
+        saveData();  
+        previewSound(settings.sound);  
+        showToast('Suara Alarm', opt.querySelector('.sound-option-name').textContent, '🔊');  
+      });  
+      const previewBtn = opt.querySelector('.sound-option-preview');  
+      if (previewBtn) {  
+        previewBtn.addEventListener('click', (e) => {  
+          e.stopPropagation();  
+          previewSound(opt.dataset.sound);  
+        });  
+      }  
+    });  
+    document.querySelectorAll('[data-toggle]').forEach(toggle => {  
+      toggle.addEventListener('click', (e) => {  
+        e.stopPropagation();  
+        toggleSetting(toggle.dataset.toggle);  
+      });  
+    });  
+    document.querySelectorAll('.settings-item').forEach(item => {  
+      const key = item.dataset.setting;  
+      if (!key) return;  
+      if (item.querySelector('.toggle')) return;  
+      item.addEventListener('click', () => {  
+        if (key === 'timeFormat') cycleTimeFormat();  
+        else if (key === 'snoozeDuration') cycleSnoozeDuration();  
+      });  
+    });  
+    document.getElementById('settingsExport').addEventListener('click', () => { exportData(); });  
+    document.getElementById('settingsImport').addEventListener('click', () => { document.getElementById('importFile').click(); });  
+    document.getElementById('settingsReset').addEventListener('click', () => { clearAllData(); });  
+    document.getElementById('settingsAbout').addEventListener('click', () => { closeModal('settingsModal'); setTimeout(() => openModal('aboutModal'), 200); });  
+    document.getElementById('settingsHelp').addEventListener('click', () => { closeModal('settingsModal'); setTimeout(() => openModal('helpModal'), 200); });  
+    document.getElementById('btnCloseAbout').addEventListener('click', () => closeModal('aboutModal'));  
+      
+    loadData();  
+    applyTheme(settings.theme);  
+    updateGreeting();  
+    updateDaySelector();  
+    updateSettingsUI();  
+    render();  
+    updateStreak();  
+    requestNotificationPermission();  
+    initParticles();  
+    checkAchievements();  
+    setInterval(tick, 1000);  
+    setInterval(() => { updateStreak(); checkAchievements(); }, 60000);  
+    tick();  
+  </script>  
+</body>  
 </html>
